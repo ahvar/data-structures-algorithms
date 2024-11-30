@@ -1,0 +1,12 @@
+https://query1.finance.yahoo.com/v7/finance/download/AAPL?period1=1291093200&period2=1575090000&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/FB?period1=1337313600&period2=1575090000&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/BABA?period1=1411099200&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/BA?period1=-252356400&period2=1575090000&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/AMZN?period1=863668800&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/GOOG?period1=863668800&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/NFLX?period1=1022126400&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/ILMN?period1=964756800&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/BIIB?period1=685080000&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/MSFT?period1=511074000&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/ABT?period1=322117200&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/
+https://query1.finance.yahoo.com/v7/finance/download/TSLA?period1=1277784000&period2=1575176400&interval=1d&events=history&crumb=.RZbi1TXYd/

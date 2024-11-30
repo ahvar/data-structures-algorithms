@@ -8,12 +8,13 @@ fb_price_hist = {}
 
 def add_row(**kwargs):
     for k,v in kwargs.items():
-        if fb_price_hist.setdefault(k,v):
-            pass
+        if k not in fb_price_hist:
+            fb_price_hist[k] = [v]
+        else:
+            fb_price_hist[k].append(v)
 
 
-
-with open('../DATA/FB.csv','r') as fb_in:
+with open('../data/FB.csv','r') as fb_in:
     fb_reader = csv.DictReader(fb_in, fieldnames=column_headers)
     header = ""
     for row in fb_reader:
@@ -23,5 +24,6 @@ with open('../DATA/FB.csv','r') as fb_in:
 
 
 if __name__ == '__main__':
-    pp.pprint(fb_price_hist)
+    simple = zip(['one','two','three'], [1,2,3])
+    print(dict(simple))
 
