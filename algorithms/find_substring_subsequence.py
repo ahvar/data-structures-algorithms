@@ -8,7 +8,7 @@ pp = PrettyPrinter(indent=4)
 k = 2
 j = 4
 
-chars = ['a','y','e','t','c','z']
+chars = ['a','y','e','t','c','z','r','x','q']
 
 # substrings
 left = 0
@@ -26,4 +26,7 @@ for right in range(len(chars)):
         substring.clear()
 
 pp.pprint(substrings)
+
+# subsequences
+
 
