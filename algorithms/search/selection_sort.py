@@ -18,4 +18,4 @@ def selection_sort(arr):
     
 if __name__ == "__main__":
     arr = [3,6,1,4,8,34,32,11,8,]
-    rprint(arr)    
+    rprint(selection_sort(arr))    
