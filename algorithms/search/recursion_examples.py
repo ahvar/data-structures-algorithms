@@ -1,5 +1,7 @@
+import random
 from typing import List
 from rich import print as rprint
+
 
 def get_max(nums: List) -> int:
     if not nums:
@@ -20,16 +22,18 @@ def count(nums: List) -> int:
     print(rest_count)
     return 1 + rest_count
 
-def quicksort(nums: List) -> List:
+def quicksort(nums: List[int]) -> List[int]:
     if len(nums) < 2:
         return nums
-    pivot = nums[0]
-    less = [ num for num in nums[1:] if num < pivot]
-    greater = [ num for num in nums[1:] if num > pivot]
-    return quicksort(less) + pivot + quicksort(greater)
+    pivot_index = random.randint(0,len(nums) - 1)
+    pivot_value = nums[pivot_index]
+    less = [ num for num in nums if num < pivot_value]
+    equal = [ num for num in nums if num == pivot_value]
+    greater = [ num for num in nums if num > pivot_value]
+    return quicksort(less) + equal + quicksort(greater)
 
 
 
 if __name__ == "__main__":
     nums = [3,3,3,9,23,2,98,2,1,435]
-    rprint(count(nums))
+    rprint(quicksort(nums))
