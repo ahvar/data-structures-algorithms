@@ -32,38 +32,48 @@ Output: false
 Explanation: In this example, it can be shown that it is impossible to make str2 a subsequence of str1 using the operation at most once. 
 Therefore, false is returned.
 
+str1 = "dzf"
+str2 = "fgi"
+
 """
+from typing import List
 
 class Solution:
 
     def canMakeSubsequence(self, str1: str, str2: str) -> bool:
-        left = 0
-        right = 0
-        for s in str2:
-            while right < len(str1):
-                if str1[right] == s or self.increment_char(str1[right]) == s:
-                    left = right
-                    break
-                right += 1
-            if right == len(str1):
-                return False
-        return True
+        if len(str2) > len(str1):
+            return False
+        curr = 0
+        indexes = []
+        while curr <= len(str2) - 1:
+            for c in str1:
+                if str2[curr] == c or str2[curr] == self.increment_char(c):
+                    index_in_str1 = str1.index(c)
+                    if len(str1[index_in_str1:]) < len(str2[curr:]):
+                        return False
+                    indexes.append(str1.index(c))
+            curr += 1
+        print(indexes)
+        if not indexes or len(indexes) == 1 and len(str2) != 1: 
+            return False
+        return self.is_sorted(indexes)
     
+    def is_sorted(self, indexes: List[int]) -> bool:
+        # base case
+        if len(indexes) == 1:
+            return True
+        return indexes[0] <= indexes[1] and self.is_sorted(indexes[1:])
+
     def increment_char(self, c):
+        num = ord(c)
         if c == 'z':
             return 'a'
-        return chr(ord(c) + 1)
-                
-
-
-
-
-
+        num += 1
+        return chr(num)
         
-
 if __name__ == "__main__":
-    str1 = "abc"
-    str2 = "ad"
+    str1 = "cnfe"
+    str2 = "fe"
     s = Solution()
     result = s.canMakeSubsequence(str1, str2)
     print(result)
