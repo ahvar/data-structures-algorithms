@@ -13,23 +13,50 @@ class ListNode:
     def next(self) -> Optional['ListNode']:
         return self._next
     
-class LinkedList:
-    def __init__(self, head: ListNode) -> None:
-        self._head = head
-        self._count = 0
+class AirportList:
+    def __init__(self, airport: str) -> None:
+        self._head = ListNode(airport)
+        self._tail = None
+        self._count = 1
 
-    def add_node(self, node: ListNode) -> None:
+    def remove_first(self) -> ListNode:
         if not self._head:
-            self._head = node
-        current_node = self._head
-        while current_node.next:
-            current_node = current_node.next
-        current_node.next = node
-        self._count += 1
+            raise Exception("List is empty")
+        self._head = self._head.next
+        self._count =- 1
+
+    def remove_last(self) -> ListNode:
+        pass
+
+    def add_first(self, airport: str) -> None:
+        if not self._head:
+            self._head = ListNode(airport)
+            self._count = 1
+        else:
+            new_node = ListNode(airport=airport)
+            new_node.next = self._head
+            self._head = new_node
+
+    def add_last(self, airport: str) -> None:
+        if not self._tail:
+            self._tail = ListNode(airport)
+            self._tail.next = None
+            self._count += 1
+        else:
+            self._tail.next = ListNode(airport)
+            self._tail = self._tail.next
+            self._tail.next = None
+            self._count += 1
+
+
 
     @property
     def head(self) -> ListNode:
         return self._head
+    
+    @property
+    def tail(self) -> ListNode:
+        return self._tail
 
     @property
     def count(self) -> int:
