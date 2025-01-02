@@ -68,7 +68,7 @@ if __name__ == "__main__":
     msp = ListNode("MSP")
     atl = ListNode("ATL")
     bos = ListNode("BOS")
-    linked_list = LinkedList(lax)
+    linked_list = AirportList(lax)
     linked_list.add_node(msp)
     linked_list.add_node(atl)
     linked_list.add_node(bos)
