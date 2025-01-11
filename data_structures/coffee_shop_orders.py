@@ -46,20 +46,9 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(self.coffee_shop.orders[3], "Latte")
 
     def test_serve(self):
-        self.assertEqual(self.coffee_shop.serve(), "")
+        self.assertEqual(self.coffee_shop.serve(), "frappa")
 
     def test_cancel_last_order(self):
-        pass
-
-
-# TODO: Create a deque for coffee shop orders with initial orders 'Latte', 'Espresso', 'Cappuccino'
-orders = deque(["Latte", "Espresso", "Cappuccino"])
-
-# TODO: A new customer orders a 'Mocha', add it to the end of the queue
-orders.appendleft("Mocha")
-
-# TODO: Realize a customer wants their 'Latte' order moved to the end of the queue. Implement it.
-orders.rotate(1)
-
-# TODO: Process (remove and print) the first order in the queue. Which drink is it?
-print(orders.popleft())
+        expected = deque(["frappa", "Latte", "Cappuccino"])
+        self.coffee_shop.cancel_last_order()
+        self.assertEqual(self.coffee_shop.orders, expected)
