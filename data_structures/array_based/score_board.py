@@ -52,3 +52,15 @@ class ScoreBoard:
                     self._board[j] = self._board[j + 1]
                     j -= 1
                 self._board[j] = entry
+
+    def add_alternate(self, entry):
+        good = self._n < len(self._board) or entry.score > self._board[-1].score
+        if good:
+            if self._n < len(self._board):
+                self._n += 1
+
+            j = self._n - 1
+            while j > 0 and self._board[j - 1].score:
+                self._board[j] = self._board[j - 1]
+                j -= 1
+            self._board[j] = entry
