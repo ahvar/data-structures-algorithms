@@ -21,6 +21,14 @@ class DynamicArray:
         self._A[self._n] = obj
         self._n += 1
 
+    def insert(self, k, value):
+        """Insert value at index k, shifting subsequent values rightward"""
+        if self._n == self._capacity:
+            self._resize(self._capacity * 2)
+        for j in range(self._n, k, -1):
+            self._A[j] = self._A[j - 1]
+        self._A[k] = value
+
     def _resize(self, capacity):
         B = self._make_array(capacity)
         for k in range(self._n):
