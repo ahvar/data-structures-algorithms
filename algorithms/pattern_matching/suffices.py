@@ -1,4 +1,5 @@
 """
+R-13.1
 List the prefixes of string P = "aaabbaaa" that are also suffixes of P.
 """
 

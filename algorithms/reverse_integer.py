@@ -8,14 +8,14 @@ import math
 
 class Solution:
     def reverse(self, x: int) -> int:
+        sign = ""
         strx = str(x)
+        if "-" in strx or "+" in strx:
+            sign = strx.pop(0)
         rx = strx[::-1]
-        if "-" in rx and math.pow(-2, 31) < x < 0:
-            pass
-        elif math.pow(-2, 31) <= x <= math.pow(2, 31):
-            return float(rx)
-        else:
+        if int(rx) > math.pow(2, 31) or (int(rx) - math.pow(-2, 31)):
             return 0
+        return int(rx)
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ def find_brute(text, pattern):
     n, m = len(text), len(pattern)
     for i in range(n - m + 1):  # try every potential starting index
         k = 0
-        while k < m and text[i + k] == text[k]:  # the kth char of pattern matches
+        while k < m and text[i + k] == pattern[k]:  # the kth char of pattern matches
             k += 1
         if k == m:
             return i
