@@ -5,20 +5,23 @@ List Operations with:
  - stacks
  - queues
 """
+
 from collections import deque
 from typing import List
+
 
 class Order:
     def __init__(self, name: str) -> None:
         self._name = name
-    
+
     @property
     def name(self) -> str:
         return self._name
-    
+
     @name.setter
     def name(self, name) -> None:
         self._name = name
+
 
 class OrderManager:
     """
@@ -26,8 +29,8 @@ class OrderManager:
         In Python it is also possible to use a list as a queue, where the first element added is the first element retrieved (“first-in, first-out”);
         however, lists are not efficient for this purpose. While appends and pops from the end of list are fast, doing inserts or pops from the
         beginning of a list is slow (because all of the other elements have to be shifted by one).
-
     """
+
     def __init__(self, order: Order) -> None:
         """
         Deques are a generalization of stacks and queues (the name is pronounced “deck” and is short for “double-ended queue”).
@@ -50,7 +53,7 @@ class OrderManager:
         """
         This implementation creates a new list with additional space for the rush order and adds it.
         Then, all existing orders are moved to the new list. self._orders and self._size are updated.
-        
+
         :params order: the rush order
         """
         # there are no orders; add this one and increment size
@@ -59,7 +62,7 @@ class OrderManager:
             self._size += 1
         else:
             # make an empty list with space for the rush order
-            new_orders = [ None for i in range(self._size + 1) ]
+            new_orders = [None for i in range(self._size + 1)]
             # add the rush order to the front of new_orders
             new_orders[0] = order
             # add existing orders after the rush order in new_orders
@@ -90,18 +93,18 @@ class OrderManager:
             right -= 1
         self._size = len(self._orders)
 
-
     def delete_order(self, order: Order) -> None:
         if self._orders:
             self._orders.append(order)
         else:
             self._orders_deque.append(order)
-    
+
     @property
     def orders(self) -> List:
         return self._orders
 
+
 if __name__ == "__main__":
     fried_rice = Order("fried rice")
     manager = OrderManager()
-    manager.add_order(fried_rice) 
+    manager.add_order(fried_rice)
