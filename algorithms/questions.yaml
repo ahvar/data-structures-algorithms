@@ -1,0 +1,24 @@
+"For T = 'whichplanetistheredplanetaustralialawsofcanberra' return a string of all indices in T": |
+"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,"
+
+"For T = 'whichplanetistheredplanetaustralialawsofcanberra' and P = lant, iterate over T in increments equal to the length of P, and \
+collect the starting indices where P would align in T. Return these indices as a comma-separated string. In other words, imagine laying \
+P repeatedly (in tandem) across T. Which positions in T correspond to P’s index 0 for each alignment?": |
+"0,4,8,12,16,20,24,28,32,36,40,44,"
+
+"Return characters of T = 'whichplanetistheredplanetaustralialawsofcanberra' at increments of length P = lant. \
+That is, instead of returning the starting indices of P in T, as in the previous problem, return the characters. This \
+can be done by slicing": "whnsrlttiwce"
+
+"Use brute-force pattern matching method to return all starting indices of \
+P = 'la' in T = 'whichplanetistheredplanetaustralialawsofcanberra'. That is, test P at every indices of T": "[6,20,34]"
+
+
+"What is the capital of Australia?": "Canberra"
+"In computing, what does CPU stand for?": "Central Processing Unit"
+"Who painted the Mona Lisa?": "Leonardo da Vinci"
+"Which is the smallest country in the world by area?": "Vatican City"
+"What is the largest mammal in the world?": "Blue Whale"
+"Who wrote the play 'Hamlet'?": "William Shakespeare"
+"Which element has the chemical symbol 'O'?": "Oxygen"
+"What is the boiling point of water at sea level (in °C)?": "100"

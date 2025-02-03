@@ -6,7 +6,7 @@ sys.path.insert(0, parent_dir)
 
 from timeout_decorator import timeout
 import unittest
-from integer_container import Container
+from data_structures.array_based.integer_container import Container
 
 
 class DemoICATest(unittest.TestCase):

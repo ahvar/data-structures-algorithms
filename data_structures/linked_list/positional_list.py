@@ -11,7 +11,7 @@
 # - Better encapsulation -> greater flexibility to redesign a data structure: independent `position` abstraction
 
 # %%
-from doubly_linked_list import _DoublyLinkedBase
+from .doubly_linked_list import _DoublyLinkedBase
 
 
 # %% [markdown]
