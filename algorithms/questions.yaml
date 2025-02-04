@@ -13,6 +13,11 @@ can be done by slicing": "whnsrlttiwce"
 "Use brute-force pattern matching method to return all starting indices of \
 P = 'la' in T = 'whichplanetistheredplanetaustralialawsofcanberra'. That is, test P at every indices of T": "[6,20,34]"
 
+"Compare pattern P = 'lmn' with T = 'rlnlmnolo' by beginning at the right edge of the pattern and moving left along T. \
+If a match is found, return the starting index of T. Return -1 if no match": 3
+
+
+
 
 "What is the capital of Australia?": "Canberra"
 "In computing, what does CPU stand for?": "Central Processing Unit"
