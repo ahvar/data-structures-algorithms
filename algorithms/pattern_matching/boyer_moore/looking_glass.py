@@ -1,3 +1,8 @@
+"""
+start comparisons of pattern with segment from the end of pattern
+"""
+
+
 def start_from_end(segment, pattern):
     i = 0
     while i < len(segment) - len(pattern) + 1:
