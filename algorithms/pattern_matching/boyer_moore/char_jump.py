@@ -1,29 +1,23 @@
-def char_jump_heuristic(segment, pattern):
-    last = {}
-    for i in range(len(pattern) - 1):
-        last[pattern[i]] = i
-    i = 0
-    while i < len(segment):
-        k = len(pattern) - 1
-        while k >= 0:
-            if k == 0:
-                return segment[i : len(pattern)]  # match found
-            if segment[i + k] != pattern[k]:  # mismatch
-                if segment[i + k] in pattern:
-                    index = last.get(
-                        segment[i], -1
-                    )  # index of the rightmost mismatched char
-                    i += len(pattern) - min(
-                        k, index + 1
-                    )  # how much to move i to align it with
-                    k = len(pattern) - 1
-                else:
-                    i += len(pattern) - k
+"""
+1. walk back from the end of segment
+2. if the char is in the adjust dict, replace the char and adjust
+"""
+
+
+def char_jump(segment, adjust):
+    i = len(segment) - 1
+    while i >= 0:
+        if segment[i] in adjust:
+            key = segment[i]
+            segment = segment[:i] + "_" + segment[i + 1 :]
+            i -= adjust[key]
+        else:
             i -= 1
-    return -1
+    return segment
 
 
 if __name__ == "__main__":
-    pattern = "redpantkswoplaneroofjkplantpitgopaplplanat"
-    segment = "planet"
-    print(char_jump_heuristic(segment, pattern))
+    segment = "redpantkswoplaneroofjkplantpitgopaplplanat"
+    adjust = {"a": 3, "l": 2, "o": 1}
+    new_segment = char_jump(segment, adjust)
+    print(new_segment)
