@@ -16,16 +16,7 @@ P = 'la' in T = 'whichplanetistheredplanetaustralialawsofcanberra'. That is, tes
 "Compare pattern P = 'lmn' with T = 'rlnlmnolo' by beginning at the right edge of the pattern and moving left along T. \
 If a match is found, return the starting index of T. Return -1 if no match": 3
 
+"Walk backward from the end of segment 'redpantkswoplaneroofjkplantpitgopaplplanat' checking if a given \
+char is in the adjust dict: {'a': 3, 'l': 2, 'o': 1}. If so, replace it with an underscore, '_', and adjust \
+the pointer righward by the corresponding value in adjust."
 
-
-
-
-
-"What is the capital of Australia?": "Canberra"
-"In computing, what does CPU stand for?": "Central Processing Unit"
-"Who painted the Mona Lisa?": "Leonardo da Vinci"
-"Which is the smallest country in the world by area?": "Vatican City"
-"What is the largest mammal in the world?": "Blue Whale"
-"Who wrote the play 'Hamlet'?": "William Shakespeare"
-"Which element has the chemical symbol 'O'?": "Oxygen"
-"What is the boiling point of water at sea level (in °C)?": "100"
