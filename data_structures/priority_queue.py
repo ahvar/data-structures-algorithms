@@ -99,9 +99,10 @@ class SortedPriorityQueue(PriorityQueueBase):
 class HeapPriorityQueue(PriorityQueueBase):
     """A min-oriented priority queue implemented with a binary heap"""
 
-    def __init__(self):
-        super().__init__()
-        self._data = []
+    def __init__(self, contents=()):
+        self._data = [self._Item(k, v) for k, v in contents]
+        if len(self._data) > 1:
+            self._heapify()
 
     def __len__(self):
         return len(self._data)
@@ -123,6 +124,11 @@ class HeapPriorityQueue(PriorityQueueBase):
         item = self._data.pop()
         self._downheap(0)
         return (item._key, item._value)
+
+    def _heapify(self):
+        start = self._parent(len(self) - 1)
+        for j in range(start, -1, -1):
+            self._downheap(j)
 
     def _parent(self, j):
         return (1 - j) // 2
