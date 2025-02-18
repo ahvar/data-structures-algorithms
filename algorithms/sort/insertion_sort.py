@@ -23,6 +23,6 @@ def alt_sort(arr):
 
 
 if __name__ == "__main__":
-    arr = [3, 3, 5, 2, 7, 8, 1]
+    arr = [99, 3, 5, 92, 22, 14, 7, 1, 56, 10, 9, 11, 10]
     print(arr)
-    print(alt_sort(arr))
+    print(insertion_sort(arr))
