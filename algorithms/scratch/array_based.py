@@ -36,12 +36,18 @@ class DynamicArray:
         """Insert value at index k, shifting subsequent values rightward"""
         if self._n == self._capacity:
             self._resize(2 * self._capacity)
-        j = self._n - 1
+        j = self._n  # index of last value + 1
         while j > k:
             self._array[j] = self._array[j - 1]
             j -= 1
         self._array[j] = element
         self._n += 1
+
+    def remove(self, element):
+        """Return and remove this element"""
+
+    def retrieve(self, index):
+        """Return but do not remove the element at this index"""
 
     def __len__(self):
         return self._n
