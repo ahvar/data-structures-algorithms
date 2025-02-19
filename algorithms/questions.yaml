@@ -23,5 +23,17 @@ the pointer righward by the corresponding value in adjust."
 "Write a function called find_smallest() that accepts a list of integers [6,12,3,4,0,554,3,2,123] and returns the index of the smallest integer. \
 Next use the find_smallest() function to implement the selection sort function called selection_sort() and return the sorted list.": "[0, 2, 3, 3, 4, 6, 12, 123, 554]"
 
-"Implement the previous selection_sort() algorithm 'in place'"
+"Implement the previous selection_sort() algorithm 'in place'": 1
 
+"Binary search is an algorithm where a sorted list of elements is input and an element to search for. If an element you're looking for is in that list, binary \
+search returns the index of the element. Null otherwise. Take arr = [2,3,6,7,8,13,18,21,23,24,27,30,32,40,41] and return the location of '27'": 10
+
+"Given an array of integers [3,3,5,2,7,8,1,34,12,66,10], iterate and compare the values at each position to the values preceeding and following it": 1
+
+"Given an array of integers [3,77,5,2,23,8,1,34,45,66,10], iterate from left to right, add a nested loop that iterates right to left, slicing the array at each nested loop iteration": 1
+
+"Given an array of intergers [99,3,5,92,22,14,7,1,56,10,9,11,10], implement the insertion-sort algorithm to sort the integers in the array": "[]"
+"Given an array of integers [6,12,3,4,0,554,3,2,123,2,53,9], insert 'element' at index = 5 by shifting all the integers rightward. Note, space \
+for the additional 'element' must be created before shifting integers.": "[6, 12, 3, 4, 0, None, 554, 3, 2, 123, 2, 53,9]"
+"Create a DynamicArray class of Python objects using the cytpes module. Implement the logic to append a new Python object to the end of the array, to resize the array, and insert \
+an object at a given index": 1

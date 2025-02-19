@@ -1,0 +1,14 @@
+"Use the .case_when method to analyze a dataset by identifying the values that are in the top5 and top10 categories of a particular range": 1
+"Count the missing entries in a dataset": 1
+"Fill in missing values with a default": 1
+"As an alternative, `interpolate` missing values": 1
+"Trim outliers from a dataset by using the .clip method to remove values in the 5th and 95th quantiles. Sort values with .sort_values or by index with .sort_index": 1
+"Drop all duplicates of a given value except the first occurrence. Drop all duplicates of a given value except the last occurrence. Drop all occurrences of a given value": 1
+"Rank values specifying 'min' to put values in the same rank, alternatively, use 'dense' to produce consecutive integers representing all positions": 1
+"Replace data by passing a dictionary or a regex to the `to_replace` parameter to map old and new values": 1
+"Create multiple bins to categorize the range of values": 1
+
+
+
+
+
