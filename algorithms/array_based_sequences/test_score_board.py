@@ -1,6 +1,6 @@
 import unittest
 
-from score_board import GameEntry, ScoreBoard
+from algorithms.array_based_sequences.score_board import GameEntry, ScoreBoard
 
 
 class TestScoreBoard(unittest.TestCase):
