@@ -29,7 +29,12 @@ def quiz(
         for question, correct_answer in qa_pairs.items():
             while True:
                 # Prompt the user for an answer
-                user_answer = typer.prompt(f"{question}")
+                user_answer = typer.prompt(f"{question} (type 'skip' to skip)")
+
+                # Check if the user wants to skip the question
+                if user_answer.strip().lower() == "skip":
+                    typer.echo("Question skipped.")
+                    break
 
                 # Check if the answer matches
                 if user_answer.strip().lower() == str(correct_answer).strip().lower():
@@ -38,7 +43,9 @@ def quiz(
                 else:
                     typer.echo("Incorrect, please try again.")
 
-        typer.echo("Congratulations! You have answered all questions correctly.")
+        typer.echo(
+            "Congratulations! You have answered all questions correctly or skipped some."
+        )
 
     except FileNotFoundError:
         typer.echo(f"File not found: {yaml_file}")
