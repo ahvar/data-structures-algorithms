@@ -10,15 +10,13 @@ class DynamicArray:
         )  # elements of the DyanmicArray class
 
     def __getitem__(self, k):
-        if 0 <= k < self._n:
-            raise IndexError()
+        if not 0 <= k < self._n:
+            raise IndexError("Invalid index")
         return self._array[k]
 
     def _resize(self, c):
         """
-        Resize the underlying array with additional capacity:
-        1. Tuple is an immutable sequence
-        2. Resize to c capacity
+        Resize the underlying array with additional capacity
         """
         new_arr = self._make_array(c)
         for i in self._n:
@@ -43,8 +41,41 @@ class DynamicArray:
         self._array[j] = element
         self._n += 1
 
-    def remove(self, element):
-        """Return and remove this element"""
+    def remove_by_location(self, k):
+        """
+        Return and remove the element at k
+        1. shift objects leftward
+        2. handle leftward shift of last object
+        3. decrement count
+        """
+        if not 0 <= k < self._n:
+            raise IndexError("Invalid index")
+        element = self._array[k]
+        while k < self._n:
+            self._array[k] = self._array[k + 1]
+            k += 1
+        self._array[self._n - 1] = None
+        self._n -= 1
+        return element
+
+    def remove(self, value):
+        """Return and remove
+        1. find value
+        2. shift objects leftward
+        3. handle leftward shift of last value
+        4. decrement count
+        """
+        target = None
+        for j in range(self._n - 1):
+            if self._array[j] == value:
+                target = self._array[j]
+                k = j
+                while k < self._n - 1:
+                    self._array[k] = self._array[k + 1]
+                    k += 1
+                self._array[self._n - 1] = None
+                return target
+        raise ValueError("Not Found: %s".format(value))
 
     def retrieve(self, index):
         """Return but do not remove the element at this index"""
