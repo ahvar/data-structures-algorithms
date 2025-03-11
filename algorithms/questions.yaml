@@ -31,3 +31,5 @@
 "Create a DynamicArray class of Python objects using the ctypes module. Implement the logic to append a new Python object to the end of the array, to resize the array, and insert an object at a given index": 1
 
 "Implement a Ceasar cipher by taking a string of uppercased alphabet letters, shifting each letter to create a replacement characters, and use the alphabet letters and replacement characters to encrypt a secret message.": 1
+
+"X = 'ado' and Y = 'abcdo'. Implement a recursive function that finds the LCS.": 3
