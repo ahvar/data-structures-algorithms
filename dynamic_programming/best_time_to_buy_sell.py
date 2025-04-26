@@ -9,7 +9,7 @@ Note:
 
 You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 The transaction fee is only charged once for each stock purchase and sale.
-
+    
 Example 1:
 
 Input: prices = [1,3,2,8,4,9], fee = 2
@@ -40,6 +40,7 @@ class Solution:
         for i in range(1,n-1):
             holding[i] = max(holding[i-1], not_holding[i-1] - fee)
             not_holding[i] = max(not_holding[i-1], holding[i-1] + prices[i] - fee)
+        return not_holding(n-1)
 
 
             
