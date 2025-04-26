@@ -19,11 +19,11 @@ from queue import Queue
 class Solution:
     def __init__(self):
         self.diameter = 0
-    def _depth(self, node, height):
+    def _depth(self, node):
         if not node:
             return  0
-        left_height = self._depth(node.left, height)
-        right_height = self._depth(node.right, height)
+        left_height = self._depth(node.left)
+        right_height = self._depth(node.right)
         current_path_length = left_height + right_height
         if current_path_length > self.diameter:
             self.diameter = current_path_length 
