@@ -22,29 +22,17 @@ Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 < nums[4] == 4 
 from typing import List
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
-        first = None
-        second = None
-        for i in range(len(nums)):
-            if not first:
-                first = nums[i]
-            elif nums[i] < first:
-                first = nums[i]
-            for j in range(i, len(nums)):
-                if not second:
-                    second = nums[j]
-                elif nums[j] < second and first < second:
-                    second = nums[j]
-                    k = j + 1
-                    while k <= len(nums) - 1 and nums[k] <= second:
-                        k += 1
-                    if k == len(nums) - 1:
-                        return False            
+        
+        for num in nums:
+            i = num
+            
+
         return False
                     
                 
 
     
 if __name__ == "__main__":
-    nums = [0,4,2,1,0,-1,-3]
+    nums = [0,4,2,0,8,-1,9]
     solution = Solution()
     print(solution.increasingTriplet(nums))
