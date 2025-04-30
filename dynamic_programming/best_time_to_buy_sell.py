@@ -25,30 +25,29 @@ Example 2:
 Input: prices = [1,3,7,5,10,3], fee = 3
 Output: 6
 
+
+notes:
+
 """
+ 
 from typing import List
 class Solution:
 
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        n = len(prices)
-        if n == 0:
-            return 0
-        holding = [ 0 for _ in range(n)]
-        not_holding = [ 0 for _ in range(n)]
-        holding[0] = -prices[0]
-        not_holding[0] = 0
-        for i in range(1,n-1):
-            holding[i] = max(holding[i-1], not_holding[i-1] - fee)
-            not_holding[i] = max(not_holding[i-1], holding[i-1] + prices[i] - fee)
-        return not_holding(n-1)
-
-
-            
+        hold = [ 0 for _ in range(len(prices))]
+        no_hold = [ 0 for _ in range(len(prices))]
+        hold[0] = -prices[0]
+        no_hold[0] = 0
+        for i in range(1, len(prices)):
+            hold[i] = max(hold[i-1], (no_hold[i-1] + prices[i]) - fee )
+            no_hold[i] = max(no_hold[i-1], (hold[i-1] + prices[i]) - fee)
+        return no_hold[len(prices) - 1]
 
 
 if __name__ == "__main__":
-    #prices = [1,3,2,8,4,9]
-    prices = [1,3]
+    prices = [1,3,2,8,4,9]
+    #prices = [1,3]
     fee = 2
     solution = Solution()
-    solution.maxProfit(prices, fee)
+    #solution.maxProfit(prices, fee)
+    print(solution.maxProfit(prices, fee))
