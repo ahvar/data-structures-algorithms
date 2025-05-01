@@ -42,7 +42,22 @@ class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         # sort nums
         nums.sort()
-        closest_sum = self._target_index(nums)
+        closest = float('inf')
+        for i in range(len(nums) - 2):
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                curr_sum = nums[i] + nums[left] + nums[right]
+                if curr_sum == target:
+                    return curr_sum
+                
+                if abs(curr_sum - target) < abs(closest - target):
+                    closest = curr_sum
+
+                if curr_sum < target:
+                    left += 1
+                else:
+                    right -= 1
+        return closest
 
     def _another_way(self, nums):
         # sort nums
@@ -54,18 +69,6 @@ class Solution:
         # the closest value to target is the minimum difference between neighbors
         if (all_nums[target_index + 1] - target) < (target - all_nums[target_index - 1]):
             pass
-
-    def _and_another_way(self, nums, target):
-        nums.sorted()
-        target_greater = target
-        target_lesser = target
-        target_greater_index = None
-        target_lesser_index = None
-        while target_greater_index is None and target_lesser_index is None:
-            target_greater += 1
-            target_lesser -= 1
-            target_lesser_index = self._target_index(nums, target_greater)
-            target_greater_index = self._target_index(nums, target_lesser)
             
 
         
