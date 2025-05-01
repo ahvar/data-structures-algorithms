@@ -34,14 +34,17 @@ from typing import List
 class Solution:
 
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        hold = [ 0 for _ in range(len(prices))]
-        no_hold = [ 0 for _ in range(len(prices))]
+        n = len(prices)
+        if n <= 1:
+            return 0
+        hold = [0] * n
+        no_hold = [0] * n
         hold[0] = -prices[0]
         no_hold[0] = 0
-        for i in range(1, len(prices)):
-            hold[i] = max(hold[i-1], (no_hold[i-1] + prices[i]) - fee )
+        for i in range(1, n):
+            hold[i] = max(hold[i-1], (no_hold[i-1] - prices[i]))
             no_hold[i] = max(no_hold[i-1], (hold[i-1] + prices[i]) - fee)
-        return no_hold[len(prices) - 1]
+        return no_hold[-1]
 
 
 if __name__ == "__main__":
