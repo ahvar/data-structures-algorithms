@@ -1,16 +1,12 @@
 """
-We are given an array asteroids of integers representing asteroids in a row.
+We are given an array asteroids of integers representing asteroids in a row. The indices of the asteriod in the array
+represent their relative position in space.
 
-1. The indices of the asteriod in the array represent their relative position in space.
+For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right,
+negative meaning left). Each asteroid moves at the same speed.
 
-2. For each asteroid, the absolute value represents its size
-
-3. the sign represents its direction (positive meaning right, negative meaning left). 
-
-4. Each asteroid moves at the same speed.
-
-Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode.
-If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are
+the same size, both will explode. Two asteroids moving in the same direction will never meet.
 
 Example 1:
 
@@ -27,31 +23,33 @@ Example 3:
 Input: asteroids = [10,2,-5]
 Output: [10]
 Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
-
 """
-from typing import List
+from typing import Optional, List
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        asteroid_stack = []
-        for i in range(len(asteroids)):
-            if not asteroid_stack:
-                asteroid_stack.append(asteroids[i])
+        i = len(asteroids) - 1
+        while i >= 0:
+            if not (asteroids[i-1] > 0 and asteroids[i] < 0):
+                i -= 2
                 continue
 
-            if asteroid_stack[-1] < 0 and asteroids[i] > 0 or asteroid_stack[-1] > 0 and asteroids[i] < 0:
-                last_asteroid = asteroid_stack.pop()
-                asteroid_stack.append(max(abs(last_asteroid), abs(asteroids[i])))
-            if abs(asteroid_stack[-1]) == abs(asteroids[i]):
-                asteroid_stack.pop()
-            else:
-                asteroid_stack.append(asteroids[i])
-
-        return asteroid_stack
-
+            if abs(asteroids[i]) == abs(asteroids[i-1]): # both explode
+                asteroids.pop()
+                asteroids.pop()
+                i -= 2
+            elif abs(asteroids[i]) < abs(asteroids[i-1]): # penultimate asteroid explodes last asteroid
+                asteroids.pop(i)
+                i -= 1
+            else: # last asteroid explodes penultimate asteroid
+                winner = asteroids.pop(i)
+                asteroids.pop(i-1)
+                asteroids[i-1] = winner
+                i -= 1
+        return asteroids
 
 
 
 if __name__ == "__main__":
-    asteroids = [5,10,-5]
+    asteroids = [-2, -2, -2, 1]
     solution = Solution()
     print(solution.asteroidCollision(asteroids))
