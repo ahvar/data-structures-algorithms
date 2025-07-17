@@ -12,11 +12,25 @@ Example 3:
 
 Input: nums = [1]
 Output: [[1]]
-"""
+""" 
 from typing import List
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
+    def _something(self, perm):
         pass
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 0:
+            return []
+        if len(nums) == 1:
+            return [nums[:]]
+        permutes: List[List[int]] = []
+        for i in range(len(nums)):
+            current = nums[i]
+            rest = nums[:i] + nums[i+1:]
+            for tail_perm in self.permute(rest):
+                permutes.append([current] + tail_perm)
+                
+        return permutes
+
 
 
 
