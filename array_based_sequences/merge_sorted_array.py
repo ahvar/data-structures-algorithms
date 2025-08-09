@@ -7,6 +7,12 @@ Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 The final sorted array should not be returned by the function, but instead be stored inside the array nums1.
 To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged,
 and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
 """
 from typing import List
 class Solution:
@@ -15,13 +21,13 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
+        # outer loop over nums2; the array of integers to be merged into nums1
         for j in range(n):
-            right = m + j
-            while right > 0 and nums1[right - 1] > nums2[j]:
-                nums1[right] = nums1[right - 1]
+            right = m + j # point to the end of nums1 + current index of j
+            while right > 0 and nums1[right] > nums2[j]: # walk until the beginning of nums1 or a value > the current nums2 value
+                nums1[right] = nums1[right - 1] # shift the values in nums1 to the right
                 right -= 1
-            nums1[right] = nums2[j]
-        print(nums1)
+            nums1[right] = nums2[j] # insert nums2 value
 
 if __name__ == "__main__":
     nums1 = [1,2,3,0,0,0]
