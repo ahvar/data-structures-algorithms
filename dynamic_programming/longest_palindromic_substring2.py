@@ -9,29 +9,37 @@ dp[i][j] means s[i..j]
 """
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        if len(s) == 0: return ""
+        # strings of length == 1 are palindromes
+        if len(s) == 1: return s
+        # strings of length == 2 with same characters
+        if len(s) == 2 and s[0] == s[1]: return s
         n = len(s)
-        if n == 0: return ""
-        dp = [[False] * n for _ in range(n)]
-        if n == 1: return s
-        # 1 base case: all single characters are palindromes of length 1
-        for i in range(n): dp[i][i] = True
-        start, max_len = 0, 1
-        # 2 base case: all substrings of length == 2 where characters are equivalent
-        for i in range(1, n):
+        maxx = 0
+        start = 0
+        dp = [ [False] * n for _ in range(n)]
+        # Base Case 1: single characters are all palindromes of length == 1
+        for i in range(n):
+            dp[i][i] = True
+        # Base Case 2: all length == 2 substrings with same characters
+        for i in range(n - 1):
             if s[i] == s[i+1]:
                 dp[i][i+1] = True
-                start, max_len = i, 2
-        
+                start = i
+                maxx = 2
+
         for length in range(3, n + 1):
-            for i in range(0, n-(length+1)):
-                j = i + length - 1
-                # recurrence; char check first; only if ends match do we consult inner substring
+            for i in range(n - length + 1):
+                j = i + (length - 1)
                 if s[i] == s[j] and dp[i+1][j-1]:
                     dp[i][j] = True
-                    if length > max_len:
-                        start, max_len = i, length
+                    if length > maxx:
+                        start = i
+                        maxx = length
 
-        return s[start:start+max_len]
+        return s[start:maxx + start]
+
+
 
 
 
