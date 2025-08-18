@@ -11,40 +11,42 @@ class ListNode:
 from typing import Optional
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        if not head: return
+        if head is None:
+            return 
         dummy = ListNode(0, head)
-        before_start = dummy
-        
-        for _ in range(left-1):
-            before_start = before_start.next
-        start = before_start.next
-        end = start
-        for _ in range(right - left): end = end.next
-        after_end = end.next
-        end.next = None
-        prev_sub = None
-        curr = start
-        while curr:
+        before_left = dummy
+        for _ in range(left - 1):
+            before_left = before_left.next
+        left_node = before_left.next
+        curr = left_node
+        prev = None
+        for _ in range(right - left + 1):
             nxt = curr.next
-            curr.next = prev_sub
-            prev_sub = curr
+            curr.next = prev
+            prev = curr
             curr = nxt
-        before_start.next = prev_sub
-        start.next = after_end
+        before_left.next = prev
+        left_node.next = curr
         return dummy.next
-
-
+        
         
 
+        
     def link_list(self, input):
-        if not input: return 
+        if not input or len(input) == 0:
+            return
+        if input[0] == None:
+            return
+        
         head = ListNode(input[0])
         curr = head
-        for i in range(1,len(input)):
+        for i in range(len(input)):
             new = ListNode(input[i])
             curr.next = new
             curr = curr.next
-        return head
+        
+
+
 
 
 if __name__ == "__main__":
@@ -54,3 +56,4 @@ if __name__ == "__main__":
     solution = Solution()
     head = solution.link_list(input)
     head = solution.reverseBetween(head, left, right)
+
