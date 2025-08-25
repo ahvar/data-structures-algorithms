@@ -16,7 +16,21 @@ in-place with O(1) extra memory.
 from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        pass
+        if nums == None or len(nums) == 0:
+            return 0
+        write = 2
+        for read in range(2, len(nums)):
+            if write < 2 and nums[read] != nums[write - 2]:
+                nums[read] = nums[write]
+                write += 1
+        return write
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     solution = Solution()

@@ -11,42 +11,38 @@ class ListNode:
 from typing import Optional
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        if head is None:
-            return 
+        if head == None:
+            return
         dummy = ListNode(0, head)
         before_left = dummy
-        for _ in range(left - 1):
+        for _ in range(left):
             before_left = before_left.next
-        left_node = before_left.next
-        curr = left_node
-        prev = None
-        for _ in range(right - left + 1):
+        lnode = before_left.next
+        lprev = None
+        curr = lnode
+        for _ in range(right - left):
             nxt = curr.next
-            curr.next = prev
-            prev = curr
+            curr.next = lprev
+            lprev = curr
             curr = nxt
-        before_left.next = prev
-        left_node.next = curr
-        return dummy.next
         
-        
+        before_left.next = lprev
+        lnode.next = curr
+        return head
+
 
         
     def link_list(self, input):
-        if not input or len(input) == 0:
-            return
-        if input[0] == None:
-            return
-        
+        if not input or len(input) == 0 or input[0] == None:
+            return None
         head = ListNode(input[0])
         curr = head
-        for i in range(len(input)):
-            new = ListNode(input[i])
-            curr.next = new
+        for i in range(1, len(input)):
+            nxt = ListNode(input[i])
+            curr.next = nxt 
             curr = curr.next
+        return head
         
-
-
 
 
 if __name__ == "__main__":
