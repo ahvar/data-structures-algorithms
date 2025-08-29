@@ -14,25 +14,28 @@ class Solution:
             return False
         if s == t:
             return False
-        
         left = 0
         right_s = len(s) - 1
         right_t = len(t) - 1
-        while left < right_s and left < right_t and s[left] == t[left]:
+        while left <= right_s and left <= right_t and s[left] == t[left]:
             left += 1
 
         while right_s >= left and right_t >= left and s[right_s] == t[right_t]:
-            right_t -= 1
             right_s -= 1
-
+            right_t -= 1
+        
+        # same length strings
         if len(s) == len(t):
+            # strings are same
             return right_s - left == 0 and right_t - left == 0
         
         if len(s) > len(t):
+            if right_t - left == -1 and right_s - left == 0:
+                return True
+            
+        if len(s) < len(t):
             return right_s - left == -1 and right_t - left == 0
         
-        if len(s) < len(t):
-            return right_s - left == 0 and right_t - left == -1
     
 
 

@@ -11,15 +11,16 @@ from typing import Optional
 from queue import Queue
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
-        if not root: return 0
-
-        left_depth = self.maxDepth(root.left)
+        if root == None:
+            return 0
         right_depth = self.maxDepth(root.right)
+        left_depth = self.maxDepth(root.left)
 
-        return 1 + max(left_depth, right_depth)
+        return 1 + (right_depth, left_depth)
 
     def build_tree(self, input):
-        if not input or input[0] == None: return 
+        if input == None or len(input) == 0 or input[0] == None:
+            return
         root = TreeNode(input[0])
         fifo = Queue()
         fifo.put(root)
@@ -30,14 +31,20 @@ class Solution:
                 left = TreeNode(input[index])
                 node.left = left
                 fifo.put(left)
+
             index += 1
-            if index >= len(input) - 1: break
+            if index >= len(input):
+                break
+            
             if input[index] != None:
                 right = TreeNode(input[index])
                 node.right = right
                 fifo.put(right)
+            
             index += 1
+        
         return root
+
 
 if __name__ == "__main__":
     input = [3,9,20,None,None,15,7]
