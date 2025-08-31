@@ -25,30 +25,38 @@ from typing import List
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
-            return 
-    
+            return None
         if len(nums) == 1:
             return 0
-        
-        right = len(nums) - 1
+        if len(nums) == 2 and nums[0] > nums[1]:
+            return 0
+        if len(nums) == 2 and nums[0] < nums[1]:
+            return 1
         left = 0
-
+        right = len(nums) - 1
         if nums[left] > nums[left+1]:
             return left
-        left += 1
+        else:
+            left += 1
+
         if nums[right] > nums[right-1]:
             return right
-        right -= 1
+        else:
+            right -= 1
 
-        while left <= right:
-            mid = (right + left) // 2
+
+        while left < right:
+            mid = (left + right) // 2
             if nums[mid-1] < nums[mid] > nums[mid+1]:
                 return mid
-            if nums[mid] < nums[mid-1]:
-                right = mid
-            elif nums[mid] < nums[mid+1]:
-                left = mid + 1
-        return left
+            
+            if nums[mid] < nums[mid+1]:
+                left = mid+1
+            elif nums[mid] < nums[mid-1]:
+                right = mid+1
+        if right == left:
+            return left
+        return -1
 
 
 

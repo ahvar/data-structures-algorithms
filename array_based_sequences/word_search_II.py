@@ -8,47 +8,11 @@ from typing import List
 class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
+        pass
 
-        def _search(row, col, index):
-            # we know we found the word because we passed the index of the last character
-            if index == len(word):
-                return True
-            
-            if row < 0 or row >= m or col < 0 or col >= n or visited[row][col] or board[row][col] != word[index]:
-                return False
-            
-            visited[row][col] = True
 
-            if _search(row+1, col, index + 1):
-                return True
-            
-            if _search(row-1, col, index + 1):
-                return True
-            
-            if _search(row, col+1, index + 1):
-                return True
-            
-            if _search(row, col-1, index + 1):
-                return True
-            
-            visited[row][col] = False
-            return False
+
         
-
-
-        if word == None or len(word) == 0 or board == None or len(board) == 0:
-            return False
-        
-        m = len(board)
-        n = len(board[0])
-        visited = [[False] * n for _ in range(m)]
-        for row in m:
-            for col in n:
-                # every grid location is potentially the start of the word
-                if _search(row, col, 0):
-                    return True
-                
-        return False
 
 
             
