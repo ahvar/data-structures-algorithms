@@ -16,16 +16,17 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 class Solution:
     def merge(self, nums1, m, nums2, n):
         for i in range(n):
-            right = m + i
-            while right > 0 and nums2[i] < nums1[right - 1]:
-                nums1[right] = nums1[right - 1]
-                right -= 1
-            nums1[right] = nums2[i]
-        return nums1 
+            j = m
+            while j >= 0 and nums1[j-1] > nums2[i]:
+                nums1[j] = nums1[j-1]
+                j -= 1
+            nums1[j] = nums2[i]
+            m += 1
+        return nums1
 
 if __name__ == "__main__":
-    nums1 = [2,4,6,8,10,0,0,0,0]
-    nums2 = [3,4,5,7]
+    nums1 = [1,2,4,5,19,0,0,0,0]
+    nums2 = [5,7,6,20]
     solution = Solution()
     print(solution.merge(nums1, 5, nums2, 4))
     

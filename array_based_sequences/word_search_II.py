@@ -8,7 +8,46 @@ from typing import List
 class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
-        pass
+        def _search(row, col, index):
+            # found the word
+            if index == len(word):
+                return True
+            
+            if row < 0 or row >= m or col < 0 or col >= n or visited[row][col] or word[index] != board[row][col]:
+                return False
+            
+            visited[row][col] = True
+
+            if _search(row + 1, col, index + 1):
+                return True
+            if _search(row - 1, col, index + 1):
+                return True
+            if _search(row,col + 1, index + 1):
+                return True
+            if _search(row, col - 1, index + 1):
+                return True
+            
+            visited[row][col] = False
+            return False
+
+
+        if board == None or word == None or word == "":
+            return False
+        
+        m = len(board)
+        n = len(board[0])
+
+        visited = [[False] * n for _ in range(m)]
+
+        for row in range(m):
+            for col in range(n):
+                if _search(row, col, 0):
+                    return True
+                
+        return False
+
+
+
 
 
 

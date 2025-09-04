@@ -38,17 +38,16 @@ class BSTIterator:
         self._stack = []
         self._push_left(root)
 
-
     def next(self):
         node = self._stack.pop()
         val = node.val
         if node.right:
-            self._push_left(node.right) 
+            self._push_left(node.right)
         return val
-
 
     def hasNext(self):
         return len(self._stack) > 0
+
         
     
 
@@ -59,14 +58,14 @@ def build_tree(input):
     fifo = Queue()
     fifo.put(root)
     index = 1
-    while index < len(input) and not fifo.empty():
+    while index <= len(input) and not fifo.empty():
         node = fifo.get()
         if input[index] != None:
             left = TreeNode(input[index])
             node.left = left
             fifo.put(left)
         index += 1
-        if index >= len(input) - 1:
+        if index > len(input) - 1:
             break
         if input[index] != None:
             right = TreeNode(input[index])
