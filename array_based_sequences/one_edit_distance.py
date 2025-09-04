@@ -23,16 +23,14 @@ class Solution:
         while right_s >= left and right_t >= left and s[right_s] == t[right_t]:
             right_s -= 1
             right_t -= 1
-        
-        # same length strings
+
         if len(s) == len(t):
-            # strings are same
             return right_s - left == 0 and right_t - left == 0
-        
-        if len(s) > len(t):
-            if right_t - left == -1 and right_s - left == 0:
-                return True
             
+            
+        if len(s) > len(t):
+            return right_s - left == 0 and right_t - left == -1
+        
         if len(s) < len(t):
             return right_s - left == -1 and right_t - left == 0
         

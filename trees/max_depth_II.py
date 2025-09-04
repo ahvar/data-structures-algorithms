@@ -13,10 +13,11 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
-        right_depth = self.maxDepth(root.right)
-        left_depth = self.maxDepth(root.left)
+        max_left = self.maxDepth(root.left)
+        max_right = self.maxDepth(root.right)
 
-        return 1 + (right_depth, left_depth)
+        return 1 + max(max_left, max_right)
+
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
