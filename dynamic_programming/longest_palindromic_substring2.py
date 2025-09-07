@@ -13,30 +13,30 @@ class Solution:
             return ""
         if len(s) == 1 or len(s) == 2 and s[0] == s[1]:
             return s
-        n = len(s)
-        dp = [[False] * n for _ in range(n)]
+    
+        dp = [[False] * len(s) for _ in range(len(s))]
         maxx = 1
         start = 0
-        # base case 1: single char substrings are palindromes
-        for i in range(n):
+        for i in range(len(s)):
             dp[i][i] = True
 
-        # base case 2: length == 2 substrings of identical chars
-        for i in range(n - 1):
+        for i in range(len(s) - 1):
             if s[i] == s[i+1]:
                 dp[i][i+1] = True
                 maxx = 2
-                start = i
+                start = 0
 
-        # general case: length >= 3 substrings
-        for length in range(3, n + 1):
-            for i in range(n - length + 1):
+        for length in range(3, len(s) + 1):
+            for i in range(len(s) - length + 1):
                 j = i + length - 1
                 if s[i] == s[j] and dp[i+1][j-1]:
                     dp[i][j] = True
                     maxx = length
                     start = i
+
         return s[start:start + maxx]
+            
+
         
 
         

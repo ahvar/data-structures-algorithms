@@ -5,17 +5,22 @@ from typing import List
 from queue import Queue
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        fifo = Queue()
-        for _ in range(k):
-            fifo.put(nums.pop())
-            nums.insert(0, fifo.get())
-        print(nums)
+        k = k % (len(nums) - 1)
+        temp = nums[-k:]
+        for i in range(len(nums) - 1, k - 1, -1):
+            nums[i] = nums[i-k]
+        for i in range(k):
+            nums[i] = temp[i]
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
-    nums = [-1,-100,3,99]
+    nums = [1,2,3,4,5]
     k = 2
     solution = Solution()
     solution.rotate(nums, k)
