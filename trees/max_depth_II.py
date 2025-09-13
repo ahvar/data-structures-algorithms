@@ -13,10 +13,11 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
+        
         max_left = self.maxDepth(root.left)
         max_right = self.maxDepth(root.right)
-
         return 1 + max(max_left, max_right)
+  
 
 
     def build_tree(self, input):
@@ -32,18 +33,14 @@ class Solution:
                 left = TreeNode(input[index])
                 node.left = left
                 fifo.put(left)
-
             index += 1
             if index >= len(input):
                 break
-            
             if input[index] != None:
                 right = TreeNode(input[index])
                 node.right = right
                 fifo.put(right)
-            
             index += 1
-        
         return root
 
 
