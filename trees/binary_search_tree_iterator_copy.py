@@ -26,14 +26,11 @@ class TreeNode:
         self.left = left
         self.right = right
 class BSTIterator:
-
     def _push_left(self, node):
         if node == None:
-            return
-        
+            return 
         self._stack.append(node)
         self._push_left(node.left)
-
 
     def __init__(self, root):
         self._stack = []
@@ -72,6 +69,9 @@ def build_tree(input):
             fifo.put(right)
         index += 1
     return root
+    
+        
+
 
 
 

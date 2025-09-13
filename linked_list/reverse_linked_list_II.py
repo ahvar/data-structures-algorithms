@@ -18,23 +18,24 @@ class Solution:
         for _ in range(left - 1):
             before_left = before_left.next
         lnode = before_left.next
-        lprev = None
+        prev = None
         curr = lnode
         for _ in range(right - left + 1):
-            nxt = curr.next # the next node
-            curr.next = lprev # point to lprev
-            lprev = curr # move lprev to the curr node
-            curr = nxt # move the curr node to its next node
-        before_left.next = lprev
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        before_left.next = prev
         lnode.next = curr
-        return dummy.next
-        
+        return head
 
-        
+
+
     def link_list(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return
-        head = input[0]
+        
+        head = ListNode(input[0])
         curr = head
         for i in range(1,len(input)):
             nxt = ListNode(input[i])

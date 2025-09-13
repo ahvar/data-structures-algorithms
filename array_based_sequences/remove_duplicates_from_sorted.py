@@ -18,25 +18,19 @@ array in-place with O(1) extra memory.
 from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        if nums == None or len(nums) == 0:
-            return -1
+        if len(nums) == 0:
+            return 0
         write = 2
-        for read in range(2, len(nums)):
-            if nums[read] != nums[write-2]:
-                nums[write] = nums[read]
+        for i in range(2, len(nums)):
+            if nums[i] != nums[write-2]:
+                nums[write] = nums[i]
                 write += 1
         return write
-
-        
-        
-        
-
-
-
-
 
 
 
 
 if __name__ == "__main__":
+    nums = [2,3,3,4,4,4,5,6,6,6,7,8]
     solution = Solution()
+    solution.removeDuplicates(nums)
