@@ -16,13 +16,19 @@ from queue import Queue
 class Solution:
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if p is None and q is None:
+        if p == None and q == None:
             return True
-        if p is None or q is None:
+        if p == None or q == None:
             return False
         if p.val != q.val:
             return False
-        return (self.isSameTree(p.right, q.right), self.isSameTree(p.left, q.left))
+        right_sides = self.isSameTree(p.right, q.right)
+        left_sides = self.isSameTree(p.left, q.left)
+        if right_sides == left_sides:
+            return True
+        return False
+
+            
 
     def build_tree(self, input):
         if not input or not input:

@@ -14,6 +14,7 @@ class Solution:
             nums[i] = nums[i - k]
         for j in range(k):
             nums[j] = temp[j]
+        return nums
 
         
 
