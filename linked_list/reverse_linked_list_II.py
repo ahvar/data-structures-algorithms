@@ -27,14 +27,15 @@ class Solution:
             curr = nxt
         before_left.next = prev
         lnode.next = curr
-        return head
+        return dummy.next
+
+
 
 
 
     def link_list(self, input):
-        if input == None or len(input) == 0 or input[0] == None:
+        if input is None or len(input) == 0 or input[0] == None:
             return
-        
         head = ListNode(input[0])
         curr = head
         for i in range(1,len(input)):
@@ -42,7 +43,6 @@ class Solution:
             curr.next = nxt
             curr = curr.next
         return head
-
    
 if __name__ == "__main__":
     input = [1,2,3,4,5]
