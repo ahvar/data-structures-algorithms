@@ -31,14 +31,30 @@ class Solution:
             return False
         index = 0
         curr = head
-        seen = {head}
+        nodes = {head}
         while curr:
-            if curr.next in seen:
+            if curr.next in nodes:
                 return True
-            seen.add(curr)
+            nodes.add(curr)
             curr = curr.next
             index += 1
         return False
+
+
+    def link_list(self, input):
+        if input == None or len(input) == 0 or input[0] == None:
+            return
+        head = ListNode(input[0])
+        curr = head
+        for i in range(1,len(input)):
+            nxt = ListNode(input[i])
+            curr.next = nxt
+            curr = curr.next
+        return head
+        
+
+        
+
 
 if __name__ == "__main__":
     input = [3,2,0,-4]
