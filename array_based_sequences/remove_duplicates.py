@@ -15,17 +15,9 @@ Return k
 from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        k = len(nums)
-        left = 0
-        while left < k - 1:
-            if nums[left] == nums[left+1]:
-                del nums[left+1]
-                k -= 1
-   
-            else:
-                left += 1
-        print(nums)
-        return k
+        pass
+
+
 
 if __name__ == "__main__":
     nums = [0,0,1,1,1,2,2,3,3,4]

@@ -22,34 +22,36 @@ class Solution:
             return False
         if p.val != q.val:
             return False
-        right_sides = self.isSameTree(p.right, q.right)
-        left_sides = self.isSameTree(p.left, q.left)
-        if right_sides == left_sides:
+        left_side = self.isSameTree(p.left, q.left)
+        right_side = self.isSameTree(p.right, q.right)
+        if left_side == right_side:
             return True
         return False
+
+
 
             
 
     def build_tree(self, input):
-        if not input or not input:
-            return None
+        if input == None or len(input) == 0 or input[0] == None:
+            return
         root = TreeNode(input[0])
         fifo = Queue()
         fifo.put(root)
-        i = 1
-        while i < len(input) and not fifo.empty():
+        index = 1
+        while index < len(input) and not fifo.empty():
             node = fifo.get()
-            if i < len(input) and input[i] is not None:
-                node.left = TreeNode(input[i])
-                fifo.put(node.left)
-            i += 1
-            if i >= len(input):
+            if input[index] != None:
+                left = TreeNode(input[index])
+                node.left = left
+                fifo.put(left)
+            index += 1
+            if index >= len(input):
                 break
-
-            if input[i] is not None:
-                node.right = TreeNode(input[i])
-                fifo.put(node.right)
-            i += 1
+            if input[index] != None:
+                right = TreeNode(input[index])
+                node.right = right
+                fifo.put(right)
         return root
 
 

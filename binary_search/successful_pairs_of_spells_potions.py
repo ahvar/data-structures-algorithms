@@ -36,13 +36,13 @@ class Solution:
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
         n, m = len(spells), len(potions)
-        pairs = [0 for i in range(n)]
+        pairs = [0 for _ in range(n)]
         potions.sort()
         for i in range(n):
             left = 0
             right = m
             while left < right:
-                mid = left + (right - left) // 2
+                mid = (right + left) // 2
                 potion = potions[mid]
                 guess = spells[i] * potion
                 if guess >= success:
@@ -52,6 +52,10 @@ class Solution:
             boundary_index = left
             pairs[i] = m - boundary_index
         return pairs
+
+
+
+
 
 
 if __name__ == "__main__":
