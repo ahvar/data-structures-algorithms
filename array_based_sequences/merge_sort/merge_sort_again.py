@@ -20,22 +20,23 @@ class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         for i in range(n - 1, -1, -1):
             j = m
-            while j > 0 and nums1[j - 1] > nums2[i]:
+            while j > 0 and nums1[j-1] >= nums2[i]:
                 nums1[j] = nums1[j-1]
                 j -= 1
             nums1[j] = nums2[i]
             m += 1
-        return nums1
+        print(nums1)
+
 
 
 
 
 
 if __name__ == "__main__":
-    nums1 = [1,2,3,0,0,0]
-    nums2 = [2,5,6]
-    m = 3
-    n = 3
+    nums1 = [1,2,3,5,0,0,0,0,0]
+    nums2 = [1,4,5,6,10]
+    m = 4
+    n = 5
     solution = Solution()
     print(solution.merge(nums1, m, nums2, n))
     

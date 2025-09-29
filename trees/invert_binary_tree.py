@@ -11,50 +11,47 @@ class TreeNode:
 
 from typing import Optional
 from queue import Queue
+
+
+
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
             return None
-        fifo = Queue()
         root.left, root.right = root.right, root.left
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
 
+
     def build_tree(self, input):
-        if not input or input[0] is None:
-            return None
-        fifo = Queue()
+        if input == None or len(input) == 0 or input[0] == None:
+            return
         root = TreeNode(input[0])
+        fifo = Queue()
         fifo.put(root)
-        i = 1
-        while i < len(input) and not fifo.empty():
+        index = 1
+        while index < len(input) and not fifo.empty():
             node = fifo.get()
-            if input[i] is not None:
-                node.left = TreeNode(input[i])
-                fifo.put(node.left)
-            i += 1
-            if i >= len(input):
+            if input[index] != None:
+                left = TreeNode(input[index])
+                node.left = left
+                fifo.put(left)
+            index += 1
+            if index >= len(input):
                 break
-            if input[i] is not None:
-                node.right = TreeNode(input[i])
-                fifo.put(node.right)
-            i += 1
+            if input[index] != None:
+                right = TreeNode(input[index])
+                node.right = right
+                fifo.put(right)
+            index += 1
         return root
+
 
 if __name__ == "__main__":
     input = [4,2,7,1,3,6,9]
     solution = Solution()
     root = solution.build_tree(input)
     root = solution.invertTree(root)
-    left = right = None
-    if root.left:
-        left = root.left
-    if root.right:
-        rith = root.right
-    while left or right:
-        print(root.left.val)
-        print(root.right.val)
-        left = left.left
-        right = right.right
+
         

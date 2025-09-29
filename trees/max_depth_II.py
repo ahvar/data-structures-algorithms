@@ -9,13 +9,16 @@ class TreeNode:
         self.right = right
 from typing import Optional
 from queue import Queue
+
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
-        left_maxx = self.maxDepth(root.left)
-        right_maxx = self.maxDepth(root.right)
-        return max(left_maxx, right_maxx) + 1
+        
+        max_left = self.maxDepth(root.left)
+        max_right = self.maxDepth(root.right)
+        return max(max_left, max_right) + 1
+
 
 
 
@@ -44,6 +47,8 @@ class Solution:
                 fifo.put(right)
             index += 1
         return root
+
+            
 
 
 

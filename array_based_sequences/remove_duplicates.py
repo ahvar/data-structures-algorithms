@@ -15,7 +15,16 @@ Return k
 from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        pass
+        if nums == None or len(nums) == 0:
+            return 0
+        n = len(nums)
+        k = 1
+        for left in range(1, n):
+            if nums[left] != nums[k-1]:
+                nums[k] = nums[left]
+                k += 1
+        return k
+
 
 
 

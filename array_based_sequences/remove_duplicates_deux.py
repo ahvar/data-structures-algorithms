@@ -19,14 +19,17 @@ Return k
 from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        if not nums:
+        if nums == None or len(nums) == 0:
             return 0
-        write = 2
-        for read in range(2,len(nums)):
-            if write < 2 or  nums[read] != nums[write-2]:
-                nums[write] = nums[read]
-                write += 1
-        return write
+        if len(nums) == 1:
+            return 1
+        k = 2
+        for left in range(2, len(nums)):
+            if nums[left] != nums[k - 2]:
+                nums[k] = nums[left]
+                k += 1
+        return k
+
             
 if __name__ == "__main__":
     nums = [1,1,1,2,2,3]
