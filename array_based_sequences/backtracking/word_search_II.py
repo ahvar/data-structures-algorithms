@@ -15,29 +15,36 @@ class Solution:
                 return False
             
             visited[row][col] = True
+            next = index + 1
 
-            if _search(row+1, col, index + 1):
+            if _search(row + 1, col, next):
                 return True
-            if _search(row-1, col, index + 1):
+            if _search(row-1, col, next):
                 return True
-            if _search(row, col + 1, index + 1):
+            if _search(row, col+1, next):
                 return True
-            if _search(row, col-1, index + 1):
+            if _search(row, col - 1, next):
                 return True
             
             visited[row][col] = False
             return False
-            
-        if board == None or len(board) == 0 or len(word) == 0 or word == None:
+
+        if board == None or len(board) == 0 or word == None or len(word) == 0:
             return False
+        
         m = len(board)
         n = len(board[0])
+        k = len(word)
+
         visited = [ [False] * n for _ in range(m)]
+
         for row in range(m):
             for col in range(n):
                 if _search(row, col, 0):
                     return True
         return False
+
+
                     
 
 

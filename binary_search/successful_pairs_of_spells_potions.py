@@ -28,30 +28,36 @@ Explanation:
 Thus, [2,0,2] is returned.
 """
 
-from typing import List
 
+from typing import List
 
 class Solution:
     def successfulPairs(
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
         n, m = len(spells), len(potions)
-        pairs = [0 for _ in range(n)]
         potions.sort()
-        for i in range(n):
+        pairs = []
+        for spell in spells:
             left = 0
-            right = m
-            while left < right:
-                mid = (right + left) // 2
-                potion = potions[mid]
-                guess = spells[i] * potion
-                if guess >= success:
-                    right = mid
+            right = m - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if spell * potions[mid] >= success:
+                    right = mid - 1
                 else:
                     left = mid + 1
-            boundary_index = left
-            pairs[i] = m - boundary_index
+            pairs.append(m - left)
         return pairs
+
+
+
+
+
+
+
+
+
 
 
 

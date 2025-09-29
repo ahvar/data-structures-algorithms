@@ -29,29 +29,28 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head == None:
             return False
-        index = 0
+        seen = set()
         curr = head
-        nodes = {head}
         while curr:
-            if curr.next in nodes:
+            if curr in seen:
                 return True
-            nodes.add(curr)
+            seen.add(curr)
             curr = curr.next
-            index += 1
         return False
 
 
+
+
     def link_list(self, input):
-        if input == None or len(input) == 0 or input[0] == None:
+        if input == None or len(input) == 0:
             return
         head = ListNode(input[0])
         curr = head
-        for i in range(1,len(input)):
+        for i in range(1, len(input)):
             nxt = ListNode(input[i])
             curr.next = nxt
             curr = curr.next
         return head
-        
 
         
 
