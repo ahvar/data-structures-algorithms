@@ -36,8 +36,8 @@ class Solution:
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
         n, m = len(spells), len(potions)
-        potions.sort()
         pairs = []
+        potions.sort()
         for spell in spells:
             left = 0
             right = m - 1
@@ -49,6 +49,11 @@ class Solution:
                     left = mid + 1
             pairs.append(m - left)
         return pairs
+
+            
+
+
+
 
 
 

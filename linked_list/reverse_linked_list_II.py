@@ -17,6 +17,7 @@ class Solution:
         before_left = dummy
         for _ in range(left - 1):
             before_left = before_left.next
+        
         lnode = before_left.next
         prev = None
         curr = lnode
@@ -42,6 +43,7 @@ class Solution:
             curr.next = nxt
             curr = curr.next
         return head
+
    
 if __name__ == "__main__":
 

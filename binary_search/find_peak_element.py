@@ -24,31 +24,25 @@ or index number 5 where the peak element is 6.
 from typing import List
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
+        if nums == None or len(nums) == 0:
+            return
         if len(nums) == 1:
             return 0
-        right = len(nums) - 1
+        if len(nums) == 2 and nums[0] > nums[1]:
+            return 0
+        elif len(nums) == 2 and nums[1] > nums[0]:
+            return 1
         left = 0
-        # we can assume nums[0] greater than leftwise neighbor outside of array
-        if nums[left] > nums[left+1]:
-            return left
-        else:
-            left += 1
-        # we can assume last element greater than rightward neighbor outside of array
-        if nums[right] > nums[right-1]:
-            return right
-        else:
-            right -= 1
-        while left < right:
-            mid = ((right - left) // 2) + left
-            peak = nums[mid]
-            if nums[mid-1] < peak > nums[mid+1]:
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if nums[mid - 1] < nums[mid] > nums[mid + 1]:
                 return mid
-            if peak < nums[mid+1]:
-                left = mid + 1
-            elif peak > nums[mid+1]:
-                right = mid
-        if left == right:
-            return left
+            if nums[mid] < nums[mid + 1]:
+                left = mid
+            elif nums[mid]:
+                pass
+
 
 
 

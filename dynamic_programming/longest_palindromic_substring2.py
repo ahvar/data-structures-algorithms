@@ -13,29 +13,32 @@ class Solution:
             return ""
         if len(s) == 1 or len(s) == 2 and s[0] == s[1]:
             return s
+        s_length = len(s)
         maxx = 1
         start = 0
-        n = len(s)
-        dp = [ [False] * n for _ in range(n)]
-
-        for i in range(n):
+        dp = [ [False] * s_length for _ in range(s_length)]
+        # every single char is a substring of length == 1
+        for i in range(s_length):
             dp[i][i] = True
 
-        for i in range(n-1):
+        # every length == 2 substring with identical chars is a palindrome
+        for i in range(s_length - 1):
             if s[i] == s[i+1]:
                 dp[i][i+1] = True
                 maxx = 2
                 start = i
 
-        for length in range(3, n + 1):
-            for i in range(n - length + 1):
+        for length in range(3, s_length + 1):
+            for i in range(s_length - length + 1):
                 j = i + length - 1
                 if s[i] == s[j] and dp[i+1][j-1]:
                     dp[i][j] = True
                     if length > maxx:
                         maxx = length
                         start = i
-        return s[start: start + maxx]
+        return s[start: maxx + start]
+
+
 
         
 

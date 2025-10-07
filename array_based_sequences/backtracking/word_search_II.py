@@ -9,40 +9,40 @@ class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
         def _search(row, col, index):
-            if index == len(word):
+            if index == word_length:
                 return True
             if row < 0 or row >= m or col < 0 or col >= n or visited[row][col] or board[row][col] != word[index]:
                 return False
             
             visited[row][col] = True
-            next = index + 1
-
-            if _search(row + 1, col, next):
+            
+            if _search(row + 1, col, index + 1):
                 return True
-            if _search(row-1, col, next):
+            if _search(row - 1, col, index + 1):
                 return True
-            if _search(row, col+1, next):
+            if _search(row, col + 1, index + 1):
                 return True
-            if _search(row, col - 1, next):
+            if _search(row, col - 1, index + 1):
                 return True
             
             visited[row][col] = False
             return False
-
-        if board == None or len(board) == 0 or word == None or len(word) == 0:
+            
+            
+        if board == None or board == "" or word == None or word == "":
             return False
         
         m = len(board)
         n = len(board[0])
-        k = len(word)
-
-        visited = [ [False] * n for _ in range(m)]
-
+        word_length = len(word)
+        visited = [ [False] * n for _ in range(m) ]
         for row in range(m):
             for col in range(n):
                 if _search(row, col, 0):
                     return True
         return False
+
+
 
 
                     
