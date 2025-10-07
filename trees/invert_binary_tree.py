@@ -16,12 +16,13 @@ from queue import Queue
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return None
+        if root == None:
+            return
         root.left, root.right = root.right, root.left
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
+        
 
 
     def build_tree(self, input):
@@ -46,6 +47,7 @@ class Solution:
                 fifo.put(right)
             index += 1
         return root
+
 
 
 if __name__ == "__main__":

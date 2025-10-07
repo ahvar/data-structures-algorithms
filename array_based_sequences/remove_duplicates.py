@@ -16,14 +16,17 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
-            return 0
-        n = len(nums)
-        k = 1
-        for left in range(1, n):
-            if nums[left] != nums[k-1]:
-                nums[k] = nums[left]
-                k += 1
-        return k
+            return -1
+        
+        write = 1
+        for left in range(1, len(nums)):
+            if nums[left] != nums[write - 1]:
+                nums[write] = nums[left]
+                write += 1
+        return write
+
+
+
 
 
 

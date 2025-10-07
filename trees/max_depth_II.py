@@ -14,10 +14,10 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
-        
         max_left = self.maxDepth(root.left)
         max_right = self.maxDepth(root.right)
         return max(max_left, max_right) + 1
+
 
 
 
