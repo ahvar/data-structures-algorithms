@@ -26,17 +26,19 @@ class Solution:
             return 0
         if len(s) == 1:
             return 1
-        maxx = 1
+        
+        seen = set()
         left = 0
-        n = len(s)
-        chars = set()
-        for right in range(n):
-            while s[right] in chars:
-                chars.remove(s[left])
+        maxx = 1
+        for right in range(len(s)):
+            while s[right] in seen:
+                seen.remove(s[left])
                 left += 1
-            chars.add(s[right])
-            maxx = max(right - left + 1, maxx)
+            seen.add(s[right])
+            maxx = max(maxx, right - left + 1)
         return maxx
+
+
 
 
 

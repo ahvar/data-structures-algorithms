@@ -20,17 +20,12 @@ class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         for i in range(n):
             j = m
-            while j > 0 and nums2[i] < nums1[j-1]:
-                nums1[j] = nums1[j-1]
+            while j > 0 and nums1[j-1] > nums2[i]:
+                nums1[j] = nums1[j - 1]
                 j -= 1
+
             nums1[j] = nums2[i]
             m += 1
-        print(nums1)
-
-
-
-
-
 
 
 if __name__ == "__main__":
