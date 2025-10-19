@@ -28,11 +28,12 @@ class Solution:
             return -1
         if len(nums) == 1:
             return 0
+        
         left = 0
         right = len(nums) - 1
-        if nums[left] > nums[left + 1]:
+        if nums[left] > nums[left+1]:
             return left
-        else: 
+        else:
             left += 1
         if nums[right] > nums[right - 1]:
             return right
@@ -40,12 +41,15 @@ class Solution:
             right -= 1
 
         while left < right:
-            mid = (right + left) // 2
-            if nums[mid] > nums[mid+1]:
-                right = mid
+            mid = (left + right) // 2
+            if nums[mid] < nums[mid+1]:
+                left = mid + 1
             else:
-                left += 1
+                right = mid
+        
         return left
+
+
         
 
    

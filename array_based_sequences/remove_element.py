@@ -12,12 +12,16 @@ Return k.
 from typing import List
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        count = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[count] = nums[i]
-                count += 1
-        return count
+        if nums == None or len(nums) == 0:
+            return
+        write = 0
+        for read in range(len(nums)):
+            if nums[read] != val:
+                nums[write] = nums[read]
+                write += 1
+        return write
+        
+
             
 
 if __name__ == "__main__":

@@ -37,6 +37,8 @@ class Solution:
             seen.add(curr)
             curr = curr.next
         return False
+            
+
 
     def link_list(self, input):
         if input == None or len(input) == 0 or input[0] == None:

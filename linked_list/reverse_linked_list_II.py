@@ -13,11 +13,10 @@ class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         if head == None:
             return
-        dummy = ListNode(0, head)
+        dummy = ListNode(0,head)
         before_left = dummy
         for _ in range(left - 1):
             before_left = before_left.next
-        
         lnode = before_left.next
         prev = None
         curr = lnode
@@ -31,8 +30,6 @@ class Solution:
         return dummy.next
 
 
-
-
     def link_list(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return
@@ -43,6 +40,8 @@ class Solution:
             curr.next = nxt
             curr = curr.next
         return head
+
+
 
    
 if __name__ == "__main__":
