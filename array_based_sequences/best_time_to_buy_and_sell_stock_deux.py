@@ -15,17 +15,17 @@ Total profit is 4 + 3 = 7.
 from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        holding = [0] * n
-        holding[0] = -prices[0]
-        cash = [0] * n
-        cash[0] = prices[0]
-        for i in range(1,n):
-            # end day still holding share: hold from yesterday or in cash yesterday and bought today
-            holding[i] = max(holding[i-1], cash[i-1] - prices[i])
-            # end day in cash: already in cash vs. holding yesterday and sell today
-            cash[i] = max(cash[i-1], holding[i-1] + prices[i])
-        return cash[n-1]
+        if prices == None or len(prices) == 0:
+            return 0
+        maxx = 0
+        for i in range(1,len(prices)):
+            if prices[i] > prices[i-1]:
+                maxx += prices[i] - prices[i-1]
+
+        return maxx
+
+
+
 
 
 
