@@ -28,7 +28,7 @@ from typing import Optional
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head == None:
-            return
+            return False
         seen = set()
         curr = head
         while curr:
@@ -37,12 +37,13 @@ class Solution:
             seen.add(curr)
             curr = curr.next
         return False
+
             
 
 
     def link_list(self, input):
         if input == None or len(input) == 0 or input[0] == None:
-            return
+            return 
         head = ListNode(input[0])
         curr = head
         for i in range(1, len(input)):

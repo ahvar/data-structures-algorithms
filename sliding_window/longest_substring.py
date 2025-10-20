@@ -24,44 +24,20 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if s == None or len(s) == 0:
             return 0
-        if len(s) == 1:
+        if len(s) == 1 or len(s) == 2 and s[0] != s[1]:
             return 1
-        if len(s) == 2 and s[0] != s[1]:
-            return 2
         
+        n = len(s)
         seen = set()
         left = 0
         maxx = 0
-        for right in range(len(s)):
+        for right in range(n):
             while s[right] in seen:
                 seen.remove(s[left])
                 left += 1
-            maxx = max(right - left + 1, maxx)
             seen.add(s[right])
+            maxx = max(right - left + 1, maxx)
         return maxx
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-
-
 
 
 if __name__ == "__main__":
