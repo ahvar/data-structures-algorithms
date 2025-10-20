@@ -18,22 +18,19 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if p == None and q == None:
             return True
+        
         if p == None or q == None:
             return False
+        
         if p.val != q.val:
             return False
         
-        left_tree = self.isSameTree(p.left, q.left)
-        right_tree = self.isSameTree(p.right, q.right)
+        left = self.isSameTree(p.left, q.left)
+        right = self.isSameTree(p.right, q.right)
 
-        return left_tree and right_tree
-
-
+        return left and right
 
 
-
-
-            
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
@@ -55,6 +52,7 @@ class Solution:
                 right = TreeNode(input[index])
                 node.right = right
                 fifo.put(right)
+            index += 1
         return root
 
 

@@ -28,26 +28,23 @@ class Solution:
             return -1
         if len(nums) == 1:
             return 0
-        
         left = 0
         right = len(nums) - 1
-        if nums[left] > nums[left+1]:
-            return left
-        else:
-            left += 1
-        if nums[right] > nums[right - 1]:
-            return right
-        else:
-            right -= 1
-
+        if len(nums) == 2 and nums[left] != nums[right]:
+            if nums[left] > nums[right]:
+                return left
+            else:
+                return right
         while left < right:
             mid = (left + right) // 2
             if nums[mid] < nums[mid+1]:
                 left = mid + 1
             else:
                 right = mid
-        
         return left
+
+
+
 
 
         

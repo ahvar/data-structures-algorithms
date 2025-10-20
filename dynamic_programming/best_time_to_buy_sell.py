@@ -24,27 +24,26 @@ Example 2:
 
 Input: prices = [1,3,7,5,10,3], fee = 3
 Output: 6
-
-
 notes:
 
 """
- 
 from typing import List
 class Solution:
 
     def maxProfit(self, prices: List[int], fee: int) -> int:
         if prices == None or len(prices) == 0:
             return 0
-        profit = 0
-        buy_price = prices[0]
-        for i in range(1, len(prices)):
-            if prices[i] > buy_price + fee:
-                profit += prices[i] - buy_price - 1
-                buy_price = prices[i] - fee
-            elif prices[i] < buy_price:
-                buy_price = prices[i]
-        return profit
+        n = len(prices)
+        hold = [0] * n
+        no_hold = [0] * n
+        hold[0] = -prices[0]
+        no_hold[0] = 0
+        for i in range(1,n):
+            hold[i] = max(hold[i-1], (no_hold[i-1] - prices[i]))
+            no_hold[i] = max(no_hold[i-1], (hold[i-1] - prices[i]) - fee)
+        return no_hold[-1]
+
+
 
 
 

@@ -15,16 +15,17 @@ from queue import Queue
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root == None:
-            return None
+            return root
         root.left, root.right = root.right, root.left
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
         return root
+
 
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
-            return 
+            return
         root = TreeNode(input[0])
         fifo = Queue()
         fifo.put(root)
@@ -44,7 +45,6 @@ class Solution:
                 fifo.put(right)
             index += 1
         return root
-
 
 
 

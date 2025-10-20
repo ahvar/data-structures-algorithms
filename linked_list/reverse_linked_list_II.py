@@ -30,6 +30,8 @@ class Solution:
         return dummy.next
 
 
+
+
     def link_list(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return
