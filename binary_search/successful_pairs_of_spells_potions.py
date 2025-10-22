@@ -40,7 +40,7 @@ class Solution:
         pairs = []
         for spell in spells:
             left = 0
-            right = len(potions) - 1
+            right = m - 1
             while left <= right:
                 mid = (left + right) // 2
                 if spell * potions[mid] >= success:
@@ -49,6 +49,8 @@ class Solution:
                     left = mid + 1
             pairs.append(m - left)
         return pairs
+
+
 
 if __name__ == "__main__":
     spells, potions, success = [5, 1, 3], [1, 2, 3, 4, 5], 7

@@ -9,7 +9,10 @@ Change the array nums such that the first k elements of nums contain the element
 not equal to val. The remaining elements of nums are not important as well as the size of nums.
 Return k.
 """
+
 from typing import List
+
+
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         if nums == None or len(nums) == 0:
@@ -19,15 +22,8 @@ class Solution:
             if nums[i] != val:
                 nums[k] = nums[i]
                 k += 1
-
         return k
 
-
-
-
-        
-
-            
 
 if __name__ == "__main__":
     solution = Solution()

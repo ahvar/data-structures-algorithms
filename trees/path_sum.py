@@ -5,27 +5,33 @@ path such that adding up all the values along the path equals targetSum.
 A leaf is a node with no children.
 root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
 """
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 from typing import Optional
 from queue import Queue
+
+
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        if root is None:
+        # base case: empty tree
+        if root == None:
             return False
-        
-        targetSum -= root.val
-        if root.left == None and root.right == None:
-            return targetSum == 0
-        return (
-            self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
-        )
-        
 
+        # check if we've reached a leaf with the target sum
+        if root.left is None or root.right is None:
+            return targetSum == root.val
+
+        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(
+            root.right, targetSum - root.val
+        )
 
     def build_tree(self, input):
         if len(input) < 1:
@@ -51,9 +57,8 @@ class Solution:
         return root
 
 
-
 if __name__ == "__main__":
-    input = [5,4,8,11,None,13,4,7,2,None,None,None,1]
+    input = [5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1]
     targetSum = 22
     solution = Solution()
     solution.hasPathSum()
