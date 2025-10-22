@@ -16,30 +16,23 @@ array in-place with O(1) extra memory.
 """
 
 from typing import List
+
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
             return 0
-        
         if len(nums) <= 2:
             return len(nums)
-        k = 2
-        for read in range(2,len(nums)):
-            if nums[read] != nums[k-2]:
-                nums[k] = nums[read]
-                k += 1
-        return k
-
-
-
-            
-
-
-
-
+        write = 2
+        for read in range(2, len(nums)):
+            if nums[read] != nums[write - 2]:
+                nums[write] = nums[read]
+                write += 1
+        return write
 
 
 if __name__ == "__main__":
-    nums = [2,3,3,4,4,4,5,6,6,6,7,8]
+    nums = [2, 3, 3, 4, 4, 4, 5, 6, 6, 6, 7, 8]
     solution = Solution()
     solution.removeDuplicates(nums)

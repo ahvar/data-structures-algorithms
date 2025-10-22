@@ -11,27 +11,24 @@ Notice that you may not slant the container."
 
 from typing import List
 
-class Solution:
 
+class Solution:
 
     def maxArea(self, height: List[int]) -> int:
         n = len(height)
-        if n == 0:
-            return -1
-        maxx = 0
+        right = n - 1
         left = 0
-        right = len(height) - 1
+        maxx = 0
         while left < right:
-            height = min(height[left], height[right])
-            length = right - left
-            maxx = max(maxx, height * length)
+            width = right - left
+            current_area = width * min(height[left] * height[right])
+            maxx = max(maxx, current_area)
+
             if height[left] < height[right]:
                 left += 1
             else:
                 right -= 1
-
         return maxx
-
 
 
 if __name__ == "__main__":

@@ -17,20 +17,17 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
-        max_left = self.maxDepth(root.left)
-        max_right = self.maxDepth(root.right)
-        return max(max_left, max_right) + 1
-      
+        
+        left_depth = self.maxDepth(root.left)
+        right_depth = self.maxDepth(root.right)
 
+        return max(left_depth, right_depth) + 1#
 
-
-
-
-
+    
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
-            return 
+            return None
         root = TreeNode(input[0])
         fifo = Queue()
         fifo.put(root)
@@ -52,11 +49,7 @@ class Solution:
         return root
 
 
-            
-
-
-
-
+        
 if __name__ == "__main__":
     input = [3,9,20,None,None,15,7]
     solution = Solution()
