@@ -28,8 +28,8 @@ Explanation:
 Thus, [2,0,2] is returned.
 """
 
-
 from typing import List
+
 
 class Solution:
     def successfulPairs(
@@ -40,16 +40,15 @@ class Solution:
         pairs = []
         for spell in spells:
             left = 0
-            right = m - 1
+            right = len(potions) - 1
             while left <= right:
-                mid = (left + right) // 2
+                mid = (right + left) // 2
                 if spell * potions[mid] >= success:
                     right = mid - 1
                 else:
                     left = mid + 1
             pairs.append(m - left)
         return pairs
-
 
 
 if __name__ == "__main__":

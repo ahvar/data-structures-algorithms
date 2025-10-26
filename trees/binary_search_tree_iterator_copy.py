@@ -17,14 +17,18 @@ in the in-order traversal when next() is called.
 
 
 """
+
 from typing import Optional
 from queue import Queue
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class BSTIterator:
 
@@ -33,7 +37,7 @@ class BSTIterator:
             return
         self._stack.append(node)
         self._push_left(node.left)
-        
+
     def __init__(self, root):
         self._stack = []
         self._push_left(root)
@@ -44,7 +48,7 @@ class BSTIterator:
         if node.right:
             self._push_left(node.right)
         return val
-        
+
     def hasNext(self):
         return len(self._stack) > 0
 

@@ -10,58 +10,25 @@ Example 2:
 Input: a = "1010", b = "1011"
 Output: "10101"
 """
+
+
 class Solution:
-    def trim(self, s):
-        first_one = s.find("1")
-        return s[first_one:] if first_one != -1 else "0"
-    
+
     def addBinary(self, a: str, b: str) -> str:
-
-        a = self.trim(a)
-        b = self.trim(b)
-
-        n = len(a)
-        m = len(b)
-
-        if n < m:
-            a, b = b, a
-            n, m = m, n
-
-        j = m - 1
-        carry = 0
         result = []
-        for i in range(n-1,-1,-1):
-            bit1 = int(a[i])
-            bit_sum = bit1 + carry
+        carry = 0
+        i = len(a) - 1
+        j = len(b) - 1
+        while i >= 0 or j >= 0 or carry:
+            digit_a = int(a[i]) if i >= 0 else 0
+            digit_b = int(b[j]) if j >= 0 else 0
+            total = digit_a + digit_b + carry
+            result.append(str(total % 2))
+            carry = total // 2
 
-            if bit_sum == 0:
-                if carry:
-                    result.append("1")
-                    carry -= 1
-                else:
-                    result.append("0")
-            if bit_sum == 1:
-                if carry:
-                    result.append('0')
-                else:
-                    result.append('1')
-            if bit_sum == 2:
-                if carry:
-                    result.append("1")
-                else:
-                    result.append("0")
-                    carry += 1
-            if bit_sum == 3:
-                if carry:
-                    result.append("11")
-                else:
-                    result.apppend("10")
-        return ''.join(result[::-1])
-
-
-
-                
-
+            i -= 1
+            j -= 1
+        return "".join(reversed(result))
 
 
 if __name__ == "__main__":
