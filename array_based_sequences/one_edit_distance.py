@@ -1,5 +1,6 @@
 """
-Given two strings s and t, return true if they are both one edit distance apart, otherwise return false.
+Given two strings s and t, return true if they are both one edit distance apart,
+otherwise return false.
 
 A string s is said to be one distance apart from a string t if you can:
 
@@ -8,8 +9,11 @@ Delete exactly one character from s to get t.
 Replace exactly one character of s with a different character to get t.
 
 """
+
 from typing import List, Tuple
 from decimal import Decimal
+
+
 class Solution:
     def isOneEditDistance(self, s: str, t: str) -> bool:
         if abs(len(s) - len(t)) > 1:
@@ -17,35 +21,24 @@ class Solution:
         if s == t:
             return False
         left = 0
-        right_t = len(t) - 1
-        right_s = len(s) - 1
-        while left <= right_t and left <= right_s and s[left] == s[left]:
+        rights = len(s) - 1
+        rightt = len(t) - 1
+
+        while left < rights and left < rightt and s[left] == t[left]:
             left += 1
-        while right_t >= left and right_s >= left and s[right_s] == t[right_t]:
-            right_s -= 1
-            right_t -= 1
+        while rights >= left and rightt >= left and s[rights] == t[rightt]:
+            rights -= 1
+            rightt -= 1
+
         if len(s) == len(t):
-            return right_s - left == 0 and right_t - left == 0
-        
-        if len(s) < len(t): # t is one char longer
-            return right_t - left == 0 and right_s - left == -1
-        
-        if len(s) > len(t): # s is one char longer
-            return right_s - left == 0 and right_t - left == -1
-             
+            return rights - left == 0 and rightt - left == 0
 
+        if len(s) < len(t):
+            return rightt - left == 0 and rights - left == -1
 
-        
+        if len(s) > len(t):
+            return rights - left == 0 and rightt - left == -1
 
-
-
-
-    
-
-
-        
-
-        
 
 if __name__ == "__main__":
     solution = Solution()
