@@ -18,9 +18,9 @@ class Solution:
         if nums == None or len(nums) == 0:
             return 0
         k = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
+        for read in range(len(nums)):
+            if nums[read] != val:
+                nums[k] = nums[read]
                 k += 1
         return k
 

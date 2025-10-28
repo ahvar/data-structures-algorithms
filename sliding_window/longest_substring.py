@@ -24,21 +24,22 @@ subsequence and not a substring.
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if s == None or len(s) == 0:
+        if len(s) == 0 or s == None:
             return 0
         if len(s) == 1:
             return 1
         if len(s) == 2 and s[0] != s[1]:
             return 2
+
         seen = set()
-        left = 0
         maxx = 0
-        for right in range(len(s)):
-            while s[right] in seen:
+        left = 0
+        for read in range(len(s)):
+            while s[read] in seen:
                 seen.remove(s[left])
                 left += 1
-            seen.add(s[right])
-            maxx = max(maxx, right - left + 1)
+            seen.add(s[read])
+            maxx = max(maxx, read - left + 1)
         return maxx
 
 

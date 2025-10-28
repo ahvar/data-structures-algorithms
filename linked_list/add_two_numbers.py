@@ -18,26 +18,27 @@ class ListNode:
 
 
 class Solution:
-    def getListInt(self, linked_list):
-        pass
 
     def addTwoNumbers(
         self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
-        dummy = ListNode(0)
-        current = dummy
-        carry = 0
+        dummy = ListNode(0)  # simplify list building
+        curr = dummy  # pointer to result
+        carry = 0  # handle overflow from addition
 
         while l1 or l2 or carry:
+            # when one list is shorter, treat missing digits as 0
             val1 = l1.val if l1 else 0
             val2 = l2.val if l2 else 0
             total = val1 + val2 + carry
-            carry = total // 10  # how much > 10 we need to carry
-            digit = total % 10  # remainder
-            current.next = ListNode(digit)
-            current = current.next
-            l1 = l1.next if l1 else None
-            l2 = l2.next if l2 else None
+            carry = total // 10
+            digit = total % 10
+            curr.next = ListNode(digit)
+            curr = curr.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
         return dummy.next
 
 

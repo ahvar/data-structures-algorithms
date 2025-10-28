@@ -2,6 +2,7 @@
 Given the root of a binary tree, invert the tree, and return its root.
 """
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -9,19 +10,19 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 from typing import Optional
 from queue import Queue
+
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root == None:
-            return root
+            return None
         root.left, root.right = root.right, root.left
-        left = self.invertTree(root.left)
-        right = self.invertTree(root.right)
+        self.invertTree(root.left)
+        self.invertTree(root.right)
         return root
-
-
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
@@ -47,11 +48,8 @@ class Solution:
         return root
 
 
-
 if __name__ == "__main__":
-    input = [4,2,7,1,3,6,9]
+    input = [4, 2, 7, 1, 3, 6, 9]
     solution = Solution()
     root = solution.build_tree(input)
     root = solution.invertTree(root)
-
-        
