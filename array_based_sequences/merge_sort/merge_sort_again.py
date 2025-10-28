@@ -21,21 +21,9 @@ from typing import List
 
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        for i in range(n):
-            j = 1
-            while nums2[i] <= nums1[j - 1]:
-                j += 1
-            k = m
-            while k > j:
-                nums1[k] = nums1[k - 1]
-                k -= 1
-            nums1[k] = nums2[i]
-            m += 1
-
-    def merge_alt(self, nums1, m, nums2, n):
         for i in range(n - 1, -1, -1):
             j = m
-            while j > 0 and nums2[i] >= nums1[j - 1]:
+            while j > 0 and nums2[i] > nums1[j - 1]:
                 nums1[j] = nums1[j - 1]
                 j -= 1
             nums1[j] = nums2[i]

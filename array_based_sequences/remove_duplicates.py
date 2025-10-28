@@ -12,30 +12,27 @@ important as well as the size of nums.
 
 Return k
 """
+
 from typing import List
+
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
             return 0
+
         if len(nums) == 1:
             return 1
-        if len(nums) == 2 and nums[0] != nums[1]:
-            return 2
-        write = 1
-        n = len(nums)
-        for left in range(1,n):
-            if nums[left] != nums[write-1]:
-                nums[write] = nums[left]
-                write += 1
-        return write
 
-
-
-
-
+        k = 1
+        for read in range(1, len(nums)):
+            if nums[read] != nums[k - 1]:
+                nums[k] = nums[read]
+                k += 1
+        return k
 
 
 if __name__ == "__main__":
-    nums = [0,0,1,1,1,2,2,3,3,4]
+    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     solution = Solution()
     solution.removeDuplicates(nums)

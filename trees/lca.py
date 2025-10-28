@@ -21,45 +21,40 @@ class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        if root == None or root == p or root == q:
+        # Base case: if we reach null or find one of the target nodes
+        if not root or root == p or root == q:
             return root
-
+        # search left and right subtrees
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-
+        # if both subtrees return non-null, current node is LCA
         if left and right:
             return root
+        # return the subtree that found a target node
         return left if left else right
 
     def _build_tree(self, input):
-        root = TreeNode(input[0])
-        fifo = Queue(len(input))
-        fifo.put(root)
-        i = 1
-        while i < len(input) and not fifo.empty():
-            if input[i] is not None:
-                node = fifo.get()
-                node.left = TreeNode(input[i])
-                fifo.put(node.left)
-            i += 1
-            if i > len(input) - 1:
-                break
-            if input[i] is not None:
-                node = fifo.get()
-                node.right = TreeNode(input[i])
-                fifo.put(node.right)
-            i += 1
-        return root
-
-    def _get_node(self, node, target):
-        if not node:
+        if input == None or len(input) == 0 or input[0] == None:
             return None
-        if node.val == target:
-            return node
-        left = self._get_node(node.left, target)
-        if left:
-            return left
-        return self._get_node(node.right, target)
+        root = TreeNode(input[0])
+        fifo = Queue()
+        fifo.put(root)
+        index = 1
+        while index < len(input) and not fifo.empty():
+            node = fifo.get()
+            if input[index] != None:
+                left = TreeNode(input[index])
+                node.left = left
+                fifo.put(left)
+            index += 1
+            if index >= len(input):
+                break
+            if input[index] != None:
+                right = TreeNode(input[index])
+                node.right = right
+                fifo.put(right)
+            index += 1
+        return root
 
 
 if __name__ == "__main__":

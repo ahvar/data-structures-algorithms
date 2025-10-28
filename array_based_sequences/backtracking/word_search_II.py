@@ -11,13 +11,11 @@ from typing import List
 class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
-        if board == None or len(board) == 0 or word == None or word == "":
+        if board == None or len(board) == 0 or len(word) == 0:
             return False
-        m, n, l = len(board), len(board[0]), len(word)
-        visited = [[False] * n for _ in range(m)]
 
-        def search(row, col, index) -> bool:
-            if index == l:
+        def search(row, col, index):
+            if index == len(word):
                 return True
             if (
                 row < 0
@@ -31,17 +29,21 @@ class Solution:
 
             visited[row][col] = True
 
-            if search(row + 1, col, index + 1):  # down
+            if search(row + 1, col, index + 1):
                 return True
-            if search(row - 1, col, index + 1):  # up
+            if search(row - 1, col, index + 1):
                 return True
-            if search(row, col + 1, index + 1):  # right
+            if search(row, col + 1, index + 1):
                 return True
-            if search(row, col - 1, index + 1):  # left
+            if search(row, col - 1, index + 1):
                 return True
 
             visited[row][col] = False
             return False
+
+        m = len(board)
+        n = len(board)
+        visited = [[False] * n for _ in range(m)]
 
         for row in range(m):
             for col in range(n):

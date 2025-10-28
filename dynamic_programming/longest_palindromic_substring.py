@@ -12,60 +12,44 @@ Example 2:
 Input: s = "cbbd"
 Output: "bb"
 """
+
 import pprint
+
 pp = pprint.PrettyPrinter(indent=4)
+
+
 class Solution:
 
-    def _brute_force(self, s: str) -> str:
-        subs = []
-        # get all substrings
-        for i in range(len(s)):
-            for j in range(i+1,len(s)+1):
-                subs.append(s[i:j])
-        sub_no_blank = [subs.remove(sub) for sub in subs if not sub]
-        sub_no_blank.sort()
-        for sub in sub_no_blank:
-            if sub == sub[::-1]:
-                return sub
-
-        
-
     def longestPalindrome(self, s: str) -> str:
-        if not s:
+        if s == None or len(s) == 0:
             return ""
-        # -------------------------------------
-        # setup
-        # -------------------------------------
-        n = len(s) # length of s
-        dp = [[False] * n for i in range(n)] # dp table
+        if len(s) == 1 or len(s) == 2 and s[0] == s[1]:
+            return s
 
-        # ------------------------------------
-        # base case: all single-char substrings
-        # are palindromes
-        # ------------------------------------
+        n = len(s)
+        dp = [[False] * n for _ in range(n)]
+        maxx = 1
+        start = 0
+
         for i in range(n):
             dp[i][i] = True
-        
-        start = 0
-        max_len = 1
-        # all equivalent length 2 substrings are palindromes
+
         for i in range(n - 1):
             if s[i] == s[i + 1]:
-                dp[i][i+1] = True
-                max_len = 2
+                dp[i][i + 1] = True
+                maxx = 2
                 start = i
-        
-        for length in range(3,n + 1):
-            for i in range(n - length + 1):
-                j = i + length - 1
-                if s[i] == s[j]  and dp[i+1][j-1]:
-                    dp[i][j] = True
-                    if length > max_len:
-                        start = i
-                        max_len = length
 
-        return s[start: start+max_len]
-    
+        for length in range(3, n + 1):
+            for i in range(n - length + 1):
+                j = i + length  # end of current substring
+                if s[i] == s[j] and dp[i + 1][j - 1]:
+                    dp[i][j] = True
+                    maxx = max(length, maxx)
+                    start = i
+        return s[start : start + maxx]
+
+
 if __name__ == "__main__":
     s = "babad"
     solution = Solution()
