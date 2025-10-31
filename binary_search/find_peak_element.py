@@ -21,32 +21,23 @@ Output: 5
 Explanation: Your function can return either index number 1 where the peak element is 2,
 or index number 5 where the peak element is 6.
 """
+
 from typing import List
+
+
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
-            return
-        if len(nums) == 1:
-            return 0
-        if len(nums) == 2 and nums[0] > nums[1]:
-            return 0
-        elif len(nums) == 2 and nums[1] > nums[0]:
-            return 1
+            return -1
         left = 0
         right = len(nums) - 1
-        while left <= right:
-            mid = (left + right) // 2
-            if nums[mid - 1] < nums[mid] > nums[mid + 1]:
-                return mid
+        while left < right:
+            mid = (right + left) // 2
             if nums[mid] < nums[mid + 1]:
-                left = mid
-            elif nums[mid]:
-                pass
-
-
-
-
-
+                left = mid + 1
+            else:
+                right = mid
+        return left
 
 
 if __name__ == "__main__":

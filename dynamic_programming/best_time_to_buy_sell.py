@@ -9,7 +9,7 @@ Note:
 
 You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 The transaction fee is only charged once for each stock purchase and sale.
-    
+
 Example 1:
 
 Input: prices = [1,3,2,8,4,9], fee = 2
@@ -27,30 +27,29 @@ Output: 6
 notes:
 
 """
+
 from typing import List
+
+
 class Solution:
 
     def maxProfit(self, prices: List[int], fee: int) -> int:
         if prices == None or len(prices) == 0:
             return 0
-        n = len(prices)
-        hold = [0] * n
-        no_hold = [0] * n
+        hold = [0 for _ in range(len(prices))]
         hold[0] = -prices[0]
-        no_hold[0] = 0
-        for i in range(1,n):
-            hold[i] = max(hold[i-1], (no_hold[i-1] - prices[i]))
-            no_hold[i] = max(no_hold[i-1], (hold[i-1] - prices[i]) - fee)
-        return no_hold[-1]
-
-
-
+        sell = [0 for _ in range(len(prices))]
+        maxx = 0
+        for i in range(1, len(prices)):
+            hold[i] = max(hold[i - 1], sell[i - 1] - prices[i])
+            sell[i] = max(sell[i - 1], hold[i - 1] + prices[i] - fee)
+        return sell[len(prices) - 1]
 
 
 if __name__ == "__main__":
-    prices = [1,3,2,8,4,9]
-    #prices = [1,3]
+    prices = [1, 3, 2, 8, 4, 9]
+    # prices = [1,3]
     fee = 2
     solution = Solution()
-    #solution.maxProfit(prices, fee)
+    # solution.maxProfit(prices, fee)
     print(solution.maxProfit(prices, fee))
