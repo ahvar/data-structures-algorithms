@@ -12,30 +12,33 @@ Example 3:
 
 Input: nums = [1]
 Output: [[1]]
-""" 
+"""
+
 from typing import List
+
+
 class Solution:
-    def _something(self, perm):
-        pass
     def permute(self, nums: List[int]) -> List[List[int]]:
-        if len(nums) == 0:
+        if nums == None or len(nums) == 0:
             return []
-        if len(nums) == 1:
-            return [nums[:]]
-        permutes: List[List[int]] = []
-        for i in range(len(nums)):
-            current = nums[i]
-            rest = nums[:i] + nums[i+1:]
-            for tail_perm in self.permute(rest):
-                permutes.append([current] + tail_perm)
-                
-        return permutes
+        result = []
 
+        def _backtrack(current_permutation):
+            # base case: if permutation is complete
+            if len(current_permutation) == len(nums):
+                result.append(current_permutation[:])  # make a copy
+                return
+            for num in nums:
+                if num not in current_permutation:
+                    current_permutation.append(num)
+                    _backtrack(current_permutation)
+                    current_permutation.pop()
 
+        _backtrack([])
+        return result
 
 
 if __name__ == "__main__":
-    nums = [1,2,3]
+    nums = [1, 2, 3]
     solution = Solution()
     print(solution.permute(nums))
-    

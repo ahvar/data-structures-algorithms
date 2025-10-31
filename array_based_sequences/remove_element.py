@@ -15,12 +15,13 @@ from typing import List
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        if nums == None or len(nums) == 0:
+        if not nums:
             return 0
+        n = len(nums)
         k = 0
-        for read in range(len(nums)):
-            if nums[read] != val:
-                nums[k] = nums[read]
+        for i in range(n):
+            if nums[i] != val:
+                nums[k] = nums[i]
                 k += 1
         return k
 

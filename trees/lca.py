@@ -21,23 +21,25 @@ class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        # Base case: if we reach null or find one of the target nodes
-        if not root or root == p or root == q:
+        if root == None:
+            return None
+
+        if root == p or root == q:
             return root
-        # search left and right subtrees
+
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-        # if both subtrees return non-null, current node is LCA
+
         if left and right:
             return root
-        # return the subtree that found a target node
         return left if left else right
 
     def _build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return None
-        root = TreeNode(input[0])
+
         fifo = Queue()
+        root = TreeNode(input[0])
         fifo.put(root)
         index = 1
         while index < len(input) and not fifo.empty():
@@ -51,7 +53,7 @@ class Solution:
                 break
             if input[index] != None:
                 right = TreeNode(input[index])
-                node.right = right
+                fifo.right = right
                 fifo.put(right)
             index += 1
         return root
