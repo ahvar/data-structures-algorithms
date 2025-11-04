@@ -21,16 +21,13 @@ from queue import Queue
 
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        # base case: empty tree
         if root == None:
             return False
-
-        # check if we've reached a leaf with the target sum
-        if root.left is None or root.right is None:
-            return targetSum == root.val
-
-        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(
-            root.right, targetSum - root.val
+        if not root.left and not root.right:
+            return root.val == targetSum
+        targetSum -= root.val
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(
+            root.right, targetSum
         )
 
     def build_tree(self, input):

@@ -20,10 +20,6 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
             return 0
-
-        if len(nums) == 1:
-            return 1
-
         k = 1
         for read in range(1, len(nums)):
             if nums[read] != nums[k - 1]:
