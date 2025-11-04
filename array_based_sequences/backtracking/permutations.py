@@ -21,21 +21,21 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         if nums == None or len(nums) == 0:
             return []
-        result = []
 
-        def _backtrack(current_permutation):
-            # base case: if permutation is complete
-            if len(current_permutation) == len(nums):
-                result.append(current_permutation[:])  # make a copy
+        permutations = []
+
+        def backtrack(path):
+            if len(path) == len(nums):
+                permutations.append(path[:])
                 return
             for num in nums:
-                if num not in current_permutation:
-                    current_permutation.append(num)
-                    _backtrack(current_permutation)
-                    current_permutation.pop()
+                if num not in path:
+                    path.append(num)
+                    backtrack(path)
+                    path.pop()
 
-        _backtrack([])
-        return result
+        backtrack([])
+        return permutations
 
 
 if __name__ == "__main__":
