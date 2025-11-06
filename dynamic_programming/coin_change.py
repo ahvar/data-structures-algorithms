@@ -33,7 +33,7 @@ class Solution:
         for i in range(amount + 1):
             for coin in coins:
                 if coin <= i:
-                    dp[i] = min(dp[i - coin], dp[i])
+                    dp[i] = min(dp[i - coin] + 1, dp[i])
         return dp[amount] if dp[amount] <= amount else -1
 
 

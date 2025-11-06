@@ -18,11 +18,12 @@ from queue import Queue
 class Solution:
 
     def _check(self, left, right):
-        if not left and not right:
+        if left == None and right == None:
             return True
-        if not left or not right:
+        if left == None or right == None:
             return False
-
+        if left.val == right.val:
+            return True
         return (
             left.val == right.val
             and self._check(left.left, right.right)
@@ -30,7 +31,7 @@ class Solution:
         )
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root:
+        if root == None:
             return True
         return self._check(root.left, root.right)
 

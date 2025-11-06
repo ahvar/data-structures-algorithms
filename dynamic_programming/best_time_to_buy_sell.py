@@ -36,14 +36,15 @@ class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
         if prices == None or len(prices) == 0:
             return 0
-        hold = [0 for _ in range(len(prices))]
+        n = len(prices)
+        hold = [0 for _ in range(n)]
+        sell = [0 for _ in range(n)]
+        sell[0] = 0
         hold[0] = -prices[0]
-        sell = [0 for _ in range(len(prices))]
-        maxx = 0
-        for i in range(1, len(prices)):
+        for i in range(1, n):
             hold[i] = max(hold[i - 1], sell[i - 1] - prices[i])
             sell[i] = max(sell[i - 1], hold[i - 1] + prices[i] - fee)
-        return sell[len(prices) - 1]
+        return sell[n - 1]
 
 
 if __name__ == "__main__":

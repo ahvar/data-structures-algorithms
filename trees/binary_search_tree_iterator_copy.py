@@ -33,7 +33,7 @@ class TreeNode:
 class BSTIterator:
 
     def _push_left(self, node):
-        if node == None:
+        if not node:
             return
         self._stack.append(node)
         self._push_left(node.left)
