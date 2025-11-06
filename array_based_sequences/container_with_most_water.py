@@ -21,14 +21,12 @@ class Solution:
         right = len(height) - 1
         maxx = 0
         while left < right:
-            h = min(height[left], height[right])
-            area = (right - left) * h
-            if area > maxx:
-                maxx = area
-            if height[left] > height[right]:
-                right -= 1
-            else:
+            min_height = min(height[left], height[right])
+            maxx = max((right - left) * min_height, maxx)
+            if height[left] < height[right]:
                 left += 1
+            else:
+                right -= 1
         return maxx
 
 

@@ -19,18 +19,24 @@ Input: head = [1], pos = -1
 Output: false
 Explanation: There is no cycle in the linked list.
 """
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
+
 from typing import Optional
+
+
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head == None:
             return False
-        seen = set()
         curr = head
+        seen = set()
         while curr:
             if curr in seen:
                 return True
@@ -38,12 +44,9 @@ class Solution:
             curr = curr.next
         return False
 
-            
-
-
     def link_list(self, input):
-        if input == None or len(input) == 0 or input[0] == None:
-            return 
+        if input == None or input[0] == None:
+            return None
         head = ListNode(input[0])
         curr = head
         for i in range(1, len(input)):
@@ -52,13 +55,13 @@ class Solution:
             curr = curr.next
         return head
 
-    
+
 if __name__ == "__main__":
-    input = [3,2,0,-4]
+    input = [3, 2, 0, -4]
     pos = 1
     head = ListNode(input[0])
     curr = head
-    for i in range(1,len(input)):
+    for i in range(1, len(input)):
         curr.next = ListNode(input[i])
         curr = curr.next
     node = head

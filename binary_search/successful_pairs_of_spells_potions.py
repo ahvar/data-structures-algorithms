@@ -40,14 +40,15 @@ class Solution:
         pairs = []
         for spell in spells:
             left = 0
-            right = len(potions) - 1
-            while left < right:
-                mid = (right + left) // 2
-                if spell * potions[mid] >= success:
-                    right = mid
+            right = m - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if potions[mid] * spell >= success:
+                    right = mid - 1
                 else:
                     left = mid + 1
             pairs.append(m - left)
+        return pairs
 
 
 if __name__ == "__main__":
