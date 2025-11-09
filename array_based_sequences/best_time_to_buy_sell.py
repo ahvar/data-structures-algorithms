@@ -20,3 +20,21 @@ Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 """
+
+from typing import List
+
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices or len(prices) < 2:
+            return 0
+        n = len(prices)
+        hold = [0 for _ in range(n)]
+        sell = [0 for _ in range(n)]
+
+        hold[0] = -prices[0]
+        sell[0] = 0
+        for i in range(1, n):
+            hold[i] = max(hold[i - 1], -prices[i])
+            sell[i] = max(sell[i - 1], hold[i - 1] + prices[i])
+        return sell[n - 1]

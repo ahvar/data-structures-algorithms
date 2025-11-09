@@ -20,14 +20,14 @@ class Solution:
     def _check(self, left, right):
         if left == None and right == None:
             return True
+
         if left == None or right == None:
             return False
-        if left.val == right.val:
-            return True
+
         return (
             left.val == right.val
-            and self._check(left.left, right.right)
             and self._check(left.right, right.left)
+            and self._check(left.left, right.right)
         )
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:

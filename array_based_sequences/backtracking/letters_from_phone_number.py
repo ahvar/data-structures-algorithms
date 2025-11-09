@@ -23,10 +23,8 @@ from typing import List
 
 class Solution:
     def letter_combinations(self, digits: str) -> List[str]:
-
         if digits == None or len(digits) == 0:
             return []
-
         phone = {
             "2": "abc",
             "3": "def",
@@ -37,6 +35,7 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
+
         result = []
 
         def backtrack(index, path):

@@ -22,20 +22,20 @@ class Solution:
         if nums == None or len(nums) == 0:
             return []
 
-        permutations = []
+        result = []
 
-        def backtrack(path):
-            if len(path) == len(nums):
-                permutations.append(path[:])
+        def backtrack(permutation):
+            if len(permutation) == len(nums):
+                result.append(permutation[:])
                 return
-            for num in nums:
-                if num not in path:
-                    path.append(num)
-                    backtrack(path)
-                    path.pop()
+            for i in range(len(nums)):
+                if nums[i] not in permutation:
+                    permutation.append(nums[i])
+                    backtrack(permutation)
+                    permutation.pop()
 
         backtrack([])
-        return permutations
+        return result
 
 
 if __name__ == "__main__":

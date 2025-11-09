@@ -24,11 +24,11 @@ class Solution:
             return True
         if p == None or q == None:
             return False
-        if p.val != q.val:
-            return False
-        left = self.isSameTree(p.left, q.left)
-        right = self.isSameTree(p.right, q.right)
-        return left and right
+        return (
+            p.val == q.val
+            and self.isSameTree(p.left, q.left)
+            and self.isSameTree(p.right, q.right)
+        )
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:

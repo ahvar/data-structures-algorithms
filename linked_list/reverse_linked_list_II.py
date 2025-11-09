@@ -20,13 +20,12 @@ class Solution:
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
         if head == None:
-            return
+            return None
         dummy = ListNode(0, head)
         before_left = dummy
         for _ in range(left - 1):
             before_left = before_left.next
         lnode = before_left.next
-
         prev = None
         curr = lnode
         for _ in range(right - left + 1):

@@ -8,7 +8,7 @@ from typing import List
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         if nums == None or len(nums) == 0:
-            return None
+            return
         n = len(nums)
         k %= n
         temp = nums[-k:]
