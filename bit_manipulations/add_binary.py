@@ -15,19 +15,24 @@ Output: "10101"
 class Solution:
 
     def addBinary(self, a: str, b: str) -> str:
-        result = []
+        if not a:
+            return b
+        if not b:
+            return a
         carry = 0
+        sum_arr = []
         i = len(a) - 1
         j = len(b) - 1
         while i >= 0 or j >= 0 or carry:
-            digit_a = int(a[i]) if i >= 0 else 0
-            digit_b = int(b[j]) if j >= 0 else 0
-            total = digit_a + digit_b + carry
-            result.append(str(total % 2))
+            val1 = int(a[i]) if i >= 0 else 0
+            val2 = int(b[j]) if j >= 0 else 0
+            total = val1 + val2 + carry
             carry = total // 2
+            digit = total % 2
+            sum_arr.append(str(digit))
             i -= 1
             j -= 1
-        "".join(reversed(result))
+        return "".join(reversed(sum_arr))
 
 
 if __name__ == "__main__":
