@@ -23,11 +23,13 @@ class Solution:
         left = 0
         rightt = len(t) - 1
         rights = len(s) - 1
-        while left < rightt and left < rights and s[left] == t[left]:
+        while left < len(s) and left < len(t) and s[left] == t[left]:
             left += 1
-        while rightt > left and rights > left and s[rights] == s[rightt]:
-            rights -= 1
+
+        while rightt >= left and rights >= left and s[rights] == t[rightt]:
             rightt -= 1
+            rights -= 1
+
         if len(s) == len(t):
             return rightt - left == 0 and rights - left == 0
 

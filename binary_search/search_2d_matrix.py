@@ -14,14 +14,19 @@ from typing import List
 class Solution:
 
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix or not matrix[0]:
+            return False
         m, n = len(matrix), len(matrix[0])
-        left, right = 0, m * n - 1
+        left = 0
+        right = m * n - 1
         while left <= right:
-            mid = (right + left) // 2
-            row, col = mid // n, mid % n
-            if matrix[row][col] == target:
+            mid = (mid + right) // 2
+            row = mid // n
+            col = mid % n
+            mid_val = matrix[row][col]
+            if mid_val == target:
                 return True
-            elif matrix[row][col] < target:
+            elif mid_val < target:
                 left = mid + 1
             else:
                 right = mid - 1

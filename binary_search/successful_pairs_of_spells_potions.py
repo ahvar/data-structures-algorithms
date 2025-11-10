@@ -35,15 +35,15 @@ class Solution:
     def successfulPairs(
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
-        n, m = len(spells), len(potions)
-        potions.sort()
+        m = len(potions)
         pairs = []
+        potions.sort()
         for spell in spells:
             left = 0
             right = m - 1
             while left <= right:
                 mid = (left + right) // 2
-                if potions[mid] * spell >= success:
+                if spell * potions[mid] >= success:
                     right = mid - 1
                 else:
                     left = mid + 1
