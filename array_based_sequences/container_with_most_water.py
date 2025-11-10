@@ -21,8 +21,8 @@ class Solution:
         right = len(height) - 1
         maxx = 0
         while left < right:
-            min_height = min(height[left], height[right])
-            maxx = max((right - left) * min_height, maxx)
+            h = min(height[left], height[right])
+            maxx = max(maxx, h * (right - left))
             if height[left] < height[right]:
                 left += 1
             else:
