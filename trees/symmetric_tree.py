@@ -17,22 +17,21 @@ from queue import Queue
 
 class Solution:
 
-    def _check(self, left, right):
-        if left == None and right == None:
+    def _check(self, p, q):
+        if p == None and q == None:
             return True
-
-        if left == None or right == None:
+        if p == None or q == None:
             return False
-
         return (
-            left.val == right.val
-            and self._check(left.right, right.left)
-            and self._check(left.left, right.right)
+            p.val == q.val
+            and self._check(p.left, q.right)
+            and self._check(p.right, q.left)
         )
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root == None:
             return True
+
         return self._check(root.left, root.right)
 
     def build_tree(self, input_vals):

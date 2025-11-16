@@ -33,8 +33,9 @@ from typing import Optional
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if not head:
-            return False
+        if head == None:
+            return None
+
         curr = head
         seen = set()
         while curr:
@@ -45,12 +46,13 @@ class Solution:
         return False
 
     def link_list(self, input):
-        if not input or len(input) == 0 or input[0] == None:
+        if input == None or len(input) == 0 or input[0] == None:
             return None
         head = ListNode(input[0])
         curr = head
         for i in range(1, len(input)):
-            curr.next = ListNode(input[i])
+            nxt = ListNode(input[i])
+            curr.next = nxt
             curr = curr.next
         return head
 

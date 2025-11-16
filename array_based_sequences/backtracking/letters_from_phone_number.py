@@ -35,19 +35,18 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-
         result = []
 
-        def backtrack(index, path):
+        def _backtrack(index, path):
             if index == len(digits):
                 result.append("".join(path))
                 return
             for char in phone[digits[index]]:
                 path.append(char)
-                backtrack(index + 1, path)
+                _backtrack(index + 1, path)
                 path.pop()
 
-        backtrack(0, [])
+        _backtrack(0, [])
         return result
 
 
