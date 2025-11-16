@@ -12,7 +12,8 @@ A common subsequence of two strings is a subsequence that is common to both stri
 
 
 def longest_common_subsequence(text1, text2):
-    """Return table such that L[j][k] is length LCS for X[0:j] and Y[0:k]"""
+    if not text1 or not text2:
+        return 0
     n, m = len(text1), len(text2)
     dp = [[0] * (m + 1) for _ in range(n + 1)]
     for i in range(1, n + 1):
@@ -20,7 +21,7 @@ def longest_common_subsequence(text1, text2):
             if text1[i - 1] == text2[j - 1]:
                 dp[i][j] += dp[i - 1][j - 1] + 1
             else:
-                dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
     return dp[n][m]
 
 

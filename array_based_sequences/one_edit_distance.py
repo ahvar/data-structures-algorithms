@@ -23,21 +23,19 @@ class Solution:
         left = 0
         rightt = len(t) - 1
         rights = len(s) - 1
-        while left < len(s) and left < len(t) and s[left] == t[left]:
+        while left <= rightt and left <= rights and s[left] == t[left]:
             left += 1
-
-        while rightt >= left and rights >= left and s[rights] == t[rightt]:
-            rightt -= 1
+        while rightt >= left and rights >= left and t[rightt] == s[rights]:
             rights -= 1
-
+            rightt -= 1
         if len(s) == len(t):
-            return rightt - left == 0 and rights - left == 0
+            return rightt == left and rights == left
 
         if len(s) < len(t):
             return rightt - left == 0 and rights - left == -1
 
         if len(s) > len(t):
-            return rightt - left == -1 and rights - left == 0
+            return rights - left == 0 and rightt - left == -1
 
 
 if __name__ == "__main__":

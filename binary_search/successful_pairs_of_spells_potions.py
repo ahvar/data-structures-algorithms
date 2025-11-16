@@ -43,10 +43,10 @@ class Solution:
             right = m - 1
             while left <= right:
                 mid = (left + right) // 2
-                if spell * potions[mid] >= success:
-                    right = mid - 1
-                else:
+                if spell * potions[mid] < success:
                     left = mid + 1
+                else:
+                    right = mid - 1
             pairs.append(m - left)
         return pairs
 

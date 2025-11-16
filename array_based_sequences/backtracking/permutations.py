@@ -21,17 +21,18 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         if nums == None or len(nums) == 0:
             return []
+
         result = []
 
-        def backtrack(p):
-            if len(p) == len(nums):
-                result.append(p[:])
+        def backtrack(permutation):
+            if len(permutation) == len(nums):
+                result.append(permutation[:])
                 return
-            for i in nums:
-                if i not in p:
-                    p.append(i)
-                    backtrack(p)
-                    p.pop()
+            for num in nums:
+                if num not in permutation:
+                    permutation.append(num)
+                backtrack(permutation)
+                permutation.pop()
 
         backtrack([])
         return result

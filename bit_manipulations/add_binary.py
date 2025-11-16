@@ -20,19 +20,19 @@ class Solution:
         if not b:
             return a
         carry = 0
-        sum_arr = []
         i = len(a) - 1
         j = len(b) - 1
+        result = []
         while i >= 0 or j >= 0 or carry:
             val1 = int(a[i]) if i >= 0 else 0
             val2 = int(b[j]) if j >= 0 else 0
             total = val1 + val2 + carry
             carry = total // 2
             digit = total % 2
-            sum_arr.append(str(digit))
+            result.append(str(digit))
             i -= 1
             j -= 1
-        return "".join(reversed(sum_arr))
+        return "".join(reversed(result))
 
 
 if __name__ == "__main__":

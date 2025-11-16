@@ -22,7 +22,8 @@ class Solution:
         maxx = 0
         while left < right:
             h = min(height[left], height[right])
-            maxx = max(maxx, h * (right - left))
+            area = (right - left) * h
+            maxx = max(area, maxx)
             if height[left] < height[right]:
                 left += 1
             else:
