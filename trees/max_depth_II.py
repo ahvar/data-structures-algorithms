@@ -22,7 +22,6 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]):
         if root == None:
             return 0
-
         left = self.maxDepth(root.left)
         right = self.maxDepth(root.right)
         return max(left, right) + 1
@@ -30,8 +29,8 @@ class Solution:
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return None
-        root = TreeNode(input[0])
         fifo = Queue()
+        root = TreeNode(input[0])
         fifo.put(root)
         index = 1
         while index < len(input) and not fifo.empty():

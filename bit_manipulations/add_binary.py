@@ -24,11 +24,11 @@ class Solution:
         j = len(b) - 1
         result = []
         while i >= 0 or j >= 0 or carry:
-            val1 = int(a[i]) if i >= 0 else 0
-            val2 = int(b[j]) if j >= 0 else 0
-            total = val1 + val2 + carry
-            carry = total // 2
+            aval = int(a[i]) if i >= 0 else 0
+            bval = int(b[j]) if i >= 0 else 0
+            total = aval + bval + carry
             digit = total % 2
+            carry = total // 2
             result.append(str(digit))
             i -= 1
             j -= 1

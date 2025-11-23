@@ -31,7 +31,6 @@ class TreeNode:
 
 
 class BSTIterator:
-
     def _push_left(self, node):
         if node == None:
             return
@@ -50,7 +49,7 @@ class BSTIterator:
         return val
 
     def hasNext(self):
-        return len(self._stack) >= 1
+        return len(self._stack) > 0
 
 
 def build_tree(input):

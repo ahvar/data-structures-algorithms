@@ -34,10 +34,9 @@ from typing import Optional
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head == None:
-            return None
-
-        curr = head
+            return False
         seen = set()
+        curr = head
         while curr:
             if curr in seen:
                 return True

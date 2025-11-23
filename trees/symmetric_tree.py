@@ -22,16 +22,16 @@ class Solution:
             return True
         if p == None or q == None:
             return False
-        return (
-            p.val == q.val
-            and self._check(p.left, q.right)
-            and self._check(p.right, q.left)
-        )
+
+        if p.val != q.val:
+            return False
+        left = self._check(p.left, q.right)
+        right = self._check(p.right, q.left)
+        return left and right
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root == None:
             return True
-
         return self._check(root.left, root.right)
 
     def build_tree(self, input_vals):
