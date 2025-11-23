@@ -23,19 +23,18 @@ class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if root == None:
             return False
-
-        if root.left == None and root.right == None:
+        if not root.left and not root.right:
             return root.val == targetSum
 
-        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(
-            root.right, targetSum - root.val
-        )
+        left = self.hasPathSum(root.left, targetSum - root.val)
+        right = self.hasPathSum(root.right, targetSum - root.val)
+        return left if left else right
 
     def build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return None
-        root = TreeNode(input[0])
         fifo = Queue()
+        root = TreeNode(input[0])
         fifo.put(root)
         index = 1
         while index < len(input) and not fifo.empty():

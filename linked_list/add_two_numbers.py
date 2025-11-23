@@ -26,9 +26,9 @@ class Solution:
             return l2
         if not l2:
             return l1
+        carry = 0
         dummy = ListNode(0)
         curr = dummy
-        carry = 0
         while l1 or l2 or carry:
             val1 = l1.val if l1 else 0
             val2 = l2.val if l2 else 0
