@@ -26,30 +26,24 @@ Example 3:
 Input: s = "paper", t = "title"
 Output: true
 """
+
+
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
-        smap = {}
-        used_in_t = set()
-        for i in range(len(s)):
-            s_char = s[i]
-            t_char = t[i]
-            if s_char in smap:
-                if smap[s_char] != t_char: # no two chars in 't' map to same char 's'
-                    return False
-            else:
-                if t_char in used_in_t:
-                    return False
-                smap[s_char] = t_char
-                used_in_t.add(t_char)
-                
-        return "".join([smap[c] for c in s]) == t
-            
-        
-        
+        if len(s) != len(t):
+            return False
+        s2t = {}
+        t2s = {}
+        for cs, ct in zip(s, t):
+            if (cs in s2t and s2t[cs] != ct) or (ct in t2s and t2s[ct] != cs):
+                return False
+            s2t[cs] = ct
+            t2s[ct] = ct
+        return True
+
 
 if __name__ == "__main__":
     s = "egg"
     t = "add"
     solution = Solution()
-    print(solution.isIsomorphic(s,t))
+    print(solution.isIsomorphic(s, t))

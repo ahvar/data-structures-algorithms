@@ -30,12 +30,11 @@ class Solution:
         left = 0
         maxx = 0
         for right in range(len(s)):
-            if s[right] in seen:
+            while s[right] in seen:
                 seen.remove(s[left])
                 left += 1
             seen.add(s[right])
-            if right - left > maxx:
-                maxx = right - left + 1
+            maxx = max(right - left + 1, maxx)
         return maxx
 
 

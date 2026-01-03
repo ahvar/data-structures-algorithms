@@ -19,19 +19,19 @@ class Solution:
             return b
         if not b:
             return a
+        aptr = len(a) - 1
+        bptr = len(b) - 1
         carry = 0
-        i = len(a) - 1
-        j = len(b) - 1
         result = []
-        while i >= 0 or j >= 0 or carry:
-            aval = int(a[i]) if i >= 0 else 0
-            bval = int(b[j]) if i >= 0 else 0
-            total = aval + bval + carry
-            digit = total % 2
+        while aptr >= 0 or bptr >= 0 or carry:
+            aint = int(a[aptr]) if aptr >= 0 else 0
+            bint = int(b[bptr]) if bptr >= 0 else 0
+            total = aint + bint + carry
             carry = total // 2
+            digit = total % 2
             result.append(str(digit))
-            i -= 1
-            j -= 1
+            aptr -= 1
+            bptr -= 1
         return "".join(reversed(result))
 
 

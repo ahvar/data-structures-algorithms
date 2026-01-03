@@ -19,11 +19,11 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums == None or len(nums) == 0:
-            return 0
+            return -1
         k = 1
-        for read in range(1, len(nums)):
-            if nums[read] != nums[k - 1]:
-                nums[k] = nums[read]
+        for right in range(1, len(nums)):
+            if nums[right] != nums[k - 1]:
+                nums[k] = nums[right]
                 k += 1
         return k
 

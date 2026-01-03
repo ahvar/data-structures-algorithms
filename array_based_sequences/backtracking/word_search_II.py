@@ -11,43 +11,36 @@ from typing import List
 class Solution:
 
     def exist(self, board: List[List[str]], word: str) -> bool:
-        if board == None or len(board) == 0 or len(word) == 0:
-            return False
 
-        def search(row, col, index):
+        def _search(row, col, index):
             if index == len(word):
                 return True
             if (
                 row < 0
-                or row >= m
                 or col < 0
+                or row >= m
                 or col >= n
                 or visited[row][col]
                 or board[row][col] != word[index]
             ):
                 return False
-
             visited[row][col] = True
-
-            if search(row + 1, col, index + 1):
+            if _search(row + 1, col, index + 1):
                 return True
-            if search(row - 1, col, index + 1):
+            if _search(row - 1, col, index + 1):
                 return True
-            if search(row, col + 1, index + 1):
+            if _search(row, col - 1, index + 1):
                 return True
-            if search(row, col - 1, index + 1):
+            if _search(row, col + 1, index + 1):
                 return True
-
             visited[row][col] = False
             return False
 
-        m = len(board)
-        n = len(board)
+        m, n = len(board), len(board[0])
         visited = [[False] * n for _ in range(m)]
-
         for row in range(m):
             for col in range(n):
-                if search(row, col, 0):
+                if _search(row, col, 0):
                     return True
         return False
 

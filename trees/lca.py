@@ -21,18 +21,19 @@ class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        if root is None or root == p or root == q:
+        if root == None:
+            return root
+        if root == p or root == q:
             return root
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-        if left or right:
+        if left and right:
             return root
         return left if left else right
 
     def _build_tree(self, input):
         if input == None or len(input) == 0 or input[0] == None:
             return None
-
         fifo = Queue()
         root = TreeNode(input[0])
         fifo.put(root)
@@ -48,7 +49,7 @@ class Solution:
                 break
             if input[index] != None:
                 right = TreeNode(input[index])
-                fifo.right = right
+                node.right = right
                 fifo.put(right)
             index += 1
         return root

@@ -16,8 +16,8 @@ Roman numerals are usually written largest to smallest from left to right. Howev
 is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four.
 The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-I can be placed before V (5) and X (10) to make 4 and 9. 
-X can be placed before L (50) and C (100) to make 40 and 90. 
+I can be placed before V (5) and X (10) to make 4 and 9.
+X can be placed before L (50) and C (100) to make 40 and 90.
 C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
 
@@ -37,21 +37,22 @@ Input: s = "MCMXCIV"
 Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
-class Solution:    
+
+
+class Solution:
     def romanToInt(self, s: str) -> int:
-        integer = 0
-        roman_nums = {'I':1, 'V': 5, 'X':10, 'L': 50, 'C':100, 'D': 500, 'M':1000}
+        if not s or len(s) == 0:
+            return 0
+        symbols = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        total = 0
         prev = 0
-        for i in range(len(s)-1,-1,-1):
-            val = roman_nums.get(s[i])
-            if val < prev:
-                integer -= val
+        for char in s:
+            curr = symbols[char]
+            if curr < prev:
+                total -= curr
             else:
-                integer += val
-                prev = val
-
-
-
+                total += curr
+        return total
 
 
 if __name__ == "__main__":

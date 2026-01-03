@@ -17,28 +17,29 @@ from queue import Queue
 
 class Solution:
 
-    def _check(self, p, q):
-        if p == None and q == None:
+    def _check(self, left, right):
+        if left is None and right is None:
             return True
-        if p == None or q == None:
+        if left is None or right is None:
             return False
 
-        if p.val != q.val:
+        if left.val != right.val:
             return False
-        left = self._check(p.left, q.right)
-        right = self._check(p.right, q.left)
-        return left and right
+
+        return self._check(left.left, right.right) and self._check(
+            left.right, right.left
+        )
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if root == None:
+        if not root:
             return True
         return self._check(root.left, root.right)
 
-    def build_tree(self, input_vals):
-        if input_vals == None or len(input_vals) == 0 or input_vals[0] == None:
-            return
-        root = TreeNode(input[0])
+    def build_tree(self, input):
+        if input == None or len(input) == 0 or input[0] == None:
+            return None
         fifo = Queue()
+        root = TreeNode(input[0])
         fifo.put(root)
         index = 1
         while index < len(input) and not fifo.empty():
@@ -48,7 +49,7 @@ class Solution:
                 node.left = left
                 fifo.put(left)
             index += 1
-            if index >= len(input_vals):
+            if index >= len(input):
                 break
             if input[index] != None:
                 right = TreeNode(input[index])

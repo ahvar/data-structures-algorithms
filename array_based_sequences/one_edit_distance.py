@@ -16,26 +16,22 @@ from decimal import Decimal
 
 class Solution:
     def isOneEditDistance(self, s: str, t: str) -> bool:
-        if abs(len(s) - len(t)) > 1:
-            return False
-        if s == t:
+        if abs(len(s) - len(t)) > 1 or s == t:
             return False
         left = 0
         rightt = len(t) - 1
         rights = len(s) - 1
         while left <= rightt and left <= rights and s[left] == t[left]:
             left += 1
-        while rightt >= left and rights >= left and t[rightt] == s[rights]:
+        while rightt >= left and rights >= left and s[rights] == t[rightt]:
             rights -= 1
             rightt -= 1
         if len(s) == len(t):
-            return rightt == left and rights == left
-
+            return rights == left and rightt == left
         if len(s) < len(t):
             return rightt - left == 0 and rights - left == -1
-
         if len(s) > len(t):
-            return rights - left == 0 and rightt - left == -1
+            return rights - left == -1 and rightt - left == 0
 
 
 if __name__ == "__main__":

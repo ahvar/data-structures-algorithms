@@ -30,38 +30,29 @@ Example 3:
 Input: s = "A", numRows = 1
 Output: "A"
 """
+
 import pprint
+
 pp = pprint.PrettyPrinter(indent=4)
+
+
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        n = len(s)
-        cols = int(n / 2)
-        table = [[' '] * cols for _ in range(numRows)]  
-        k = 0
-        j = 0
-        while k < len(s) - numRows:
-            for i in range(numRows): # move vertical (rows)
-                table[i][j] = s[k]
-                k += 1
-            if k > len(s) - 1:
-                break
-            for i in range(numRows - 2, -1, -1): # move horizontal (cols)
-                j += 1
-                table[i][j] = s[k]
-                k += 1
-        output = ""
-        for i in range(cols):
-            for j in range(numRows):
-                if table[i][j] != ' ':
-                    output += table[i][j].upper()
-
-        
-            
-    
+        if numRows == 1 or numRows >= len(s):
+            return s
+        rows = [""] * numRows
+        curr_row = 0
+        going_down = False
+        for c in s:
+            rows[curr_row] += c
+            if curr_row == 0 or curr_row == numRows - 1:
+                going_down = not going_down
+            curr_row += 1 if going_down else -1
+        return "".join(rows)
 
 
 if __name__ == "__main__":
     s = "PAYPALISHIRING"
     numRows = 3
     solution = Solution()
-    pp.pprint(solution.convert(s,numRows))
+    pp.pprint(solution.convert(s, numRows))
