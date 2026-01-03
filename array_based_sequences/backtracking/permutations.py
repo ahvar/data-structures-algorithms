@@ -19,8 +19,9 @@ from typing import List
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        if nums == None or len(nums) == 0:
+        if not nums or len(nums) == 0:
             return []
+
         result = []
 
         def _backtrack(permutation):
@@ -30,8 +31,8 @@ class Solution:
             for num in nums:
                 if num not in permutation:
                     permutation.append(num)
-                _backtrack(permutation)
-                permutation.pop()
+                    _backtrack(permutation)
+                    permutation.pop()
 
         _backtrack([])
         return result
