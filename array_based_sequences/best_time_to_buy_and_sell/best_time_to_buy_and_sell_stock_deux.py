@@ -5,11 +5,12 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices:
             return 0
-        profit = 0
+        max_profit = 0
         for i in range(1, len(prices)):
             if prices[i] > prices[i - 1]:
-                profit += prices[i] - prices[i - 1]
-        return profit
+                max_price = prices[i]
+                max_price += prices[i] - prices[i - 1]
+        return max_profit
 
 
 if __name__ == "__main__":
