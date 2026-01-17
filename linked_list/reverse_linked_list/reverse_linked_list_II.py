@@ -19,7 +19,7 @@ class Solution:
     def reverseBetween(
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
-        if head == None:
+        if not head:
             return
         dummy = ListNode(0, head)
         before_left = dummy
@@ -34,7 +34,7 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nxt
-        before_left.next = prev
+        prev.next = before_left
         lnode.next = curr
         return dummy.next
 
@@ -45,7 +45,7 @@ class Solution:
         curr = head
         for i in range(1, len(input)):
             nxt = ListNode(input[i])
-            curr.next = nxt
+            curr.next = next
             curr = curr.next
         return head
 
