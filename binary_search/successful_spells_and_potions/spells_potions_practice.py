@@ -5,9 +5,11 @@ class Solution:
     def successfulPairs(
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
-        m = len(potions)
+        if not potions:
+            return []
         potions.sort()
         pairs = []
+        m = len(potions)
         for spell in spells:
             left = 0
             right = m - 1

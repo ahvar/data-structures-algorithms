@@ -3,14 +3,14 @@ from typing import List
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        if strs == None or len(strs) == 0:
+        if not strs or len(strs) == 0:
             return ""
         prefix = strs[0]
-        for string in strs[1:]:
+        for word in strs[1:]:
             i = 0
-            while i < len(prefix) and i < len(string) and string[i] == prefix[i]:
+            while i < len(word) and i < len(prefix) and prefix[i] == word[i]:
                 i += 1
-            prefix = prefix[:i]
+            prefix = word[:i]
             if not prefix:
                 break
         return prefix
