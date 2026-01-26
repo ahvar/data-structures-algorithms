@@ -1,10 +1,3 @@
-"""
-Given the head of a singly linked list and two integers left
-and right where left <= right, reverse the nodes of the list
-from position left to position right, and return the reversed list.
-"""
-
-
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -19,12 +12,12 @@ class Solution:
     def reverseBetween(
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
-        if not head:
+        if head == None:
             return
         dummy = ListNode(0, head)
         before_left = dummy
         for _ in range(left - 1):
-            before_left = before_left.next
+            before_left.next = before_left
 
         lnode = before_left.next
         prev = None
@@ -34,18 +27,18 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nxt
-        prev.next = before_left
-        lnode.next = curr
+        prev.next = lnode
+        before_left.next = curr
         return dummy.next
 
     def link_list(self, input):
-        if input == None or len(input) == 0 or input[0] == None:
+        if not input or len(input) == 0 or input[0] == None:
             return
         head = ListNode(input[0])
         curr = head
         for i in range(1, len(input)):
             nxt = ListNode(input[i])
-            curr.next = next
+            curr.next = nxt
             curr = curr.next
         return head
 
