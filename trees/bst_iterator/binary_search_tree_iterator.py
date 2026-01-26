@@ -12,22 +12,21 @@ class TreeNode:
 
 class BSTIterator:
 
-    def _push_from_left(self, node):
+    def _push_left(self, node):
         if not node:
             return
         self._stack.append(node)
-        self._push_from_left(node.left)
+        self._push_left(node.left)
 
     def __init__(self, root: Optional[TreeNode]):
         self._stack = []
-        if root:
-            self._push_from_left(root)
+        self._push_left(root)
 
     def next(self) -> int:
         node = self._stack.pop()
         val = node.val
         if node.right:
-            self._push_from_left(node.right)
+            self._push_left(node.right)
         return val
 
     def hasNext(self) -> bool:

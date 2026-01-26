@@ -6,17 +6,16 @@ pp = pprint.PrettyPrinter(indent=4)
 class Solution:
 
     def longestPalindrome(self, s: str) -> str:
-        if s == None or len(s) == 0:
+        if not s or len(s) == 0:
             return ""
         if len(s) == 1 or len(s) == 2 and s[0] == s[1]:
             return s
-        n = len(s)
-        start = 0
         maxx = 1
+        start = 0
+        n = len(s)
         dp = [[False] * n for _ in range(n)]
         for i in range(n):
-            dp[i][i] = True
-
+            dp[i][i] = False
         for i in range(n - 1):
             if s[i] == s[i + 1]:
                 dp[i][i + 1] = True
@@ -28,8 +27,8 @@ class Solution:
                 j = i + length - 1
                 if s[i] == s[j] and dp[i + 1][j - 1]:
                     dp[i][j] = True
-                    maxx = max(maxx, length)
                     start = i
+                    maxx = max(length, maxx)
         return s[start : start + maxx]
 
 

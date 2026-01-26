@@ -15,7 +15,7 @@ class Solution:
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
         if root == None:
-            return None
+            return root
 
         if root == p or root == q:
             return root
@@ -25,5 +25,4 @@ class Solution:
 
         if left and right:
             return root
-
         return left if left else right
