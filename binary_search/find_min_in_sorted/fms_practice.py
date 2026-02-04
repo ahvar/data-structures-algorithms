@@ -3,8 +3,6 @@ from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        if nums == None or len(nums) == 0:
-            return None
         left, right = 0, len(nums) - 1
         while left < right:
             mid = (left + right) // 2

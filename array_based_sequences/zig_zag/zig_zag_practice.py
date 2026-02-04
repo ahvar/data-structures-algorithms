@@ -5,11 +5,11 @@ pp = pprint.PrettyPrinter(indent=4)
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        if numRows == 1 or numRows >= len(s):
+        if len(s) <= numRows or numRows == 1:
             return s
         rows = [""] * numRows
-        going_down = False
         curr_row = 0
+        going_down = False
         for c in s:
             rows[curr_row] += c
             if curr_row == 0 or curr_row == numRows - 1:

@@ -4,9 +4,6 @@ from typing import List
 class Solution:
 
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        if not matrix or not matrix[0]:
-            return False
-        n, m = len(matrix), len(matrix[0])
         flat = [num for row in matrix for num in row]
         left, right = 0, len(flat) - 1
         while left <= right:
