@@ -1,0 +1,28 @@
+from typing import Optional, List
+
+
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        stack = []
+        for a in asteroids:
+            if a > 0:
+                stack.append(a)
+                continue
+            alive = True
+            while alive and stack and stack[-1] > 0:
+                if stack[-1] < abs(a):
+                    stack.pop()
+                elif stack[-1] == abs(a):
+                    stack.pop()
+                    alive = False
+                else:
+                    alive = False
+            if alive:
+                stack.append(a)
+        return stack
+
+
+if __name__ == "__main__":
+    asteroids = [-2, -2, -2, 1]
+    solution = Solution()
+    print(solution.asteroidCollision(asteroids))

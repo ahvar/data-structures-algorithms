@@ -10,10 +10,10 @@ from typing import Optional
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if head == None:
-            return
-        curr = head
+        if not head:
+            return False
         seen = set()
+        curr = head
         while curr:
             if curr in seen:
                 return True
@@ -22,7 +22,7 @@ class Solution:
         return False
 
     def link_list(self, input):
-        if input == None or len(input) == 0 or input[0] == None:
+        if not input or len(input) == 0:
             return
         head = ListNode(input[0])
         curr = head
@@ -34,6 +34,7 @@ class Solution:
 
 
 if __name__ == "__main__":
+
     input = [3, 2, 0, -4]
     pos = 1
     head = ListNode(input[0])

@@ -1,5 +1,5 @@
-Given two strings s and t, return true if they are both one edit distance apart,
-otherwise return false.
+Given two strings s and t, return true if they are both one edit
+distance apart, otherwise return false.
 
 A string s is said to be one distance apart from a string t if you can:
 

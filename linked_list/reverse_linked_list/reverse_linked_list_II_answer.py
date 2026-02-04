@@ -26,6 +26,6 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = nxt
-        prev.next = lnode
-        before_left.next = curr
+        before_left.next = prev
+        lnode.next = curr
         return dummy.next

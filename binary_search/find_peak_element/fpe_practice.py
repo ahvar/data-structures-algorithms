@@ -3,17 +3,16 @@ from typing import List
 
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        if nums == None or len(nums) == 0:
-            return None
+        if not nums or len(nums) == 0:
+            return
         left, right = 0, len(nums) - 1
         while left < right:
-            mid = (left + right) // 2
-            if nums[mid - 1] < nums[mid] > nums[mid + 1]:
-                return mid
+            mid = (right + left) // 2
             if nums[mid] < nums[mid + 1]:
                 left = mid + 1
             else:
                 right = mid
+        return left
 
 
 if __name__ == "__main__":
