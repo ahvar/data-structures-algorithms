@@ -1,15 +1,19 @@
 class Solution:
 
     def closeStrings(self, word1: str, word2: str) -> bool:
-        if set(word1) != set(word2):
+        if len(word1) != len(word2):
             return False
-        freq1, freq2 = {}, {}
+        f1 = {}
+        f2 = {}
         for c in word1:
-            freq1[c] = freq1.get(c, 0) + 1
+            f1[c] = f1.get(c, 0) + 1
+
         for c in word2:
-            freq2[c] = freq2.get(c, 0) + 1
-        vals1 = sorted(freq1.values())
-        vals2 = sorted(freq2.values())
+            f2[c] = f2.get(c, 0) + 1
+
+        vals1 = sorted(f1.values())
+        vals2 = sorted(f2.values())
+
         return vals1 == vals2
 
 

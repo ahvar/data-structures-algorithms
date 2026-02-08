@@ -18,21 +18,20 @@ class Solution:
             return l2
         if not l2:
             return l1
-        carry = 0
         dummy = ListNode()
-        result = dummy
+        curr = dummy
+        carry = 0
         while l1 or l2 or carry:
-            l1_val = l1.val if l1 else 0
-            l2_val = l2.val if l2 else 0
-            total = l1_val + l2_val + carry
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            total = val1 + val2 + carry
             carry = total // 10
             digit = total % 10
-            result.next = ListNode(digit)
-            result = result.next
+            curr.next = ListNode(digit)
+            curr = curr.next
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
-
-        return result.next
+        return dummy.next
 
 
 if __name__ == "__main__":

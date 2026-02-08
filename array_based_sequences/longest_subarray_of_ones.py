@@ -20,7 +20,10 @@ Input: nums = [1,1,1]
 Output: 2
 Explanation: You must delete one element.
 """
+
 from typing import List
+
+
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
         if all(x == 1 for x in nums):
@@ -41,9 +44,7 @@ class Solution:
         return max_length
 
 
-
 if __name__ == "__main__":
-    nums = [1,1,0,1]
+    nums = [1, 1, 0, 1]
     solution = Solution()
     print(solution.longestSubarray(nums))
-

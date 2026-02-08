@@ -13,16 +13,17 @@ from collections import deque
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        result = []
+        if not root:
+            return []
+        stack = []
 
         def dfs(node, depth):
             if not node:
                 return
-            if depth == len(result):
-                result.append(node.val)
-
+            if depth == len(stack):
+                stack.append(node.val)
             dfs(node.right, depth + 1)
             dfs(node.left, depth + 1)
 
         self.rightSideView(root, 0)
-        return result
+        return stack

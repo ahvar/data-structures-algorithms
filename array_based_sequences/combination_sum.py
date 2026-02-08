@@ -17,7 +17,10 @@ Notes:
 2. one list of one integer all == to the target are among the unique combinations of candidate integers
 
 """
+
 from typing import List
+
+
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         self.candidates = candidates
@@ -38,22 +41,23 @@ class Solution:
             return
         if start > self.max_i:
             return
-        
+
         ub = self.max_i
         while ub >= start and self.candidates[ub] > remain:
             ub -= 1
 
         if ub < start:
             return
-        
+
         for i in range(start, ub + 1):
             val = self.candidates[i]
             path.append(val)
-            self._dfs(start=i, remain=remain-val, path=path)
+            self._dfs(start=i, remain=remain - val, path=path)
             path.pop()
 
+
 if __name__ == "__main__":
-    candidates = [2,3]
+    candidates = [2, 3]
     target = 6
     solution = Solution()
     solution.combinationSum(candidates, target)

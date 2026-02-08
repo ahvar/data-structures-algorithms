@@ -4,7 +4,10 @@ and each element in the array represents your maximum jump length at that positi
 
 Return true if you can reach the last index, or false otherwise.
 """
+
 from typing import List
+
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         n = len(nums)
@@ -19,6 +22,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums = [2,3,1,1,4]
+    nums = [2, 3, 1, 1, 4]
     solution = Solution()
     solution.canJump(nums)

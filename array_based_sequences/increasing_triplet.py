@@ -19,20 +19,20 @@ Output: true
 Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 < nums[4] == 4 < nums[5] == 6.
 
 """
+
 from typing import List
+
+
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
-        
+
         for num in nums:
             i = num
-            
 
         return False
-                    
-                
 
-    
+
 if __name__ == "__main__":
-    nums = [0,4,2,0,8,-1,9]
+    nums = [0, 4, 2, 0, 8, -1, 9]
     solution = Solution()
     print(solution.increasingTriplet(nums))

@@ -19,20 +19,27 @@ Input: numbers = [2,3,4], target = 6
 Output: [1,3]
 Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
 """
+
 from typing import List
+
+
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        if not numbers: return []
+        if not numbers:
+            return []
         left = 0
         right = len(numbers) - 1
         while left < right:
-            if numbers[left] + numbers[right] == target: return [left+1,right+1]
-            if numbers[left] + numbers[right] > target: right -= 1
-            elif numbers[left] + numbers[right] < target: left += 1
+            if numbers[left] + numbers[right] == target:
+                return [left + 1, right + 1]
+            if numbers[left] + numbers[right] > target:
+                right -= 1
+            elif numbers[left] + numbers[right] < target:
+                left += 1
 
 
 if __name__ == "__main__":
-    numbers = [2,7,11,15]
+    numbers = [2, 7, 11, 15]
     target = 9
     solution = Solution()
     print(solution.twoSum(numbers, target))

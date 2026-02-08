@@ -5,7 +5,8 @@ all the unique quadruplets:
 
 0 <= a, b, c, d < n (indicies are >= 0 and < n)
 a, b, c, and d are distinct (indicies are distinct)
-nums[a] + nums[b] + nums[c] + nums[d] == target (values at indicies sum to target)
+nums[a] + nums[b] + nums[c] + nums[d] == target
+(values at indicies sum to target)
 
 You may return the answer in any order.
 """
