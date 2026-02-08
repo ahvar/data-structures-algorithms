@@ -17,7 +17,10 @@ Example 3:
 Input: target = 11, nums = [1,1,1,1,1,1,1,1]
 Output: 0
 """
+
 from typing import List
+
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         n = len(nums)
@@ -37,7 +40,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums = [1,2,3,4,5]
+    nums = [1, 2, 3, 4, 5]
     target = 15
     solution = Solution()
     print(solution.minSubArrayLen(target, nums))

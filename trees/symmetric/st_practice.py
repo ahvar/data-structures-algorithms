@@ -10,17 +10,19 @@ class TreeNode:
 
 
 class Solution:
-    def _check(self, p, q):
-        if p == None and q == None:
-            return True
-        if p == None or q == None:
-            return False
-        if p.val != q.val:
-            return False
 
-        return self._check(p.left, q.right) and self._check(p.right, q.left)
+    def _check(self, left, right):
+        if not left and not right:
+            return True
+        if not left or not right:
+            return False
+        if left.val != right.val:
+            return False
+        left = self._check(left.left, right.right)
+        right = self._check(left.right, right.left)
+        return left and right
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        return self._check(root.left, root.right)
+        self._check(root.left, root.right)

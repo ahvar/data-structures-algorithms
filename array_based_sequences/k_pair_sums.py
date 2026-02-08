@@ -22,7 +22,10 @@ Explanation: Starting with nums = [3,1,3,4,3]:
 There are no more pairs that sum up to 6, hence a total of 1 operation.
 
 """
+
 from typing import List
+
+
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
         nums.sort()
@@ -40,10 +43,9 @@ class Solution:
                 right -= 1
         return count
 
-            
 
 if __name__ == "__main__":
-    nums = [1,2,3,4]
+    nums = [1, 2, 3, 4]
     k = 5
     solution = Solution()
     solution.maxOperations(nums, k)

@@ -17,7 +17,10 @@ Example 2:
 Input: citations = [1,3,1]
 Output: 1
 """
+
 from typing import List
+
+
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
         c = sorted(citations, reverse=True)
@@ -28,12 +31,7 @@ class Solution:
             else:
                 break
         return hindex
-            
 
-
-
-          
 
 if __name__ == "__main__":
     solution = Solution()
-

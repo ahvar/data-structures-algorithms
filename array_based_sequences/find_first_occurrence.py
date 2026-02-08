@@ -22,7 +22,7 @@ class Solution:
         for right in range(len(haystack)):
             if haystack[right] == needle[0]:
                 left = right + 1
-                for i in range(1,len(needle)):
+                for i in range(1, len(needle)):
                     if left <= len(haystack) - 1:
                         if needle[i] != haystack[left]:
                             break
@@ -33,9 +33,7 @@ class Solution:
                     return right
         return -1
 
-            
 
-    
 if __name__ == "__main__":
     haystack = "paiwoehiwoewlq"
     needle = "woew"

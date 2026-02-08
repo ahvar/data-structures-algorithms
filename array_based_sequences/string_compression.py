@@ -28,16 +28,21 @@ Input: chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
 Output: Return 4, and the first 4 characters of the input array should be: ["a","b","1","2"].
 Explanation: The groups are "a" and "bbbbbbbbbbbb". This compresses to "ab12".
 """
+
 from typing import List
+
+
 class Solution:
     def compress(self, chars: List[str]) -> int:
         i = write_index = 0
         while i < len(chars):
-            current_char = chars[i] # first char of new group
+            current_char = chars[i]  # first char of new group
             j = i
-            while j < len(chars) and chars[j] == current_char: # walk right until first char of new group
+            while (
+                j < len(chars) and chars[j] == current_char
+            ):  # walk right until first char of new group
                 j += 1
-            group_length = j - i # compute group lenth
+            group_length = j - i  # compute group lenth
             chars[write_index] = current_char
             write_index += 1
             if group_length > 1:
@@ -47,7 +52,8 @@ class Solution:
             i = j
         return write_index
 
+
 if __name__ == "__main__":
-    chars = ["b","0","l","A","]","+","O","5","j","4"]
+    chars = ["b", "0", "l", "A", "]", "+", "O", "5", "j", "4"]
     solution = Solution()
     print(solution.compress(chars))

@@ -21,10 +21,13 @@ Input: s = "luffy is still joyboy"
 Output: 6
 Explanation: The last word is "joyboy" with length 6.
 """
+
+
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         words = s.split()
         return len(words[-1])
+
 
 if __name__ == "__main__":
     s = "luffy is still joyboy"

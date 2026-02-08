@@ -8,7 +8,7 @@ class Solution:
             if (cs in s2t and s2t[cs] != ct) or (ct in t2s and t2s[ct] != cs):
                 return False
             s2t[cs] = ct
-            t2s[ct] = ct
+            t2s[ct] = cs
         return True
 
 

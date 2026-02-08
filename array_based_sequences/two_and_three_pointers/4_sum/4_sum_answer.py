@@ -1,15 +1,3 @@
-"""
-Given an array nums of n integers, return an array of all the unique
-quadruplets:
-[nums[a], nums[b], nums[c], nums[d]] such that:
-
-0 <= a, b, c, d < n (indicies are >= 0 and < n)
-a, b, c, and d are distinct (indicies are distinct)
-nums[a] + nums[b] + nums[c] + nums[d] == target (values at indicies sum to target)
-
-You may return the answer in any order.
-"""
-
 from typing import List
 
 
@@ -32,7 +20,7 @@ class Solution:
                         result.append([nums[i], nums[j], nums[left], nums[right]])
                         left += 1
                         right -= 1
-                        while left < right and nums[left] == nums[left - 1]:
+                        while left < right and nums[left] == nums[left + 1]:
                             left += 1
                         while left < right and nums[right] == nums[right + 1]:
                             right -= 1

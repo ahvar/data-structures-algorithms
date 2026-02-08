@@ -5,10 +5,13 @@ it reads the same forward and backward. Alphanumeric characters include letters 
 
 Given a string s, return true if it is a palindrome, or false otherwise.
 """
+
+
 class Solution:
     def _clean_string(s):
         n = len(s)
         return n, "".join([char for char in s if char.isalnum()])
+
     def is_palindrome_two_pointer(self, s: str) -> bool:
         n, clean = self._clean_string(s)
         right = len(s) - 1
@@ -23,7 +26,6 @@ class Solution:
             if s[left] != s[right]:
                 return False
             right -= 1
-            
 
     def isPalindrome(self, s: str) -> bool:
         n, clean = self._clean_string(s)
@@ -34,7 +36,6 @@ class Solution:
         print(clean.lower())
         print(clean[::-1].lower())
         return clean.lower() == clean[::-1].lower()
-
 
 
 if __name__ == "__main__":

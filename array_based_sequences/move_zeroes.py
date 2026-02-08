@@ -14,7 +14,10 @@ Input: nums = [0]
 Output: [0]
 
 """
+
 from typing import List
+
+
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
         """
@@ -30,10 +33,7 @@ class Solution:
         return nums
 
 
-
 if __name__ == "__main__":
-    nums = [0,1,0,3,12]
+    nums = [0, 1, 0, 3, 12]
     solution = Solution()
     print(solution.moveZeroes(nums))
-
-
