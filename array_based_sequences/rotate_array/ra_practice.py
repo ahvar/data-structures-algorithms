@@ -3,10 +3,10 @@ from typing import List
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        n = len(nums)
-        k %= n
-        if k == 0:
+        if not nums:
             return
+        n = len(nums)
+        k %= n  # handle case where k is more than len(nums)
         temp = nums[-k:]
         for i in range(n - 1, k - 1, -1):
             nums[i] = nums[i - k]

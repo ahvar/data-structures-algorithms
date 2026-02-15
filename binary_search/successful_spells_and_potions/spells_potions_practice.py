@@ -5,21 +5,23 @@ class Solution:
     def successfulPairs(
         self, spells: List[int], potions: List[int], success: int
     ) -> List[int]:
+        if not potions:
+            return []
         potions.sort()
-        m = len(potions)
-        pairs = []
+        result = []
         for spell in spells:
             left = 0
             right = len(potions) - 1
-            idx = m
-            while left <= right:
+            idx = len(potions)
+            while left < right:
                 mid = (left + right) // 2
                 if potions[mid] * spell >= success:
                     idx = mid
                     right = mid - 1
                 else:
                     left = mid + 1
-            pairs.append(m - idx)
+            result.append(len(potions) - idx)
+        return result
 
 
 if __name__ == "__main__":

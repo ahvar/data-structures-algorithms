@@ -8,12 +8,12 @@ class Solution:
             if index == len(word):
                 return True
             if (
-                row >= m
-                or row < 0
-                or col >= n
-                or col < 0
-                or visited[row][col]
-                or board[row][col] != word[index]
+                row >= m  # went past last row
+                or row < 0  # went past first row
+                or col >= n  # went past last column
+                or col < 0  # went past first column
+                or board[row][col] != word[index]  # char mismatch
+                or visited[row][col]  # already looked here
             ):
                 return False
 
@@ -31,8 +31,9 @@ class Solution:
             visited[row][col] = False
             return False
 
-        if not board or len(board) == 0 or not word or len(word) == 0:
+        if not board or not word:
             return False
+
         m, n = len(board), len(board[0])
         visited = [[False] * n for _ in range(m)]
         for row in range(m):

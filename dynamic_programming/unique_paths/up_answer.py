@@ -16,7 +16,7 @@ class Solution:
         for i in range(1, m):
             for j in range(1, n):
                 dp[i][j] = sum([dp[i][j - 1], dp[i - 1][j]])
-        pp.pprint(dp)
+
         return dp[m - 1][n - 1]
 
 

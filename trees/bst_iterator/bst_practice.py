@@ -34,7 +34,7 @@ class BSTIterator:
 
 
 def build_tree(input):
-    if not input or len(input) == 0 or input[0] == None:
+    if not input or input[0] == None:
         return
     root = TreeNode(input[0])
     fifo = Queue()
@@ -54,7 +54,6 @@ def build_tree(input):
             node.right = right
             fifo.put(right)
         index += 1
-
     return root
 
 

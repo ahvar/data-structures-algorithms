@@ -4,7 +4,7 @@ from typing import List
 class Solution:
 
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        if not prices or len(prices) == 0:
+        if not prices:
             return 0
         n = len(prices)
         hold = [0 for _ in range(n + 1)]
