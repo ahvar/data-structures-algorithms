@@ -16,13 +16,14 @@ class Solution:
             return True
         if not left or not right:
             return False
+
         if left.val != right.val:
             return False
-        left = self._check(left.left, right.right)
-        right = self._check(left.right, right.left)
-        return left and right
+        return self._check(left.left, right.right) and self._check(
+            left.right, right.left
+        )
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        self._check(root.left, root.right)
+        return self._check(root.left, root.right)

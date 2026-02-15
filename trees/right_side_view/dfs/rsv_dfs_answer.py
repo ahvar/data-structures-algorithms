@@ -24,5 +24,5 @@ class Solution:
             dfs(node.right, depth + 1)
             dfs(node.left, depth + 1)
 
-        self.rightSideView(root, 0)
+        dfs(root, 0)
         return result

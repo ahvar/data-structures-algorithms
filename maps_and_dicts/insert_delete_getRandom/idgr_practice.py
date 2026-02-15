@@ -9,7 +9,7 @@ class RandomizedSet:
 
     def insert(self, val: int) -> bool:
         if val in self._idx:
-            return False
+            return False  # already exists
         self._vals.append(val)
         self._idx[val] = len(self._vals) - 1
         return True
@@ -17,13 +17,12 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self._idx:
             return False
-        idx = self._idx[val]
+        i = self._idx[val]
         last_val = self._val[-1]
-        self._vals[idx] = last_val
-        self._idx[last_val] = idx
+        self._vals[i] = last_val
         self._vals.pop()
         del self._idx[val]
         return True
 
     def getRandom(self) -> int:
-        return random.choice(self._vals)
+        return random(self._vals)

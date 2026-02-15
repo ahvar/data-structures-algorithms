@@ -14,11 +14,10 @@ class Solution:
     ) -> Optional[ListNode]:
         if not head:
             return
-        dummy = ListNode(0, head)
+        dummy = ListNode()
         before_left = dummy
         for _ in range(left - 1):
             before_left = before_left.next
-
         lnode = before_left.next
         prev = None
         curr = lnode
@@ -29,14 +28,14 @@ class Solution:
             curr = nxt
         before_left.next = prev
         lnode.next = curr
-        return dummy.next
 
     def link_list(self, input):
-        if not input or len(input) == 0:
+        if not input or input[0] == None:
             return
         head = ListNode(input[0])
         curr = head
-        for i in range(1, len(input)):
+        n = len(input)
+        for i in range(1, n):
             nxt = ListNode(input[i])
             curr.next = nxt
             curr = curr.next
