@@ -12,8 +12,8 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not head:
             return False
-        seen = set()
         curr = head
+        seen = set()
         while curr:
             if curr in seen:
                 return True

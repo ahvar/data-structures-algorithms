@@ -6,9 +6,9 @@ class Solution:
         if not strs:
             return ""
         prefix = strs[0]
-        for s in strs[1:]:
+        for s in strs:
             i = 0
-            while i < len(prefix) and i < len(s) and prefix[i] == s[i]:
+            while i < len(s) and i < len(prefix) and s[i] == prefix[i]:
                 i += 1
             prefix = s[:i]
             if not prefix:
@@ -18,8 +18,10 @@ class Solution:
 
 class TestSolution:
 
+    def setup_method(self):
+        self.solution = Solution()
+
     def test_longest(self):
-        s = Solution()
-        strs = ["flower", "flow", "flight"]
-        prefix = s.longestCommonPrefix(strs)
-        assert prefix == "fl"
+        expected = "fl"
+        strs = ["dog", "flower", "flow", "flight"]
+        assert self.solution.longestCommonPrefix(strs) == expected

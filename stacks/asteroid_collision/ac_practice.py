@@ -4,19 +4,30 @@ from typing import List
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
-        for a in asteroids:
-            if a > 0:
-                stack.append(a)
+        output = []
+        for asteroid in asteroids:
+            if asteroid > 0:
+                stack.append(asteroid)
                 continue
             alive = True
             while alive and stack and stack[-1] > 0:
-                if stack[-1] < abs(a):
+                if stack[-1] < abs(asteroid):
                     stack.pop()
-                elif stack[-1] == abs(a):
+                elif stack[-1] == abs(asteroid):
                     stack.pop()
                     alive = False
                 else:
                     alive = False
             if alive:
-                stack.append(a)
-        return stack
+                stack.append(asteroid)
+        return output
+
+
+class TestSolution:
+
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_asteroid_collison(self):
+        asteroids = [5, 10, -15]
+        assert self.solution.asteroidCollision(asteroids) == [5, 10]

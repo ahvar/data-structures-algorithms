@@ -21,8 +21,29 @@ class Solution:
             k -= 1
         while j >= 0:
             nums1[k] = nums2[j]
-            j -= 1
             k -= 1
+            j -= 1
+        return nums1
+
+
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_other_merge(self):
+        nums1 = [1, 2, 4, 5, 19, 0, 0, 0, 0]
+        nums2 = [5, 6, 7, 20]
+        assert self.solution.other_merge(nums1, 5, nums2, 4) == [
+            1,
+            2,
+            4,
+            5,
+            5,
+            6,
+            7,
+            19,
+            20,
+        ]
 
 
 if __name__ == "__main__":

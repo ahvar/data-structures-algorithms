@@ -13,9 +13,6 @@ from collections import deque
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-
         result = []
         queue = deque([root])
         while queue:
@@ -28,7 +25,6 @@ class Solution:
 
                 if node.left:
                     queue.append(node.left)
-
                 if node.right:
                     queue.append(node.right)
         return result
@@ -46,4 +42,21 @@ class Solution:
             self.right_side_view_dfs(node.left, depth + 1)
 
         self.right_side_view_dfs(root, 0)
+        return result
+
+    def right_side_view_bfs(self, root: Optional[TreeNode]) -> List[int]:
+        result = []
+        queue = deque([root])
+        while queue:
+            level_size = len(queue)
+            for i in range(level_size):
+                node = queue.popleft()
+
+                if i == level_size - 1:
+                    result.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
         return result

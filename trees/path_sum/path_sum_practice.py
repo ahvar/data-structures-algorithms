@@ -17,8 +17,8 @@ class Solution:
         if not root.left and not root.right:
             return root.val == targetSum
 
-        left = self.hasPathSum(root.left, targetSum - root.val)
-        right = self.hasPathSum(root.right, targetSum - root.val)
+        left = self.hasPathSum(root.left, root.val - targetSum)
+        right = self.hasPathSum(root.right, root.val - targetSum)
         return left or right
 
     def build_tree(self, input):
