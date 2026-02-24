@@ -1,7 +1,9 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        n = len(s)
+        if not s:
+            return 0
         left = 0
+        n = len(s)
         seen = set()
         maxx = 0
         for right in range(n):
@@ -9,5 +11,5 @@ class Solution:
                 seen.remove(s[left])
                 left += 1
             seen.add(s[right])
-            maxx = max(maxx, right - left + 1)
+            maxx = max(right - left + 1, maxx)
         return maxx

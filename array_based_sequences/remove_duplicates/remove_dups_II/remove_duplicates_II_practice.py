@@ -4,17 +4,18 @@ from typing import List
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if not nums:
-            return -1
-        k = 2
-        n = len(nums)
-        for i in range(2, n):
-            if nums[i] != nums[k - 2]:
-                nums[k] = nums[i]
-                k += 1
-        return k
+            return 0
+        write = 2
+        for read in range(2, len(nums)):
+            if nums[read] != nums[write - 2]:
+                nums[write] = nums[read]
+                write += 1
+        return write
 
 
-if __name__ == "__main__":
-    nums = [1, 1, 1, 2, 2, 3]
-    solution = Solution()
-    solution.removeDuplicates(nums)
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_remove(self):
+        assert self.solution.removeDuplicates([1, 1, 1, 2, 2, 3]) == 5

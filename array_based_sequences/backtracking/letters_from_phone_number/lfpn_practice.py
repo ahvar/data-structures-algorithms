@@ -17,15 +17,14 @@ class Solution:
         }
         result = []
 
-        def backtrack(index, path):
-
+        def backtrack(path, index):
             if index == len(digits):
                 result.append("".join(path))
                 return
             for char in phone[digits[index]]:
                 path.append(char)
-                backtrack(index + 1, path)
+                backtrack(path, index + 1)
                 path.pop()
 
-        backtrack(0, [])
+        backtrack([], 0)
         return result

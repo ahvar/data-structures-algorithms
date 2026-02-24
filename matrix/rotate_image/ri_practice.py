@@ -3,9 +3,10 @@ from typing import List
 
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
-        for row in range(len(matrix)):
-            m = len(matrix[row])
-            for col in range(row, m):
-                matrix[row][col], matrix[col][row] = matrix[col][row], matrix[row][col]
+        n = len(matrix)
+        for i in range(n):
+            m = matrix[0]
+            for j in range(i, m):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         for row in matrix:
-            row.reverse()
+            reversed(row)
