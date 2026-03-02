@@ -15,22 +15,22 @@ class BSTIterator:
     def _push_left(self, node):
         if not node:
             return
-        self._stack.append(node)
+        self._array.append(node)
         self._push_left(node.left)
 
     def __init__(self, root: Optional[TreeNode]):
-        self._stack = []
+        self._array = []
         self._push_left(root)
 
     def next(self) -> int:
-        node = self._stack.pop()
+        node = self._array.pop()
         val = node.val
         if node.right:
             self._push_left(node.right)
         return val
 
     def hasNext(self) -> bool:
-        return len(self._stack) > 0
+        return len(self._array) > 0
 
 
 def build_tree(input):

@@ -6,9 +6,17 @@ class Solution:
         if not nums:
             return 0
         write = 0
-        n = len(nums)
-        for i in range(n):
-            if nums[i] != val:
-                nums[write] = nums[i]
+        for left in range(len(nums)):
+            if nums[left] != val:
+                nums[write] = nums[left]
                 write += 1
         return write
+
+
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_remove(self):
+        result = self.solution.removeElement([3, 4, 1, 6, 3, 2, 10], 3)
+        assert result == 5

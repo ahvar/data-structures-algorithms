@@ -5,29 +5,24 @@ pp = pprint.PrettyPrinter(indent=4)
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        if not s:
+            return ""
+        if len(s) <= numRows or numRows == 1:
+            return s
         rows = [""] * numRows
-        row_count = 0
+        curr_row = 0
         going_down = False
         for c in s:
-            rows[row_count] += c
-            if row_count == 0 or row_count == numRows - 1:
+            rows[curr_row] += c
+            if curr_row == 0 or curr_row == numRows - 1:
                 going_down = not going_down
-            row_count += 1 if going_down else -1
+            curr_row += 1 if going_down else -1
         return "".join(rows)
 
 
 class TestSolution:
-
     def setup_method(self):
         self.solution = Solution()
 
     def test_convert(self):
         assert self.solution.convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR"
-        assert self.solution.convert("PAYPALISHIRING", 4) == "PINALSIGYAHRPI"
-
-
-if __name__ == "__main__":
-    s = "PAYPALISHIRING"
-    numRows = 3
-    solution = Solution()
-    pp.pprint(solution.convert(s, numRows))

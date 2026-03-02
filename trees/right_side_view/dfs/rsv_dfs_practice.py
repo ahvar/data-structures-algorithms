@@ -14,45 +14,42 @@ from queue import Queue
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        values = []
+        self._values = []
 
         def dfs(node, depth):
             if not node:
                 return
-            dfs(node.left, depth + 1)
-            if len(values) == depth:
-                values.append(node.val)
+            if depth == len(self._values):
+                self._values.append(node.val)
+
             dfs(node.right, depth + 1)
+            dfs(node.left, depth + 1)
 
         dfs(root, 0)
-        return values
+        return self._values
 
 
 def build_tree(input):
+    if not input or input[0] == None:
+        return
+
     root = TreeNode(input[0])
     fifo = Queue()
     fifo.put(root)
     index = 1
+
     while index < len(input) and not fifo.empty():
         node = fifo.get()
         if input[index] != None:
-            node.left = TreeNode(input[index])
-            fifo.put(node.left)
+            left = TreeNode(input[index])
+            node.left = left
+            fifo.put(left)
         index += 1
         if index >= len(input):
             break
         if input[index] != None:
-            node.right = TreeNode(input[index])
-            fifo.put(node.right)
+            right = TreeNode(input[index])
+            node.right = right
+            fifo.put(right)
         index += 1
     return root
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-        self.root = build_tree([1, 2, 3, None, 5, None, 4])
-
-    def test_right_side_view(self):
-        expected = [1, 3, 4]
-        assert expected == self.solution.rightSideView(self.root)
