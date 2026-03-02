@@ -5,26 +5,25 @@ class Solution:
             return b
         if not b:
             return a
-        aptr = len(a) - 1
-        bptr = len(b) - 1
+        a_ptr = len(a) - 1
+        b_ptr = len(b) - 1
         carry = 0
         result = []
-        while aptr >= 0 or bptr >= 0 or carry:
-            aval = int(a[aptr]) if aptr >= 0 else 0
-            bval = int(b[bptr]) if bptr >= 0 else 0
-            total = aval + bval + carry
+        while a_ptr >= 0 or b_ptr >= 0 or carry:
+            a_val = int(a[a_ptr]) if a_ptr >= 0 else 0
+            b_val = int(b[b_ptr]) if b_ptr >= 0 else 0
+            total = carry + a_val + b_val
             digit = total % 2
             carry = total // 2
             result.append(str(digit))
-            aptr -= 1
-            bptr -= 1
+            a_ptr -= 1
+            b_ptr -= 1
         return "".join(reversed(result))
 
 
-class TestAddBinary:
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
 
     def test_add_binary(self):
-        a = "11"
-        b = "1"
-        s = Solution()
-        assert s.addBinary(a, b) == "100"
+        assert self.solution.addBinary("11", "1") == "100"
