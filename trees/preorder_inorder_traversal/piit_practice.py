@@ -12,8 +12,8 @@ class TreeNode:
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         if not preorder or not inorder:
-            return None
-        root_val = preorder[0]
+            return []
+        root_val = preorder[0]  # preorder so first element is root val
         root = TreeNode(root_val)
         inorder_index = inorder.index(root_val)
         left_size = inorder_index

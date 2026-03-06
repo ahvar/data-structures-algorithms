@@ -5,25 +5,25 @@ class RandomizedSet:
 
     def __init__(self):
         self._values = []
-        self._indexes = {}
+        self._idx = {}
 
     def insert(self, val: int) -> bool:
-        if val not in self._indexes:
-            self._values.append(val)
-            self._indexes[val] = len(self._values) - 1
-            return True
-        return False
+        if val in self._idx:
+            return False
+        self._values.append(val)
+        idx = len(self._values) - 1
+        self._idx[val] = idx
+        return True
 
     def remove(self, val: int) -> bool:
-        if val not in self._indexes:
+        idx = self._idx.get(val, None)
+        if idx is None:
             return False
-        idx = self._indexes[val]
-        self._values[idx], self._values[len(self._values) - 1] = (
-            self._values[len(self._values) - 1],
-            self._values[idx],
-        )
-        self._values.pop(len(self._values) - 1)
-        del self._indexes[val]
+        last = self._values[-1]
+        self._values[idx] = last
+        self._idx[last] = idx
+        self._values.pop()
+        del self._idx[val]
         return True
 
     def getRandom(self) -> int:

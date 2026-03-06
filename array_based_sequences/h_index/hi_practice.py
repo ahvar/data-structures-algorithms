@@ -3,9 +3,10 @@ from typing import List
 
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        rev_citations = sorted(citations, reverse=True)
+        c = sorted(citations, reverse=True)
+        n = len(citations)
         hindex = 0
-        for i, cite in enumerate(rev_citations):
+        for i, cite in enumerate(c):
             if cite >= i + 1:
                 hindex = i + 1
             else:

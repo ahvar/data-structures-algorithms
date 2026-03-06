@@ -6,18 +6,17 @@ class Solution:
         if not nums:
             return []
         nums.sort()
-        output = []
         n = len(nums)
+        triplets = []
         for i in range(n):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
-
             left = i + 1
             right = n - 1
             while left < right:
                 total = nums[i] + nums[left] + nums[right]
                 if total == 0:
-                    output.append([nums[i], nums[left], nums[right]])
+                    triplets.append([nums[i], nums[left], nums[right]])
                     left += 1
                     right -= 1
 
@@ -32,4 +31,13 @@ class Solution:
 
                 else:
                     right -= 1
-        return output
+        return triplets
+
+
+class TestSolution:
+    def setup_method(self):
+        self.nums = [-1, 0, 1, 2, -1, -4]
+        self.solution = Solution()
+
+    def test_3sum(self):
+        assert self.solution.threeSum(self.nums) == [[-1, -1, 2], [-1, 0, 1]]
