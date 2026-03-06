@@ -13,9 +13,10 @@ class Solution:
             while alive and stack and stack[-1] > 0:
                 if stack[-1] < abs(asteroid):
                     stack.pop()
-                elif stack[-1] == abs(a):
+                elif stack[-1] == abs(asteroid):
                     stack.pop()
                     alive = False
+
                 else:
                     alive = False
             if alive:

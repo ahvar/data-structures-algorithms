@@ -19,7 +19,7 @@ class RandomizedSet:
         if val not in self._idx:
             return False
         idx = self._idx[val]
-        last_val = self._val[-1]
+        last_val = self._vals[-1]
         self._vals[idx] = last_val
         self._idx[last_val] = idx
         self._vals.pop()

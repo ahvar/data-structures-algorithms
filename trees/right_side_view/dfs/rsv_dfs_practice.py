@@ -14,19 +14,21 @@ from queue import Queue
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        self._values = []
+        values = []
 
         def dfs(node, depth):
             if not node:
                 return
-            if depth == len(self._values):
-                self._values.append(node.val)
+
+            if depth == len(values):
+                values.append(node.val)
 
             dfs(node.right, depth + 1)
+
             dfs(node.left, depth + 1)
 
         dfs(root, 0)
-        return self._values
+        return values
 
 
 def build_tree(input):

@@ -12,19 +12,18 @@ from collections import deque
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
-        values = []
+
         queue = deque([root])
+        values = []
         while queue:
-            level_len = len(values)
+            level_len = len(queue)
             for i in range(level_len):
                 node = queue.popleft()
                 if i == level_len - 1:
-                    values.append(node.val)
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
 
+                    values.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
         return values

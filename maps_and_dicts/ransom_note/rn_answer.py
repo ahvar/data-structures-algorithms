@@ -1,17 +1,12 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        if len(ransomNote) == 0:
-            return True
-        magazine_letters = {}
-        for letter in magazine:
-            if letter not in magazine_letters:
-                magazine_letters[letter] = 0
-            magazine_letters[letter] += 1
-
-        for letter in ransomNote:
-            if letter not in magazine_letters or magazine_letters[letter] == 0:
+        mag_letters = {}
+        for c in magazine:
+            mag_letters[c] = mag_letters.get(c, 0) + 1
+        for c in ransomNote:
+            if c not in mag_letters or mag_letters[c] == 0:
                 return False
-            magazine_letters[letter] -= 1
+            mag_letters[c] -= 1
         return True
 
 
