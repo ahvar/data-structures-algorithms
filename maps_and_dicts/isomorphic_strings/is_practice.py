@@ -5,8 +5,9 @@ class Solution:
         s2t = {}
         t2s = {}
         for cs, ct in zip(s, t):
-            if (cs in s2t and s2t[cs] != ct) or (ct in t2s or t2s[ct] != cs):
+            if ( cs in s2t and s2t[cs] != ct) or ( if ct in t2s and t2s[ct] != cs):
                 return False
             s2t[cs] = ct
             t2s[ct] = cs
         return True
+

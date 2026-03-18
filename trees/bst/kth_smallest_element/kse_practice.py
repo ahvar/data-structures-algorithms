@@ -10,14 +10,15 @@ from typing import Optional
 
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        self.k = k
         self.ans = None
 
         def inorder(node):
             if not node or self.ans is not None:
                 return
             inorder(node.left)
-            k -= 1
-            if k == 0:
+            self.k -= 1
+            if self.k == 0:
                 self.ans = node.val
                 return
             inorder(node.right)

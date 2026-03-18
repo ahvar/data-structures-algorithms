@@ -8,16 +8,14 @@ class Solution:
             if asteroid > 0:
                 stack.append(asteroid)
                 continue
-
             alive = True
             while alive and stack and stack[-1] > 0:
                 if stack[-1] < abs(asteroid):
                     stack.pop()
-                elif stack[-1] == abs(asteroid):
-                    stack.pop()
+                elif stack[-1] > abs(asteroid):
                     alive = False
-
                 else:
+                    stack.pop()
                     alive = False
             if alive:
                 stack.append(asteroid)

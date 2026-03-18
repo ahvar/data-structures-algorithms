@@ -23,12 +23,10 @@ class Solution:
             if depth == len(values):
                 values.append(node.val)
 
+            dfs(node.left, depth + 1)
             dfs(node.right, depth + 1)
 
-            dfs(node.left, depth + 1)
-
         dfs(root, 0)
-        return values
 
 
 def build_tree(input):
@@ -39,7 +37,6 @@ def build_tree(input):
     fifo = Queue()
     fifo.put(root)
     index = 1
-
     while index < len(input) and not fifo.empty():
         node = fifo.get()
         if input[index] != None:

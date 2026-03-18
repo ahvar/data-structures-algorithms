@@ -13,7 +13,7 @@ from queue import Queue
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return None
+            return root
         root.left, root.right = root.right, root.left
 
         self.invertTree(root.left)
@@ -22,24 +22,27 @@ class Solution:
 
 
 def build_tree(input):
+    # assuming this input is in preorder
     if not input or input[0] == None:
         return
-    fifo = Queue()
-    root = TreeNode(input[0])
-    fifo.put(root)
-    index = 1
-    while index < len(input) and not fifo.empty():
-        node = fifo.get()
-        if input[index] != None:
-            left = TreeNode(input[index])
-            node.left = left
-            fifo.put(left)
-        index += 1
-        if index >= len(input):
+    fifo = Queue()  # init the first-in-first-out queue
+    root = TreeNode(input[0])  # init the root node
+    fifo.put(root)  # put it in the queue
+    index = 1  # init to index of the next value in input
+    # while not at the end and the queue has nodes
+    while index <= len(input) and not fifo.empty():
+        node = fifo.get()  # get the next node
+        # left first then right
+        if input[index] != None:  # do we have a val or no?
+            left = TreeNode(input[index])  # init the node
+            node.left = left  # assign it the left child
+            fifo.put(left)  # put the child in the queue
+        index += 1  # bump our counter
+        if index >= len(input):  # if we're at the end let's break
             break
-        if input[index] != None:
-            right = TreeNode(input[index])
+        if input[index] != None:  # do the same for the right child
+            right = TreeNode(index[input])
             node.right = right
             fifo.put(right)
         index += 1
-    return root
+    return root  # return the root

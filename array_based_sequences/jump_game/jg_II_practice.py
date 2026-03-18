@@ -3,17 +3,24 @@ from typing import List
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        n = len(nums)
-        farthest = 0
         current_end = 0
-        count = 0
-        for i in range(n - 1):
+        farthest = 0
+        jumps = 0
+        for i in range(len(nums) - 1):
             farthest = max(farthest, i + nums[i])
-
             if i == current_end:
-                count += 1
+                jumps += 1
                 current_end = farthest
 
                 if current_end >= len(nums) - 1:
                     break
-        return count
+        return jumps
+
+
+class TestJumps:
+
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_jumps(self):
+        assert self.solution.jump([2, 3, 1, 1, 4]) == 2
