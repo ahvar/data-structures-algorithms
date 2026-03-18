@@ -4,27 +4,26 @@ import random
 class RandomizedSet:
 
     def __init__(self):
-        self._values = []
-        self._idx = {}
+        self.values = []
+        self.idx = {}
 
     def insert(self, val: int) -> bool:
-        if val in self._idx:
+        if val in self.idx:
             return False
-        self._values.append(val)
-        idx = len(self._values) - 1
-        self._idx[val] = idx
+        self.values.append(val)
+        self.idx[val] = len(self.values) - 1
         return True
 
     def remove(self, val: int) -> bool:
-        idx = self._idx.get(val, None)
-        if idx is None:
+        if val not in self.idx:
             return False
-        last = self._values[-1]
-        self._values[idx] = last
-        self._idx[last] = idx
-        self._values.pop()
-        del self._idx[val]
+        last = self.values[-1]
+        val_idx = self.idx[val]
+        self.values[val_idx] = last
+        self.idx[last] = val_idx
+        self.values.pop()
+        del self.idx[val]
         return True
 
     def getRandom(self) -> int:
-        return random.choice(self._values)
+        return random.choice(self.values)

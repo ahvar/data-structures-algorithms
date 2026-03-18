@@ -3,9 +3,6 @@ from typing import List
 
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        if not coins or len(coins) == 0:
-            return -1
-        # create array of total amounts
         dp = [amount + 1 for _ in range(amount + 1)]
         dp[0] = 0
         for i in range(1, amount + 1):

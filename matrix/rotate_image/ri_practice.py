@@ -6,14 +6,13 @@ pp = PrettyPrinter(indent=4)
 
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
-        m = len(matrix)
-        for i in range(m):
-            n = len(matrix[i])
-            for j in range(i, n):
+        n = len(matrix)
+        for i in range(n):
+            m = len(matrix[i])
+            for j in range(i, m):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         for row in matrix:
             row.reverse()
-        return matrix
 
 
 if __name__ == "__main__":

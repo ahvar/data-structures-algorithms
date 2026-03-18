@@ -11,14 +11,13 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if not preorder or not inorder:
-            return []
-        root_val = preorder[0]  # preorder so first element is root val
+
+        root_val = preorder[0]
         root = TreeNode(root_val)
         inorder_index = inorder.index(root_val)
-        left_size = inorder_index
-        root.left = self.buildTree(preorder[1 : 1 + left_size], inorder[:inorder_index])
+        leftsize = inorder_index
+        root.left = self.buildTree(preorder[1 : leftsize + 1], inorder[:inorder_index])
         root.right = self.buildTree(
-            preorder[1 + left_size :], inorder[inorder_index + 1 :]
+            preorder[1 + leftsize :], inorder[: inorder_index + 1 :]
         )
         return root

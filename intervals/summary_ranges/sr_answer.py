@@ -14,6 +14,6 @@ class Solution:
                     result.append(str(start))
                 else:
                     result.append(f"{start}->{end}")
-            if i < len(nums):
-                start = nums[i]
+                if i < len(nums):
+                    start = nums[i]
         return result

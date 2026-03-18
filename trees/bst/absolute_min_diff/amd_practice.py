@@ -11,19 +11,16 @@ from typing import Optional
 
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
-        min_diff = float("inf")
+        min_diff = 0
         prev_val = None
 
         def inorder(node):
             if not node:
                 return
-
             inorder(node.left)
-
             if prev_val is not None:
-                min_diff = min(min_diff, node.val - prev_val)
-            prev_val = node.val
-
+                min_diff = min(min_diff, root.val - prev_val)
+            prev_val = root.val
             inorder(node.right)
 
         inorder(root)
