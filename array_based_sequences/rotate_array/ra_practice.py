@@ -3,15 +3,14 @@ from typing import List
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-
         n = len(nums)
         k %= n
         temp = nums[-k:]
         for i in range(n - 1, k - 1, -1):
             nums[i] = nums[i - k]
-        for j in range(k):
-            nums[j] = temp[j]
-        return nums
+
+        for i in range(k):
+            nums[i] = temp[i]
 
     def alt_slicing(self, nums: List[int], k: int) -> None:
         pass

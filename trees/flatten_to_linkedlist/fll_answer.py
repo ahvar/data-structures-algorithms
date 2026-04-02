@@ -12,15 +12,15 @@ from queue import LifoQueue
 
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
-
-        q = LifoQueue()
-        q.put(root)
-        while not q.empty():
-            node = q.get()
+        if not root:
+            return
+        stack = [root]
+        while stack:
+            node = stack.pop()
             if node.right:
-                q.put(node.right)
+                stack.append(node.right)
             if node.left:
-                q.put(node.left)
-            if not q.empty():
-                node.right = q.get()
+                stack.append(node.left)
+            if stack:
+                node.right = stack[-1]
             node.left = None

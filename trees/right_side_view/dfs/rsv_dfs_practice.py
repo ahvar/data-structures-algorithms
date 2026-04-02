@@ -19,14 +19,13 @@ class Solution:
         def dfs(node, depth):
             if not node:
                 return
-
             if depth == len(values):
                 values.append(node.val)
-
             dfs(node.left, depth + 1)
             dfs(node.right, depth + 1)
 
         dfs(root, 0)
+        return values
 
 
 def build_tree(input):

@@ -1,12 +1,12 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        mag_letters = {}
+        mag = {}
         for c in magazine:
-            mag_letters[c] = mag_letters.get(c, 0) + 1
+            mag[c] = mag.get(c, 0) + 1
         for c in ransomNote:
-            if c not in mag_letters or mag_letters[c] == 0:
+            if c not in mag or mag[c] == 0:
                 return False
-            mag_letters[c] -= 1
+            mag[c] -= 1
         return True
 
 
@@ -14,8 +14,7 @@ class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
-    def test_can_construct(self):
+    def test_examples(self):
         assert self.solution.canConstruct("a", "b") == False
         assert self.solution.canConstruct("aa", "ab") == False
-
         assert self.solution.canConstruct("aa", "aab") == True

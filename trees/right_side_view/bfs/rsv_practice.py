@@ -19,11 +19,13 @@ class Solution:
             level_len = len(queue)
             for i in range(level_len):
                 node = queue.popleft()
-                if i == level_len - 1:
+
+                if i == level_len - 1:  # we're at the end of all nodes on this level
                     values.append(node.val)
 
-                if node.left:
-                    queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
+                if node.left:
+                    queue.append(node.left)
+
         return values

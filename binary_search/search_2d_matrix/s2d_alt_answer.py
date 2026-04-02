@@ -6,13 +6,16 @@ class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if not matrix or not matrix[0]:
             return False
-        flat = [num for row in matrix for num in row]
-        left, right = 0, len(flat) - 1
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m * n - 1
         while left <= right:
             mid = (left + right) // 2
-            if flat[mid] == target:
+            row = mid // n
+            col = mid % n
+            mid_val = matrix[row][col]
+            if mid_val == target:
                 return True
-            elif flat[mid] < target:
+            elif mid_val < target:
                 left = mid + 1
             else:
                 right = mid - 1
