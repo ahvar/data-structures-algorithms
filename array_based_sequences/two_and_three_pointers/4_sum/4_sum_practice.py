@@ -7,31 +7,32 @@ class Solution:
             return []
         nums.sort()
         result = []
-        n = len(nums)
-        for i in range(n):
-            if i > 0 and nums[i] == nums[i - 1]:
+        for i in range(len(nums)):
+            # skip the duplicates
+            if i > 0 and nums[i] == nums[i + 1]:
                 continue
-            for j in range(i + 1, n):
+
+            for j in range(i + 1, len(nums)):
                 if j > i + 1 and nums[j] == nums[j - 1]:
                     continue
+
                 left = j + 1
-                right = n - 1
+                right = len(nums) - 1
                 while left < right:
-                    s = nums[i] + nums[j] + nums[left] + nums[right]
-                    if s == target:
+                    total = nums[i] + nums[j] + nums[left] + nums[right]
+                    if total == target:
                         result.append([nums[i], nums[j], nums[left], nums[right]])
                         left += 1
                         right -= 1
 
-                        while left < right and nums[left] == nums[left - 1]:
+                        while left < right and nums[left] == nums[left + 1]:
                             left += 1
 
                         while left < right and nums[right] == nums[right + 1]:
                             right -= 1
 
-                    elif s < target:
+                    elif total < target:
                         left += 1
-
                     else:
                         right -= 1
         return result

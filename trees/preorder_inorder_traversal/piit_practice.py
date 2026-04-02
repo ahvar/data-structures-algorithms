@@ -12,12 +12,11 @@ class TreeNode:
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
 
-        root_val = preorder[0]
-        root = TreeNode(root_val)
-        inorder_index = inorder.index(root_val)
-        leftsize = inorder_index
-        root.left = self.buildTree(preorder[1 : leftsize + 1], inorder[:inorder_index])
+        root = TreeNode(preorder[0])
+        inorder_index = inorder.index(preorder[0])
+        left_size = inorder_index
+        root.left = self.buildTree(preorder[1 : 1 + left_size], inorder[:inorder_index])
         root.right = self.buildTree(
-            preorder[1 + leftsize :], inorder[: inorder_index + 1 :]
+            preorder[1 + left_size :], inorder[inorder_index + 1 :]
         )
-        return root
+        root
