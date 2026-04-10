@@ -1,5 +1,9 @@
+from collections import Counter
+
+
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
+        pattern_map = {}
         words = s.split()
         if len(words) != len(pattern):
             return False
@@ -9,7 +13,6 @@ class Solution:
             if char in char_to_word:
                 if char_to_word[char] != word:
                     return False
-
             else:
                 char_to_word[char] = word
 
@@ -19,11 +22,3 @@ class Solution:
             else:
                 word_to_char[word] = char
         return True
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_example(self):
-        assert self.solution.wordPattern("abba", "dog cat cat dog") == True

@@ -21,7 +21,6 @@ class Solution:
 
         left = self.hasPathSum(root.left, targetSum - root.val)
         right = self.hasPathSum(root.right, targetSum - root.val)
-
         return left or right
 
     def build_tree(self, input):

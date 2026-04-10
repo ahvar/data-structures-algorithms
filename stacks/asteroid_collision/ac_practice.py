@@ -3,20 +3,22 @@ from typing import List
 
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        stack = []
+        arr = []
         for a in asteroids:
             if a > 0:
-                stack.append(a)
+                arr.append(a)
                 continue
-            alive = True
-            while alive and stack and stack[-1] > 0:
-                if stack[-1] < abs(a):
-                    stack.pop()
-                elif stack[-1] == abs(a):
-                    alive = not alive
+            still_alive = True
+            while still_alive and arr[-1] > 0:
+                if arr[-1] < abs(a):
+                    arr.pop()
+
+                elif arr[-1] == abs(a):
+                    still_alive = False
+
                 else:
-                    stack.pop()
-                    alive = not alive
-            if alive:
-                stack.append(a)
-        return stack
+                    arr.pop()
+                    still_alive = False
+            if still_alive:
+                arr.append(a)
+        return arr

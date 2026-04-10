@@ -3,16 +3,18 @@ from typing import List
 
 class Solution:
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        max_sum = 0
+
         def kadane(arr):
             max_sum = arr[0]
-            curr_sum = arr[0]
+            current_sum = arr[0]
 
             for i in range(1, len(arr)):
-                curr_sum = max(arr[i], curr_sum + arr[i])
-                max_sum = max(max_sum, curr_sum)
+                current_sum = max(arr[i], current_sum + arr[i])
+                max_sum = max(max_sum, current_sum)
             return max_sum
 
-        max_kadane = kadane(nums)
+        max_kadane = kadane(nums)  # no wrap
 
         total_sum = sum(nums)
 
