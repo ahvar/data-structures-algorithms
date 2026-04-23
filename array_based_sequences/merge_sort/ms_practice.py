@@ -11,7 +11,6 @@ class Solution:
 
     def other_merge(self, nums1, m, nums2, n):
         i, j, k = m - 1, n - 1, m + n - 1
-
         while i >= 0 and j >= 0:
             if nums1[i] > nums2[j]:
                 nums1[k] = nums1[i]
@@ -30,24 +29,7 @@ class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
-    def test_other_merge(self):
-        nums1 = [1, 2, 4, 5, 19, 0, 0, 0, 0]
-        nums2 = [5, 6, 7, 20]
-        assert self.solution.other_merge(nums1, 5, nums2, 4) == [
-            1,
-            2,
-            4,
-            5,
-            5,
-            6,
-            7,
-            19,
-            20,
-        ]
-
-
-if __name__ == "__main__":
-    nums1 = [1, 2, 4, 5, 19, 0, 0, 0, 0]
-    nums2 = [5, 7, 6, 20]
-    solution = Solution()
-    print(solution.merge(nums1, 5, nums2, 4))
+    def test_merge(self):
+        assert self.solution.other_merge(
+            nums1=[1, 2, 3, 0, 0, 0], m=3, nums2=[2, 5, 6], n=3
+        ) == [1, 2, 2, 3, 5, 6]

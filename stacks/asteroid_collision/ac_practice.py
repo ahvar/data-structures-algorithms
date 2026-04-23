@@ -9,14 +9,14 @@ class Solution:
                 stack.append(a)
                 continue
             alive = True
-            while alive and stack and stack[-1] > 0:
-                if stack[-1] < abs(a):
+            while stack and alive and stack[-1] > 0:
+                if stack[-1] > abs(a):
+                    alive = False
+                elif stack[-1] < abs(a):
                     stack.pop()
-                elif stack[-1] == abs(a):
-                    alive = not alive
                 else:
+                    alive = False
                     stack.pop()
-                    alive = not alive
             if alive:
                 stack.append(a)
         return stack

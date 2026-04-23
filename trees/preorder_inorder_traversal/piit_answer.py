@@ -13,14 +13,21 @@ from typing import List
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        # Base case: empty arrays
         if not preorder or not inorder:
             return None
+
         root_val = preorder[0]
         root = TreeNode(root_val)
         inorder_index = inorder.index(root_val)
         left_size = inorder_index
+
+        # Build left subtree: preorder[1 : 1+left_size], inorder[:inorder_index]
         root.left = self.buildTree(preorder[1 : 1 + left_size], inorder[:inorder_index])
+
+        # Build right subtree: preorder[1+left_size:], inorder[inorder_index+1:]
         root.right = self.buildTree(
             preorder[1 + left_size :], inorder[inorder_index + 1 :]
         )
+
         return root

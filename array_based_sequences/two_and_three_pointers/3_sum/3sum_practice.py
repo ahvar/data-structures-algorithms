@@ -3,19 +3,16 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        if not nums:
-            return []
         nums.sort()
-        n = len(nums)
         triplets = []
-        for i in range(n):
+        for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
             left = i + 1
-            right = n - 1
+            right = len(nums) - 1
             while left < right:
-                total = nums[i] + nums[left] + nums[right]
-                if total == 0:
+                s = nums[i] + nums[left] + nums[right]
+                if s == 0:
                     triplets.append([nums[i], nums[left], nums[right]])
                     left += 1
                     right -= 1
@@ -25,10 +22,8 @@ class Solution:
 
                     while left < right and nums[right] == nums[right + 1]:
                         right -= 1
-
-                elif total < 0:
+                elif s < 0:
                     left += 1
-
                 else:
                     right -= 1
         return triplets
@@ -36,8 +31,10 @@ class Solution:
 
 class TestSolution:
     def setup_method(self):
-        self.nums = [-1, 0, 1, 2, -1, -4]
         self.solution = Solution()
 
     def test_3sum(self):
-        assert self.solution.threeSum(self.nums) == [[-1, -1, 2], [-1, 0, 1]]
+        assert self.solution.threeSum(nums=[-1, 0, 1, 2, -1, -4]) == [
+            [-1, -1, 2],
+            [-1, 0, 1],
+        ]

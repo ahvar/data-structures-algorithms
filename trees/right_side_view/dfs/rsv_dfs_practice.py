@@ -19,21 +19,22 @@ class Solution:
         def dfs(node, depth):
             if not node:
                 return
-            if depth == len(values):
+
+            if len(values) == depth:
                 values.append(node.val)
-            dfs(node.left, depth + 1)
+
             dfs(node.right, depth + 1)
+            dfs(node.left, depth + 1)
 
         dfs(root, 0)
         return values
 
 
 def build_tree(input):
-    if not input or input[0] == None:
-        return
-
-    root = TreeNode(input[0])
+    if not input:
+        return None
     fifo = Queue()
+    root = TreeNode(input[0])
     fifo.put(root)
     index = 1
     while index < len(input) and not fifo.empty():

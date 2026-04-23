@@ -15,7 +15,7 @@ class Solution:
                 if val in rows[r] or val in cols[c] or val in boxes[box_idx]:
                     return False
 
-                rows.add(val)
-                cols.add(val)
+                rows[r].add(val)
+                cols[c].add(val)
                 boxes[box_idx].add(val)
         return True

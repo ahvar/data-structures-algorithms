@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
-        c = reversed(citations, reversed=True)
+        c = sorted(citations, reverse=True)
         hindex = 0
         for idx, cite in enumerate(c):
             if cite >= idx + 1:

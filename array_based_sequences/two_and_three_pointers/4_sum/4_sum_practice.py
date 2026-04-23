@@ -6,18 +6,18 @@ class Solution:
         if not nums:
             return []
         nums.sort()
+        n = len(nums)
         result = []
-        for i in range(len(nums)):
-            # skip the duplicates
+        for i in range(n):
             if i > 0 and nums[i] == nums[i + 1]:
                 continue
-
-            for j in range(i + 1, len(nums)):
+            for j in range(i + 1, n):
                 if j > i + 1 and nums[j] == nums[j - 1]:
                     continue
 
                 left = j + 1
-                right = len(nums) - 1
+                right = n - 1
+
                 while left < right:
                     total = nums[i] + nums[j] + nums[left] + nums[right]
                     if total == target:

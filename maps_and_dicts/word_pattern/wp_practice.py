@@ -1,23 +1,23 @@
+from collections import Counter
+
+
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        words = s.split()
-        if len(words) != len(pattern):
-            return False
-        char_to_word = {}
-        word_to_char = {}
+        words = s.strip().split()
+        c2s = {}
+        s2c = {}
         for char, word in zip(pattern, words):
-            if char in char_to_word:
-                if char_to_word[char] != word:
-                    return False
-
-            else:
-                char_to_word[char] = word
-
-            if word in word_to_char:
-                if word_to_char[word] != char:
-                    return False
-            else:
-                word_to_char[word] = char
+            # if the character or word has been mapped
+            # and it isn't the
+            if (
+                c2s.get(char, None) != None
+                and c2s.get(char) != word
+                or s2c.get(word) != None
+                and s2c.get(word) != char
+            ):
+                return False
+            c2s[char] = word
+            s2c[word] = char
         return True
 
 
@@ -25,5 +25,5 @@ class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
-    def test_example(self):
-        assert self.solution.wordPattern("abba", "dog cat cat dog") == True
+    def test_solution(self):
+        assert self.solution.wordPattern(pattern="abba", s="dog cat cat dog") == True
