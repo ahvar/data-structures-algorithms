@@ -4,24 +4,15 @@ from typing import List
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         n = len(nums)
-        k %= n
-        temp = nums[-k:]
+        k %= n  # if k is longer than n
+        temp = nums[-k:]  # the integers we're going to overwrite
         for i in range(n - 1, k - 1, -1):
             nums[i] = nums[i - k]
-
-        for i in range(k):
-            nums[i] = temp[i]
+        for j in range(k):
+            nums[j] = temp[j]
 
     def alt_slicing(self, nums: List[int], k: int) -> None:
         pass
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_rotate(self):
-        assert self.solution.rotate([1, 2, 3, 4, 5], 2) == [3, 4, 5, 1, 2]
 
 
 if __name__ == "__main__":

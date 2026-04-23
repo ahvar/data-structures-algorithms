@@ -14,6 +14,7 @@ class Solution:
                     stack.pop()
                 elif stack[-1] == abs(a):
                     alive = False
+                    stack.pop()
                 else:
                     stack.pop()
                     alive = False

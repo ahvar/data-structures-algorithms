@@ -19,7 +19,8 @@ class Solution:
         def dfs(node, depth):
             if not node:
                 return
-            if depth == len(values):
+
+            if len(values) == depth:
                 values.append(node.val)
 
             dfs(node.right, depth + 1)
@@ -31,11 +32,11 @@ class Solution:
 
 def build_tree(input):
     if not input:
-        return
-    root = TreeNode(input[0])
+        return None
     fifo = Queue()
-    index = 1
+    root = TreeNode(input[0])
     fifo.put(root)
+    index = 1
     while index < len(input) and not fifo.empty():
         node = fifo.get()
         if input[index] != None:

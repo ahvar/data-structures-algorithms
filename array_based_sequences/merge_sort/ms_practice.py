@@ -21,9 +21,8 @@ class Solution:
             k -= 1
         while j >= 0:
             nums1[k] = nums2[j]
-            k -= 1
             j -= 1
-        return nums1
+            k -= 1
 
 
 class TestSolution:
