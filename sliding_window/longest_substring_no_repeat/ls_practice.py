@@ -1,11 +1,8 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if not s:
-            return 0
-
         left = 0
-        seen = set()
         n = len(s)
+        seen = ()
         maxx = 0
         for right in range(n):
             while s[right] in seen:
@@ -20,5 +17,5 @@ class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
-    def test_length(self):
-        assert self.solution.lengthOfLongestSubstring(s="abcabcbb") == 3
+    def test_longest(self):
+        assert self.solution.lengthOfLongestSubstring("abcabcbb") == 3

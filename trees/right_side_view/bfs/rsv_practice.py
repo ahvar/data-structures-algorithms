@@ -13,19 +13,17 @@ class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
 
-        values = []
+        result = []
         queue = deque([root])
         while queue:
-            level_len = len(queue)
-            for i in range(level_len):
+            level_size = len(queue)
+            for i in range(level_size):
                 node = queue.popleft()
 
-                if i == level_len - 1:  # we're at the end of all nodes on this level
-                    values.append(node.val)
-
-                if node.right:
-                    queue.append(node.right)
+                if i == level_size - 1:
+                    result.append(node.val)
                 if node.left:
                     queue.append(node.left)
-
-        return values
+                if node.right:
+                    queue.append(node.right)
+        return result

@@ -1,0 +1,9 @@
+you are an expert programming assistant. a product manager has to organize n meetings with different people.
+the meeting with each person results in an increase or decrease in the effectiveness index of the manager.
+the manager wants to organize the meetings such that the index remains positive for as many meetings as possible.
+find the max number of meetings for whcih the effectiveness index is positive. the index at the beginning is 0.
+after the meetings begin, the index must remain above 0 to be positive.
+
+for example, n = 4 effectiveness = [1, -20, 3, -2] one optimal meeting order is [3, -2, 1, -20].
+the index is positive for the first three meetings, after which it is 3 - 2 + 1 = 1. so the answer is 3.
+there is no way to have 4 meetings with a positive index.

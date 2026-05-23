@@ -16,7 +16,6 @@ class Solution:
                     alive = False
                     stack.pop()
                 else:
-                    stack.pop()
                     alive = False
             if alive:
                 stack.append(a)

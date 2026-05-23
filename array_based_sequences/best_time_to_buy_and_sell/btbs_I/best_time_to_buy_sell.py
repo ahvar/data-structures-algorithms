@@ -8,14 +8,5 @@ class Solution:
         for i in range(len(prices)):
             if prices[i] < min_price:
                 min_price = prices[i]
-            else:
-                max_profit = max(prices[i] - min_price, max_profit)
-        return max_profit
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_solution(self):
-        assert self.solution.maxProfit(prices=[7, 1, 5, 3, 6, 4]) == 5
+            elif max_profit < prices[i] - min_price:
+                max_profit = prices[i] - min_price

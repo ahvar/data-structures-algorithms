@@ -34,14 +34,13 @@ class BSTIterator:
 
 
 def build_tree(input):
-    if not input or not input[0]:
+    if not input or input[0] == None:
         return
     root = TreeNode(input[0])
     fifo = Queue()
     fifo.put(root)
     index = 1
-
-    while index <= len(input) and not fifo.empty():
+    while index < len(input) and not fifo.empty():
         node = fifo.get()
         if input[index] != None:
             left = TreeNode(input[index])

@@ -12,32 +12,30 @@ class Solution:
     def reverseBetween(
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
-        if not head:
-            return
-        dummy = ListNode(0, head)
+        dummy = ListNode(0)
+        dummy.next = head
         before_left = dummy
         for _ in range(left - 1):
             before_left = before_left.next
-
-        lnode = before_left.next  # left node
+        lnode = before_left.next
         curr = lnode
         prev = None
         for _ in range(right - left + 1):
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-        lnode.next = curr
+            nxt = curr.next  # store next node
+            curr.next = prev  # point back to the previous node
+            prev = curr  # reassign to current node
+            curr = nxt  # reassign to the next node
         before_left.next = prev
+        lnode.next = curr
         return dummy.next
 
 
 def link_list(input):
-    if not input:
+    if not input or not input[0]:
         return
     head = ListNode(input[0])
     curr = head
-    for i in range(len(input)):
+    for i in range(1, len(input)):
         nxt = ListNode(input[i])
         curr.next = nxt
         curr = curr.next
@@ -51,4 +49,4 @@ if __name__ == "__main__":
     right = 4
     solution = Solution()
     head = solution.link_list(input)
-    head = solution.reverseBetween(head, left, right)
+    # head = solution.reverseBetween(head, left, right)
