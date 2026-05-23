@@ -15,24 +15,25 @@ class Solution:
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
         if not root:
-            return None
+            return
 
         if root == p or root == q:
             return root
 
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
+
         if left and right:
             return root
         return left if left else right
 
     def build_tree(self, input):
-        if not input or len(input) == 0 or input[0] == None:
+        if not input:
             return
-        fifo = Queue()
         root = TreeNode(input[0])
-        index = 1
+        fifo = Queue()
         fifo.put(root)
+        index = 1
         while index < len(input) and not fifo.empty():
             node = fifo.get()
             if input[index] != None:

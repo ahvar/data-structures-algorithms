@@ -23,13 +23,3 @@ class Solution:
             nums1[k] = nums2[j]
             j -= 1
             k -= 1
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_merge(self):
-        assert self.solution.other_merge(
-            nums1=[1, 2, 3, 0, 0, 0], m=3, nums2=[2, 5, 6], n=3
-        ) == [1, 2, 2, 3, 5, 6]

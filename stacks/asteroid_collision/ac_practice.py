@@ -8,15 +8,24 @@ class Solution:
             if a > 0:
                 stack.append(a)
                 continue
+
             alive = True
-            while stack and alive and stack[-1] > 0:
+            while alive and stack and stack[-1] > 0:
                 if stack[-1] > abs(a):
                     alive = False
                 elif stack[-1] < abs(a):
                     stack.pop()
                 else:
-                    alive = False
                     stack.pop()
+                    alive = False
             if alive:
                 stack.append(a)
         return stack
+
+
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_asteroid(self):
+        assert self.solution.asteroidCollision([5, 10, -5]) == [5, 10]

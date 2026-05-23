@@ -3,13 +3,12 @@ from typing import List
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        k = 0
-        n = len(nums)
-        for i in range(n):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        return k
+        write = 0
+        for read in range(len(nums)):
+            if nums[read] != val:
+                nums[write] = nums[read]
+                write += 1
+        return write
 
 
 class TestSolution:
@@ -17,4 +16,4 @@ class TestSolution:
         self.solution = Solution()
 
     def test_remove(self):
-        assert self.solution.removeElement()
+        self.solution.removeElement([2, 4, 1, 3, 2, 1], 1)

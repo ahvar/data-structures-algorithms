@@ -11,6 +11,7 @@ class Solution:
             m = len(matrix[i])
             for j in range(i, m):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
         for row in matrix:
             row.reverse()
 

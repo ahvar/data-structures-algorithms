@@ -21,7 +21,7 @@ class Solution:
             self.k -= 1
             if self.k == 0:
                 self.ans = node.val
-                return
+            inorder(node.right)
 
         inorder(root)
         return self.ans

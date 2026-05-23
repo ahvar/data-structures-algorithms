@@ -6,18 +6,19 @@ class Solution:
         m, n = len(grid), len(grid[0])
         island_count = 0
 
-        def dfs(row, col):
-            if row < 0 or row >= m or col < 0 or col >= n or grid[row][col] == "0":
-                return grid[row][col]
+        def dfs(r, c):
 
-            dfs(row + 1, col)
-            dfs(row - 1, col)
-            dfs(row, col + 1)
-            dfs(row, col - 1)
+            if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == "0":
+                return grid[r][c]
+            grid[r][c] == "0"
+            dfs(r + 1, c)
+            dfs(r - 1, c)
+            dfs(r, c + 1)
+            dfs(r, c - 1)
 
-        for row in range(m):
-            for col in range(n):
-                if grid[row][col] == "1":
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c] == "1":
                     island_count += 1
-                    dfs(row, col)
+                    dfs(r, c)
         return island_count

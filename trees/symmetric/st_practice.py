@@ -11,11 +11,10 @@ class TreeNode:
 
 
 class Solution:
-
     def _check(self, left, right):
-        if not left and not right:
+        if left == None and right == None:
             return True
-        if not left or not right:
+        if left == None or right == None:
             return False
         if left.val != right.val:
             return False
@@ -25,8 +24,7 @@ class Solution:
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
-            return False
-
+            return True
         return self._check(root.left, root.right)
 
 

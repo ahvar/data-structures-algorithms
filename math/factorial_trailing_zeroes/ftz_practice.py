@@ -1,8 +1,8 @@
 class Solution:
     def trailingZeroes(self, n: int) -> int:
-        trailing_zeroes = 0
-        five_factor = 5
-        while five_factor <= n:
-            trailing_zeroes += n // five_factor
-            five_factor *= 5
-        return trailing_zeroes
+        zeroes = 0
+        power_of_five = 5
+        while power_of_five <= n:
+            zeroes += n // power_of_five
+            power_of_five *= 5
+        return zeroes
