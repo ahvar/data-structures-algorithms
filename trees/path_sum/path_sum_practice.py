@@ -15,7 +15,6 @@ class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if not root:
             return False
-
         if not root.left and not root.right:
             return root.val == targetSum
 
@@ -24,7 +23,7 @@ class Solution:
         return left or right
 
     def build_tree(self, input):
-        if not input or len(input) == 0 or not input[0]:
+        if not input or not input[0]:
             return
         fifo = Queue()
         root = TreeNode(input[0])
@@ -32,12 +31,14 @@ class Solution:
         index = 1
         while index < len(input) and not fifo.empty():
             node = fifo.get()
-            if input[index]:
+            if input[index] != None:
                 left = TreeNode(input[index])
                 node.left = left
                 fifo.put(left)
             index += 1
-            if input[index]:
+            if index >= len(input):
+                break
+            if input[index] != None:
                 right = TreeNode(input[index])
                 node.right = right
                 fifo.put(right)

@@ -16,11 +16,11 @@ class Solution:
             return []
 
         # Store the final answer as pairs of values, not indices.
-        result: List[List[int]] = []
+        result = []
 
         # Each heap entry is: (pair_sum, index_in_nums1, index_in_nums2).
         # Python's heapq is a min-heap, so the smallest sum stays on top.
-        heap: list[tuple[int, int, int]] = []
+        heap = []
 
         # Seed the heap with the first pair from each useful row.
         # Row i starts at (nums1[i], nums2[0]).

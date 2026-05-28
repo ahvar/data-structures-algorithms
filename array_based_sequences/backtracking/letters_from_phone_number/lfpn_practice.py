@@ -3,7 +3,6 @@ from typing import List
 
 class Solution:
     def letter_combinations(self, digits: str) -> List[str]:
-
         phone = {
             "2": "abc",
             "3": "def",
@@ -14,16 +13,35 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-        output = []
+        result = []
 
         def backtrack(path, index):
             if index == len(digits):
-                output.append("".join(path))
+                result.append("".join(path))
                 return
+            for char in phone[digits[index]]:
+                if char not in path:
+                    path.append(char)
+                    backtrack(path, index + 1)
+                    path.pop()
 
-            for c in phone[digits[index]]:
-                path.append(c)
-                backtrack(path, index + 1)
-                path.pop()
+        backtrack([], 0)
+        return result
 
-        backtrack(digits, 0)
+
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_phone(self):
+        assert self.solution.letter_combinations(digits="23") == [
+            "ad",
+            "ae",
+            "af",
+            "bd",
+            "be",
+            "bf",
+            "cd",
+            "ce",
+            "cf",
+        ]

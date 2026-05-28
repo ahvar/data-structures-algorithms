@@ -9,11 +9,12 @@ class Solution:
         right = m * n - 1
         while left <= right:
             mid = (left + right) // 2
-            row = mid // 2
-            col = mid % 2
-            if matrix[row][col] == target:
+            row = mid // m
+            col = mid % n
+            mid_val = matrix[row][col]
+            if mid_val == target:
                 return True
-            if matrix[row][col] < target:
+            elif mid_val < target:
                 left = mid + 1
             else:
                 right = mid - 1

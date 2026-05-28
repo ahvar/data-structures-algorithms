@@ -13,8 +13,9 @@ class Solution:
             right = m - 1
             idx = m
             while left <= right:
-                mid = (left + right) // 2
-                if spell * potions[mid] <= success:
+                mid = (right + left) // 2
+                mid_val = potions[mid]
+                if mid_val * spell < success:
                     left = mid + 1
                 else:
                     idx = mid

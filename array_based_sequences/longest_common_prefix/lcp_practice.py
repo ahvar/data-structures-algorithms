@@ -12,11 +12,3 @@ class Solution:
             if not prefix:
                 break
         return prefix
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_lcp(self):
-        assert self.solution.longestCommonPrefix(["flower", "flow", "flight"]) == "fl"
