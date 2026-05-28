@@ -14,8 +14,7 @@ from queue import LifoQueue
 
 class Solution:
     def flatten(self, root: Optional[TreeNode]) -> None:
-        if not root:
-            return
+
         stack = [root]
         while stack:
             node = stack.pop()

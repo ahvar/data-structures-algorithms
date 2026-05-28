@@ -5,15 +5,14 @@ class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
         for a in asteroids:
-            if a > 0:
+            if a >= 0:
                 stack.append(a)
                 continue
-
             alive = True
             while alive and stack and stack[-1] > 0:
-                if stack[-1] > abs(a):
+                if abs(a) < stack[-1]:
                     alive = False
-                elif stack[-1] < abs(a):
+                elif abs(a) > stack[-1]:
                     stack.pop()
                 else:
                     stack.pop()
@@ -28,4 +27,4 @@ class TestSolution:
         self.solution = Solution()
 
     def test_asteroid(self):
-        assert self.solution.asteroidCollision([5, 10, -5]) == [5, 10]
+        assert self.solution.asteroidCollision(asteroids=[5, 10, -5]) == [5, 10]

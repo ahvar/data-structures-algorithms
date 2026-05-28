@@ -7,22 +7,14 @@ class Solution:
         n = len(height)
         left = 0
         right = n - 1
-        max_area = 0
+        maxx = 0
         while left < right:
-            length = right - left
-            h = max(height[left], height[right])
-            curr_area = length * h
-            max_area = min(curr_area, max_area)
-            if height[left] > height[right]:
-                right -= 1
-            else:
+            len = right - left
+            h = min(height[left], height[right])
+            curr_area = len * h
+            maxx = max(curr_area, maxx)
+            if height[left] < height[right]:
                 left += 1
-        return max_area
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_max_area(self):
-        assert self.solution.maxArea([1, 3, 2, 2, 6])
+            else:
+                right -= 1
+        return maxx

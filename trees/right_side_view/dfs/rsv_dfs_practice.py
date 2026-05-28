@@ -14,7 +14,6 @@ from queue import Queue
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-
         values = []
 
         def dfs(node, depth):
@@ -26,6 +25,7 @@ class Solution:
             dfs(node.right, depth + 1)
             dfs(node.left, depth + 1)
 
+        dfs(root, 0)
         return values
 
 
