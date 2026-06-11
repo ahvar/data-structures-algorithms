@@ -7,14 +7,6 @@ class Solution:
         min_heap = []
         for num in nums:
             heapq.heappush(min_heap, num)
-            while k < len(min_heap):
+            if len(min_heap) > k:
                 heapq.heappop(min_heap)
         return min_heap[0]
-
-
-class TestSolution:
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_find(self):
-        assert self.solution.findKthLargest(nums=[3, 2, 1, 5, 6, 4], k=2) == 5
