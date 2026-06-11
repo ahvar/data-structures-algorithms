@@ -9,8 +9,8 @@ class Solution:
         if not nums1 or not nums2 or k <= 0:
             return []
 
-        res = List[List[int]] = []
-        heap = List[tuple[int, int, int]] = []
+        res = []
+        heap = []
 
         for i in range(min(k, len(nums1))):
             heapq.heappush(heap, (nums1[i] + nums2[0], i, 0))

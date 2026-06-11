@@ -14,11 +14,14 @@ from queue import Queue
 class Solution:
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return
         values = []
 
         def dfs(node, depth):
             if not node:
                 return
+
             if depth == len(values):
                 values.append(node.val)
 
@@ -26,28 +29,27 @@ class Solution:
             dfs(node.left, depth + 1)
 
         dfs(root, 0)
-        return values
 
 
 def build_tree(input):
-    if not input:
-        return None
-    fifo = Queue()
+    if not input or input[0] == None:
+        return
+    queue = Queue()
     root = TreeNode(input[0])
-    fifo.put(root)
+    queue.put(root)
     index = 1
-    while index < len(input) and not fifo.empty():
-        node = fifo.get()
+    while index < len(input) and not queue.empty():
+        node = queue.get()
         if input[index] != None:
             left = TreeNode(input[index])
             node.left = left
-            fifo.put(left)
+            queue.put(left)
         index += 1
         if index >= len(input):
             break
         if input[index] != None:
             right = TreeNode(input[index])
             node.right = right
-            fifo.put(right)
+            queue.put(right)
         index += 1
     return root

@@ -1,24 +1,18 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
         s2t = {}
         t2s = {}
-        for s_char, t_char in zip(s, t):
-            if s_char in s2t:
-                if s2t[s_char] != t_char:
-                    return False
-            elif t_char in t2s:
-                if t2s[t_char] != s_char:
-                    return False
+
+        for sc, tc in zip(s, t):
+            if (
+                s2t.get(sc, None)
+                and s2t.get(sc) != tc
+                or t2s.get(tc, None)
+                and t2s[tc].get(tc) != sc
+            ):
                 return False
-            s2t[s_char] = t_char
-            t2s[t_char] = s_char
+            s2t[sc] = tc
+            t2s[tc] = sc
         return True
-
-
-class TestSolution:
-
-    def setup_method(self):
-        self.solution = Solution()
-
-    def test_solution(self):
-        assert self.solution.isIsomorphic(s="paper", t="title") == True

@@ -11,14 +11,5 @@ class Solution:
             m = len(matrix[i])
             for j in range(i, m):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-
         for row in matrix:
             row.reverse()
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    pp.pprint(matrix)
-    print("--------------")
-    pp.pprint(solution.rotate(matrix))
