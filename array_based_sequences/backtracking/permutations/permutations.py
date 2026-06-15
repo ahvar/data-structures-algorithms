@@ -3,21 +3,22 @@ from typing import List
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-
-        p = []
+        if not nums:
+            return []
+        ans = []
 
         def backtrack(permutation):
             if len(permutation) == len(nums):
-                p.append(permutation[:])
+                ans.append(permutation[:])
                 return
-            for n in nums:
-                if n not in permutation:
-                    permutation.append(n)
-                    backtrack(permutation)
+            for i in range(len(nums)):
+                if nums[i] not in permutation:
+                    permutation.append(nums[i])
+                    permutation(permutation)
                     permutation.pop()
 
         backtrack([])
-        return p
+        return ans
 
 
 if __name__ == "__main__":

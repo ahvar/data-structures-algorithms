@@ -8,42 +8,23 @@ Return the total sum of all root-to-leaf numbers. Test cases are generated so th
 
 A leaf node is a node with no children.
 """
+
 from queue import Queue
 from typing import Optional
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
 class Solution:
-    def helper(self, node, num):
-        # we hit a null child, it contributes 0 to the total sum
-        if node is None:
-            return 0
-
-        current_num = num * 10 + node.val
-        if node.left is None and node.right is None:
-            return current_num
-        subtotal = 0
-        if node.left:
-            subtotal += self.helper(node.left, current_num)
-        if node.right:
-            subtotal += self.helper(node.right, current_num)
-        return subtotal
-
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        if root.left is None and root.right is None:
-            return root.val
-        total = 0
-        if root.left:
-            total += self.helper(root.left, root.val)
-        if root.right:
-            total += self.helper(root.right, root.val)
-        return total
+        pass
 
     def build_tree(self, input):
         if not input:
@@ -69,10 +50,9 @@ class Solution:
             index += 1
         return root
 
+
 if __name__ == "__main__":
-    input = [1,2,3]
+    input = [1, 2, 3]
     solution = Solution()
     root = solution.build_tree(input)
     print(solution.sumNumbers(root))
-
-
