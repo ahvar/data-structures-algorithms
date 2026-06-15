@@ -25,10 +25,6 @@ from typing import List
 
 class Solution:
     def minHarvestRate(self, apples: List[int], h: int) -> int:
-        if not apples:
-            return 0
-        if h < len(apples):
-            return -1
         left = 1
         right = max(apples)
 
@@ -38,7 +34,7 @@ class Solution:
                 total += (a + rate - 1) // rate
             return total
 
-        while left < right:
+        while left <= right:
             mid = (left + right) // 2
             needed = hours_needed(mid)
             if needed <= h:

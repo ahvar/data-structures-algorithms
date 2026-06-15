@@ -18,8 +18,8 @@ class Solution:
                 break
 
             left = right
-
             while left >= 0 and s[left] != " ":
                 left -= 1
             result.append(s[left + 1 : right + 1])
+            right = left
         return " ".join(result)

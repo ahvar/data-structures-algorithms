@@ -7,9 +7,9 @@ class Solution:
         right = len(nums) - 1
         while left <= right:
             mid = (left + right) // 2
-            mid_val = nums[mid]
-            if mid_val == target:
+            if nums[mid] == target:
                 return mid
+
             if nums[left] <= nums[mid]:
                 if nums[left] <= target < nums[mid]:
                     right = mid - 1
