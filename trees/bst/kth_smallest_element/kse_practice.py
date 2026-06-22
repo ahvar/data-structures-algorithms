@@ -14,7 +14,6 @@ class Solution:
         self.ans = None
 
         def inorder(node):
-
             if not node or self.ans is not None:
                 return
             inorder(node.left)
@@ -25,4 +24,5 @@ class Solution:
             inorder(node.right)
 
         inorder(root)
+
         return self.ans

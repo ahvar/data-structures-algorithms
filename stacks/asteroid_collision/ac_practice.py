@@ -3,26 +3,23 @@ from typing import List
 
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        if not asteroids:
-            return []
 
         stack = []
-        for a in asteroids:
-            if a > 0:
-                stack.append(a)
+        for asteroid in asteroids:
+            if asteroid > 0:
+                stack.append(asteroid)
                 continue
             alive = True
             while alive and stack and stack[-1] > 0:
-                if stack[-1] < abs(a):
+                if stack[-1] < abs(asteroid):
                     stack.pop()
-                elif stack[-1] > abs(a):
+                elif stack[-1] > abs(asteroid):
                     alive = False
                 else:
                     stack.pop()
                     alive = False
-
-                if alive:
-                    stack.append(a)
+            if alive:
+                stack.append(asteroid)
         return stack
 
 

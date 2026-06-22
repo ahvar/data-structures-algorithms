@@ -3,15 +3,17 @@ from typing import List
 
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
-        result = []
         n = len(nums)
+        ranges = []
         start = nums[0]
+        end = start + 1
         for i in range(1, n + 1):
             if i == n or nums[i] != nums[i - 1] + 1:
                 end = nums[i - 1]
-                if end == start:
-                    result.append(f"{start}")
+                if start == end:
+                    ranges.append(str(start))
                 else:
-                    result.append(f"{start}->{end}")
-                if i < len(nums):
+                    ranges.append(f"{start}->{end}")
+                if i < n:
                     start = nums[i]
+        return ranges

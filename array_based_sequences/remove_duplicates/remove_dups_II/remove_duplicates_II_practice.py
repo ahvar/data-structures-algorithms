@@ -3,9 +3,12 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        write = 2
-        for read in range(2, len(nums)):
-            if nums[read] != nums[write - 2]:
-                nums[write] = nums[read]
-                write += 1
-        return write
+        if not nums:
+            return 0
+        n = len(nums)
+        k = 2
+        for i in range(2, n):
+            if nums[i] != nums[k - 2]:
+                nums[k] = nums[i]
+                k += 1
+        return k

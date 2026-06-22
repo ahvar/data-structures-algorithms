@@ -3,11 +3,11 @@ from collections import Counter
 
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        mag_letters = Counter(magazine)
-        for char in ransomNote:
-            if mag_letters.get(char, 0) == 0:
+        m_letters = Counter(magazine)
+        for c in ransomNote:
+            if c not in m_letters or m_letters.get(c) == 0:
                 return False
-            mag_letters[char] -= 1
+            m_letters[c] -= 1
         return True
 
 
@@ -15,5 +15,5 @@ class TestSolution:
     def setup_method(self):
         self.solution = Solution()
 
-    def test_solution(self):
+    def test_cc(self):
         assert self.solution.canConstruct(ransomNote="aa", magazine="aab") == True
