@@ -13,12 +13,11 @@ class Solution:
             right = m - 1
             idx = m
             while left <= right:
-                mid = (right + left) // 2
+                mid = (right - left) // 2
                 mid_val = potions[mid]
-                if mid_val * spell < success:
+                if (mid_val * spell) < success:
                     left = mid + 1
                 else:
                     idx = mid
                     right = idx - 1
             pairs.append(m - idx)
-        return pairs

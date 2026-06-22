@@ -8,13 +8,13 @@ class Solution:
         left = 0
         right = m * n - 1
         while left <= right:
-            mid = (left + right) // 2
+            mid = (right - left) // 2
             row = mid // m
             col = mid % n
-            mid_val = matrix[row][col]
-            if mid_val == target:
+            val = matrix[row][col]
+            if val == target:
                 return True
-            elif mid_val < target:
+            if val < target:
                 left = mid + 1
             else:
                 right = mid - 1
