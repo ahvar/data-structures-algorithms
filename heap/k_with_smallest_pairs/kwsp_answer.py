@@ -12,7 +12,7 @@ class Solution:
         res = []
         heap = []
 
-        for i in range(min(k, len(nums1))):
+        for i in range(min(k, len(nums1))):  # we only need k pairs
             heapq.heappush(heap, (nums1[i] + nums2[0], i, 0))
 
         while heap and len(res) < k:
