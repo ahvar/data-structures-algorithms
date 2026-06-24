@@ -10,8 +10,8 @@ from typing import Optional
 
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        self.k = k
         self.ans = None
+        self.k = k
 
         def inorder(node):
             if not node or self.ans is not None:
@@ -24,5 +24,4 @@ class Solution:
             inorder(node.right)
 
         inorder(root)
-
         return self.ans

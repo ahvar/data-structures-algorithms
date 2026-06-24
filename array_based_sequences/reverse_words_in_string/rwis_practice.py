@@ -11,15 +11,20 @@ class Solution:
         n = len(s)
         right = n - 1
         while right >= 0:
-            while right >= 0 and s[right] == " ":
+            while right >= 0 and s[right].isspace():
                 right -= 1
-
             if right < 0:
                 break
-
             left = right
-            while left >= 0 and s[left] != " ":
+            while left >= 0 and not s[right].isspace():
                 left -= 1
             result.append(s[left + 1 : right + 1])
-            right = left
         return " ".join(result)
+
+
+class TestRWIS:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_rwis(self):
+        assert self.solution.reverse_in_place(s="big dog") == "dog big"

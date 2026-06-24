@@ -7,7 +7,9 @@ class Solution:
         n = len(graph)
         if n == 1:
             return 0
+
         target = (1 << n) - 1
+
         queue = deque()
         seen = set()
 
