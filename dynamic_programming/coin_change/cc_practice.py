@@ -8,5 +8,13 @@ class Solution:
         for i in range(1, amount + 1):
             for coin in coins:
                 if coin <= i:
-                    dp[i] = min(dp[i - 1], dp[i - coin] + 1)
+                    dp[i] = min(dp[i - coin] + 1, dp[i])
         return dp[amount] if dp[amount] <= amount else -1
+
+
+class TestSolution:
+    def setup_method(self):
+        self.solution = Solution()
+
+    def test_coin(self):
+        assert self.solution.coinChange(coins=[1, 2, 5], amount=11) == 3

@@ -1,14 +1,3 @@
-"""
-You are given the root of a binary tree containing digits from 0 to 9 only.
-
-Each root-to-leaf path in the tree represents a number.
-
-For example, the root-to-leaf path 1 -> 2 -> 3 represents the number 123.
-Return the total sum of all root-to-leaf numbers. Test cases are generated so that the answer will fit in a 32-bit integer.
-
-A leaf node is a node with no children.
-"""
-
 from queue import Queue
 from typing import Optional
 
@@ -24,16 +13,14 @@ class TreeNode:
 class Solution:
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        def dfs(node, curr_sum):
+        def dfs(node, total):
             if not node:
-                return 0
-
-            curr_sum = curr_sum * 10 + node.val
-
+                return
+            total = total * 10 + node.val
             if not node.left and not node.right:
-                return curr_sum
+                return total
 
-            return dfs(root.left, curr_sum) + dfs(root.right, curr_sum)
+            return dfs(node.left, total) + dfs(node.right, total)
 
         dfs(root, 0)
 

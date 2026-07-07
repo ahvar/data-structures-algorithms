@@ -10,17 +10,16 @@ from typing import Optional
 
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = ListNode()
-        dummy.next = head
+        start = ListNode(0, head)
+        prev = start
         curr = head
-        prev = dummy
         while curr:
             if curr.next and curr.val == curr.next.val:
-                dup_val = curr.val
-                while curr and curr.val == dup_val:
+                duplicate_value = curr.val
+                while curr and curr.val == duplicate_value:
                     curr = curr.next
                 prev.next = curr
             else:
-                prev = prev.next
+                prev = curr
                 curr = curr.next
-        return dummy.next
+        return start.next

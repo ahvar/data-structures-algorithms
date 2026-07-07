@@ -3,19 +3,10 @@ class Solution:
         words = s.split()
         if len(words) != len(pattern):
             return False
-        char_to_word = {}
-        word_to_char = {}
+        char_index = {}
+        word_index = {}
 
-        for char, word in zip(pattern, words):
-            if char in char_to_word:
-                if char_to_word[char] != word:
-                    return False
-            else:
-                char_to_word[char] = word
-
-            if word in word_to_char:
-                if word_to_char[word] != char:
-                    return False
-            else:
-                word_to_char[word] = char
+        for index, (char, word) in enumerate(zip(pattern, words)):
+            if char_index.setdefault(char, index) != word_index.setdefault(word, index):
+                return False
         return True

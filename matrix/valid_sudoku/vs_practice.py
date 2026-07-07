@@ -7,15 +7,15 @@ class Solution:
         cols = [set() for _ in range(9)]
         boxes = [set() for _ in range(9)]
 
-        for row in range(9):
-            for col in range(9):
-                val = board[row][col]
+        for i in range(9):
+            for j in range(9):
+                val = board[i][j]
                 if val == ".":
                     continue
-                box_idx = (row // 3) * 3 + (col // 3)
-                if val in rows[row] or val in cols[col] or val in boxes[box_idx]:
+                box_idx = (i // 3) * 3 + (j // 3)
+                if val in rows[i] or val in cols[j] or val in boxes[box_idx]:
                     return False
-                rows[row].add(val)
-                cols[col].add(val)
+                rows[i].add(val)
+                cols[j].add(val)
                 boxes[box_idx].add(val)
         return True

@@ -13,20 +13,19 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-        result = []
+        combos = []
 
         def backtrack(path, index):
             if index == len(digits):
-                result.append("".join(path))
+                combos.append("".join(path))
                 return
             for char in phone[digits[index]]:
-                if char not in path:
-                    path.append(char)
-                    backtrack(path, index + 1)
-                    path.pop()
+                path.append(char)
+                backtrack(path, index + 1)
+                path.pop()
 
         backtrack([], 0)
-        return result
+        return combos
 
 
 class TestSolution:
