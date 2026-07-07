@@ -3,21 +3,21 @@ from collections import Counter
 
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
-        words = s.strip().split()
-        c2s = {}
-        s2c = {}
-        for char, word in zip(pattern, words):
-            # if the character or word has been mapped
-            # and it isn't the
+        words = s.split()
+        if len(words) != len(pattern):
+            return False
+        word_map = {}
+        char_map = {}
+        for char, word in zip(pattern, s):
             if (
-                c2s.get(char, None) != None
-                and c2s.get(char) != word
-                or s2c.get(word) != None
-                and s2c.get(word) != char
+                char in word_map
+                and word_map[char] != word
+                or word in char_map
+                and char_map[word] != char
             ):
                 return False
-            c2s[char] = word
-            s2c[word] = char
+            word_map[char] = word
+            char_map[word] = char
         return True
 
 

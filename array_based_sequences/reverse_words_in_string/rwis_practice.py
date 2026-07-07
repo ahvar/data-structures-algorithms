@@ -7,19 +7,20 @@ class Solution:
         pass
 
     def reverse_in_place(self, s: str):
-        result = []
-        n = len(s)
-        right = n - 1
-        while right >= 0:
-            while right >= 0 and s[right].isspace():
-                right -= 1
-            if right < 0:
-                break
-            left = right
-            while left >= 0 and not s[right].isspace():
-                left -= 1
-            result.append(s[left + 1 : right + 1])
-        return " ".join(result)
+        if not s:
+            return ""
+        arr = []
+        i = len(s) - 1
+        while i >= 0:
+            if s[i].isspace():
+                i -= 1
+                continue
+            j = i
+            while j >= 0 and s[j].isalpha():
+                j -= 1
+            arr.append(s[j + 1 : i + 1])
+            i = j
+        return " ".join(arr)
 
 
 class TestRWIS:
@@ -28,3 +29,4 @@ class TestRWIS:
 
     def test_rwis(self):
         assert self.solution.reverse_in_place(s="big dog") == "dog big"
+        assert self.solution.reverse_in_place(s="the sky is blue") == "blue is sky the"

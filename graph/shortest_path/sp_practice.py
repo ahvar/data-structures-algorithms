@@ -5,11 +5,7 @@ from collections import deque
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
         n = len(graph)
-        if n == 1:
-            return 0
-
-        target = (1 << n) - 1
-
+        target = (1 << n) - 1  # all nodes visited
         queue = deque()
         seen = set()
 

@@ -5,8 +5,9 @@ pp = pprint.PrettyPrinter(indent=4)
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        if numRows >= len(s) or numRows == 1:
+        if numRows >= len(s):
             return s
+        n = len(s)
         rows = [""] * numRows
         curr_row = 0
         going_down = False

@@ -1,15 +1,14 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        dirnames = []
-        parts = path.split("/")
-        for part in parts:
-            if part == "." or part == "":
+        dirnames = path.split("/")
+        dirs = []
+
+        for dir in dirnames:
+            if dir == "." or dir == "":
                 continue
             elif dir == "..":
                 if len(dirnames) > 0:
-                    last = dirnames.pop()
+                    dirnames.pop()
             else:
-                dirnames.append(part)
-        if len(dirnames) == 0:
-            return "/"
-        "/" + "/".join(dirnames)
+                dirnames.append(dir)
+        "/" + "/".join(dirs)

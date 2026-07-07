@@ -1,17 +1,17 @@
+from collections import Counter
+
+
 class Solution:
 
     def closeStrings(self, word1: str, word2: str) -> bool:
         if set(word1) != set(word2):
             return False
-        freq1 = {}
-        freq2 = {}
-        for c in word1:
-            freq1[c] = freq1.get(c, 0) + 1
+        word1_count = Counter(word1)
+        word2_count = Counter(word2)
 
-        for c in word2:
-            freq2[c] = freq2.get(c, 0) + 1
-        vals1 = sorted(freq1.values())
-        vals2 = sorted(freq2.values())
+        vals1 = sorted(word1_count.values())
+        vals2 = sorted(word2_count.values())
+
         return vals1 == vals2
 
 
